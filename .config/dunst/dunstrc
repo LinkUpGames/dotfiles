@@ -1,0 +1,25 @@
+[global]
+frame_color = "#89b4fa"
+separator_color= frame
+font = "Hack Nerd Font Mono"
+follow = mouse
+min_icon_size = 80
+max_icon_size = 100
+icon_position = top
+width = (0,500)
+progress_bar_corner_radius = 20
+mouse_left_click="context_all, close_current"
+highlight = "#ffffff"
+
+[urgency_low]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[urgency_normal]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[urgency_critical]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#fab387"

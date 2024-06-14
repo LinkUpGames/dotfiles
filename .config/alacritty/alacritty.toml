@@ -1,0 +1,39 @@
+[font]
+size = 16.0
+
+[font.bold]
+family = "Hack Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "Hack Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "Hack Nerd Font Mono"
+style = "Regular"
+
+[window]
+opacity = 0.70
+decorations = "buttonless"
+blur = true
+
+option_as_alt = "Both"
+
+[env]
+TERM = "xterm-256color"
+
+[[keyboard.bindings]]
+key = "c"
+mods = "Alt"
+chars = "\u001bc"
+
+[[keyboard.bindings]]
+key = "t"
+mods = "Alt"
+chars = "\u001bt"
+
+[[keyboard.bindings]]
+key = "Backspace"
+mods = "Control"
+chars = "\u0017"
