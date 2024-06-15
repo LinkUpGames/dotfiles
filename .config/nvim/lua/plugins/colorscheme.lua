@@ -1,4 +1,4 @@
-local theme = "fluoromachine"
+local theme = "tokyonight"
 
 return {
   {
