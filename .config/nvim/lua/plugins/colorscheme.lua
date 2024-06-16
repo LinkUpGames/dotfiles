@@ -1,4 +1,4 @@
-local theme = "tokyonight"
+local theme = "fluoromachine"
 
 return {
   {
@@ -168,7 +168,7 @@ return {
     opts = {
       glow = false,
       theme = "retrowave",
-      transparent = "full",
+      transparent = true,
       overrides = {
         ["LineNrAbove"] = {
           fg = "#8b46b0",
