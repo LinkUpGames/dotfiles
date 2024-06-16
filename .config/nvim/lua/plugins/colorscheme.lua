@@ -1,4 +1,4 @@
-local theme = "tokyonight"
+local theme = "synthweave"
 
 return {
   {
@@ -11,6 +11,29 @@ return {
       styles = {
         sidebars = "transparent",
         floats = "transparent",
+      },
+    },
+  },
+  {
+    "samharju/synthweave.nvim",
+    opts = {
+      transparent = true,
+      overrides = {
+        LineNrAbove = {
+          fg = "#8b46b0",
+          bold = true,
+          bg = "none",
+        },
+        LineNr = {
+          fg = "#ce7dfa",
+          bg = "none",
+          bold = true,
+        },
+        LineNrBelow = {
+          fg = "#8b46b0",
+          bold = true,
+          bg = "none",
+        },
       },
     },
   },
@@ -43,24 +66,6 @@ return {
         }
       end,
     },
-  },
-  {
-    "talha-akram/noctis.nvim",
-    lazy = true,
-  },
-  {
-    "sainnhe/gruvbox-material",
-    lazy = true,
-    config = function()
-      vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_background = "soft"
-      vim.g.gruvbox_material_transparent_background = 1
-      vim.g.gruvbox_material_float_style = "dim"
-      vim.g.gruvbox_material_enable_bold = 1
-      vim.g.gruvbox_material_foreground = "mix"
-      vim.g.gruvbox_material_diagnostic_text_highlight = 1
-      vim.g.gruvbox_material_diagnostic_line_highlight = 1
-    end,
   },
   {
     "catppuccin/nvim",
@@ -123,35 +128,6 @@ return {
           bold = true,
         }
       end,
-    },
-  },
-  {
-    "scottmckendry/cyberdream.nvim",
-    lazy = true,
-    priority = 1000,
-    opts = {
-      transparent = true,
-      italic_comments = true,
-      hide_fillchars = true,
-      theme = {
-        highlights = {
-          LineNrBelow = {
-            fg = "#cc5896",
-            bg = "none",
-            bold = true,
-          },
-          LineNr = {
-            fg = "#fc92cb",
-            bg = "none",
-            bold = true,
-          },
-          LineNrAbove = {
-            fg = "#cc5896",
-            bg = "none",
-            bold = true,
-          },
-        },
-      },
     },
   },
   {
