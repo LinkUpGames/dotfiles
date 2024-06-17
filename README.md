@@ -19,6 +19,10 @@
 ## Mac Setup
 
 * homebrew
+* terminal-notifier
+* skhd
+* yabai
+* sketchybar
 
 ## Hyprland setup
 
