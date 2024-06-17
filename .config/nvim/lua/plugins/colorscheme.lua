@@ -1,4 +1,4 @@
-local theme = "synthweave"
+local theme = "tokyonight"
 
 return {
   {
@@ -11,29 +11,6 @@ return {
       styles = {
         sidebars = "transparent",
         floats = "transparent",
-      },
-    },
-  },
-  {
-    "samharju/synthweave.nvim",
-    opts = {
-      transparent = true,
-      overrides = {
-        LineNrAbove = {
-          fg = "#8b46b0",
-          bold = true,
-          bg = "none",
-        },
-        LineNr = {
-          fg = "#ce7dfa",
-          bg = "none",
-          bold = true,
-        },
-        LineNrBelow = {
-          fg = "#8b46b0",
-          bold = true,
-          bg = "none",
-        },
       },
     },
   },
