@@ -53,7 +53,7 @@ config.keys = {
 config.window_close_confirmation = "NeverPrompt"
 config.cursor_blink_rate = 500
 config.win32_system_backdrop = "Acrylic"
-config.enable_wayland = false
+-- config.enable_wayland = false
 
 -- Theme
 config.color_scheme = "MaterialDarker"
