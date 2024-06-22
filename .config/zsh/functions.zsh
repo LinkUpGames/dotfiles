@@ -1,3 +1,4 @@
+# Yazi
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
@@ -6,3 +7,5 @@ function yy() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# Bat

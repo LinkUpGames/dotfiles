@@ -36,6 +36,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 dnf copr enable atim/lazygit -y
 dnf install lazygit -y
 
+# bat
+dnf install bat -y
+
 # Lazy docker
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 

@@ -12,6 +12,7 @@
 * lazydocker
 * yazi
 * nvm
+* bat
 * find
 * stow
 * Hack Nerd Font
