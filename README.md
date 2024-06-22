@@ -23,6 +23,7 @@
 * skhd
 * yabai
 * sketchybar
+* sesh
 
 ## Hyprland setup
 
