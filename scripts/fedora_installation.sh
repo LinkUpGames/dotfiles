@@ -1,5 +1,9 @@
 #!/usr/bin/bash
 
+# Wezterm
+sudo dnf copr enable wezfurlong/wezterm-nightly -y
+sudo dnf install wezterm -y
+
 # Install zsh
 dnf install zsh -y
 

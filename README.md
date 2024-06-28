@@ -17,6 +17,11 @@
 * stow
 * Hack Nerd Font
 
+## App Downloads
+
+* wezterm
+* kitty
+
 ## Mac Setup
 
 * homebrew
