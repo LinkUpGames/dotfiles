@@ -1,4 +1,4 @@
-local theme = "tokyonight"
+local theme = "duskfox"
 
 return {
   {
@@ -137,6 +137,31 @@ return {
           fg = "#8b46b0",
           bg = "none",
           bold = true,
+        },
+      },
+    },
+  },
+  {
+    "EdenEast/nightfox.nvim",
+    opts = {
+      options = {
+        transparent = true,
+        dim_inactive = false,
+      },
+      groups = {
+        all = {
+          LineNrAbove = {
+            bg = "none",
+            fg = "#8b46b0",
+          },
+          LineNr = {
+            fg = "#ce7dfa",
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = "#8b46b0",
+            bg = "none",
+          },
         },
       },
     },
