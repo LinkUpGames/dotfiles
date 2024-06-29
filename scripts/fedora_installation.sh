@@ -55,3 +55,5 @@ cd $HOME
 cd dotfiles
 
 stow .
+
+echo "Installation Complete! - Restart the shell in order for everything to take effect"
