@@ -21,6 +21,7 @@
 
 * wezterm
 * kitty
+* alacritty
 
 ## Mac Setup
 
