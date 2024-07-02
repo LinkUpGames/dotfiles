@@ -12,7 +12,6 @@ config.adjust_window_size_when_changing_font_size = false
 
 -- Define the way that fonts should be loaded
 config.freetype_load_flags = "DEFAULT"
-
 config.enable_tab_bar = false
 
 -- Cool background effect
@@ -38,6 +37,9 @@ config.window_padding = {
 
 -- Get cursor to match the color in is in
 config.force_reverse_video_cursor = true
+
+-- Updated the cursor style
+config.default_cursor_style = "BlinkingBlock"
 
 -- Keys
 local act = wezterm.action
