@@ -48,6 +48,25 @@ brew install lazydocker
 # Stow
 brew install stow
 
+# MAC Specific Apps #
+# Terminal Notififer
+brew install terminal-notifier
+
+# SKHD
+brew install koekeishiya/formulae/skhd
+
+# Yabai
+brew install koekeishiya/formulae/yabai
+
+# Start Services
+skhd --start-service
+yabai --start-service
+
+# Sketcybar
+brew tap FelixKratz/formulae
+brew install sketchybar
+# ||||||||||||||||| #
+
 ## Now link all the dependencies install
 cd $HOME
 
