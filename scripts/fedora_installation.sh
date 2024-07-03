@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # Wezterm
 sudo dnf copr enable wezfurlong/wezterm-nightly -y
