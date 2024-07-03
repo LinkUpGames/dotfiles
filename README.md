@@ -16,6 +16,7 @@
 * find
 * stow
 * Hack Nerd Font
+* csvlens
 
 ## App Downloads
 
