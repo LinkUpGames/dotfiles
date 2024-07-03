@@ -19,6 +19,7 @@ rm -rf .zshrc
 
 # Tmux
 dnf install tmux -y
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Neovim
 dnf install neovim -y
