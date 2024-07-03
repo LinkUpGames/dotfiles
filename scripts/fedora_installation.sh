@@ -41,6 +41,9 @@ dnf install fd-find -y
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
+# eza
+dnf install eza -y
+
 # lazygit
 dnf copr enable atim/lazygit -y
 dnf install lazygit -y
