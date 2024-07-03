@@ -30,6 +30,9 @@ rustup update
 
 cargo install --locked yazi-fm yazi-cli
 
+# csvlens
+cargo install csvlens
+
 # fd-find
 dnf install fd-find -y
 
