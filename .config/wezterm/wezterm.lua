@@ -18,7 +18,7 @@ config.enable_tab_bar = false
 if wezterm.target_triple:find("darwin") then
 	config.window_decorations = "RESIZE"
 elseif wezterm.target_triple:find("linux") then
-	config.window_decorations = "TITLE"
+	config.window_decorations = "NONE"
 else
 	config.window_decorations = "TITLE"
 	config.default_prog = { "powershell" }
