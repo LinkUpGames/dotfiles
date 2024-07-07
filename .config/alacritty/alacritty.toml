@@ -13,6 +13,9 @@ style = "Italic"
 family = "Hack Nerd Font Mono"
 style = "Regular"
 
+[font.offset]
+y = 5
+
 [window]
 opacity = 0.70
 decorations = "buttonless"
