@@ -7,9 +7,9 @@ yabai -m config window_placement second_child
 # padding (Optional)
 yabai -m config top_padding    5
 yabai -m config bottom_padding 5
-yabai -m config left_padding   5
-yabai -m config right_padding  5
-yabai -m config window_gap     5
+yabai -m config left_padding   8
+yabai -m config right_padding  8
+yabai -m config window_gap     8
 
 # mouse settings
 yabai -m config mouse_follows_focus on
