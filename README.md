@@ -30,7 +30,7 @@
 * terminal-notifier
 * skhd
 * yabai
-* sketchybar
+* Janky Borders
 * sesh
 
 ## Hyprland setup

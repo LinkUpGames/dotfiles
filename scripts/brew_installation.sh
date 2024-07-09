@@ -62,10 +62,9 @@ brew install koekeishiya/formulae/yabai
 skhd --start-service
 yabai --start-service
 
-# Sketcybar
+# Janky Borders
 brew tap FelixKratz/formulae
-brew install sketchybar
-# ||||||||||||||||| #
+brew insall borders
 
 ## Now link all the dependencies install
 cd $HOME
