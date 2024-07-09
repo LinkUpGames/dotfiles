@@ -1,4 +1,4 @@
-local theme = "terafox"
+local theme = "tokyonight"
 
 return {
   {
