@@ -1,4 +1,4 @@
-local theme = "tokyonight"
+local theme = "terafox"
 
 return {
   {
@@ -152,14 +152,14 @@ return {
         all = {
           LineNrAbove = {
             bg = "none",
-            fg = "#8b46b0",
+            fg = "#a32166",
           },
           LineNr = {
-            fg = "#ce7dfa",
+            fg = "#e83393",
             bg = "none",
           },
           LineNrBelow = {
-            fg = "#8b46b0",
+            fg = "#a32166",
             bg = "none",
           },
         },
