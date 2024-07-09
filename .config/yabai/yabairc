@@ -31,4 +31,4 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
 
 # Start Janky Borders
-borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
+borders active_color=0xFF26b0ff inactive_color=0xFF8da8b8 width=8.0 &
