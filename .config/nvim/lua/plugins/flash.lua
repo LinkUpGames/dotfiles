@@ -19,7 +19,15 @@ return {
         require("flash").jump()
       end,
       mode = { "n", "x", "o" },
-      desc = "Jump Forward To",
+      desc = "Jump To",
+    },
+    {
+      "T",
+      function()
+        require("flash").treesitter()
+      end,
+      mode = { "n", "x", "o" },
+      desc = "Jump Treesitter",
     },
     {
       "s",
