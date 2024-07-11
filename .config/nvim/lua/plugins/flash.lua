@@ -22,22 +22,27 @@ return {
     },
     {
       "s",
+      mode = { "n", "x", "o" },
       false,
     },
     {
       "S",
+      mode = { "n", "x", "o" },
       false,
     },
     {
       "r",
+      mode = { "n", "x", "o" },
       false,
     },
     {
       "R",
+      mode = { "n", "x", "o" },
       false,
     },
     {
       "<c-s>",
+      mode = { "n", "x", "o" },
       false,
     },
   },
