@@ -35,7 +35,7 @@ return {
     "folke/which-key.nvim",
     opts = {
       spec = {
-        { "<leader>A", group = "Cursor" },
+        { "<leader>A", group = "Cursor", icon = "󰆽" },
       },
     },
   },
