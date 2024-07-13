@@ -2,6 +2,7 @@ return {
   -- Don't show these keys plz
   "folke/which-key.nvim",
   opts = {
+    preset = "helix",
     spec = {
       {
         "<leader>l",
