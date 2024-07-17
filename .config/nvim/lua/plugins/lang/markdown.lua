@@ -8,4 +8,14 @@ return {
       },
     },
   },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        textlsp = {
+          filetypes = { "markdown", "tex" },
+        },
+      },
+    },
+  },
 }
