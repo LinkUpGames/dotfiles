@@ -7,5 +7,5 @@ return {
     "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
   },
   config = true,
-  enabled = true,
+  enabled = false,
 }
