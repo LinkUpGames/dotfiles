@@ -3,7 +3,13 @@ return {
   opts = {
     default_file_explorer = true,
     keymaps = {
-      ["q"] = { "actions.close", mode = { "n" } },
+      ["q"] = {
+        function()
+          require("oil").discard_all_changes()
+          require("oil").close()
+        end,
+        mode = { "n" },
+      },
       ["-"] = { "actions.parent", mode = { "n" } },
       ["_"] = { "actions.open_cwd", mode = { "n" } },
       ["<CR>"] = { "actions.select", mode = { "n" } },
