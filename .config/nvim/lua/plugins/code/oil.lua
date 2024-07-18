@@ -16,6 +16,7 @@ return {
     },
     view_options = {
       show_hidden = true,
+      natural_order = false,
     },
     use_default_keymaps = false,
   },

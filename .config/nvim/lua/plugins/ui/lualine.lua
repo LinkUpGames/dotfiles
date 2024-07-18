@@ -12,5 +12,8 @@ return {
         padding = { left = 0, right = 1 },
       },
     }
+
+    -- Extensions
+    table.insert(opts.extensions, "oil")
   end,
 }
