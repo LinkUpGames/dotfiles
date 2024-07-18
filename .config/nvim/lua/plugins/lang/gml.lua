@@ -1,7 +1,6 @@
-return {
-  "JafarDakhan/vim-gml",
-  ft = "gml",
-}
+if true then
+  return {}
+end
 
 -- return {
 --
