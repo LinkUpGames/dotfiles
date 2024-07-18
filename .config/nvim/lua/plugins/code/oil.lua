@@ -23,6 +23,6 @@ return {
     use_default_keymaps = false,
   },
   keys = {
-    { "<leader>e", "<CMD>Oil --float<CR>", mode = { "n" }, { desc = "Open parent directory" } },
+    { "<leader>e", "<CMD>Oil --float<CR>", mode = { "n" }, desc = "Open current directory" },
   },
 }
