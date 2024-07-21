@@ -1,4 +1,4 @@
-local theme = "flow"
+local theme = "tokyonight"
 
 return {
   {
@@ -27,7 +27,7 @@ return {
   },
   {
     "tokyonight.nvim",
-    lazy = true,
+    lazy = false,
     opts = {
       transparent = true,
       styles = {
@@ -97,7 +97,7 @@ return {
   },
   {
     "EdenEast/nightfox.nvim",
-    lazy = true,
+    lazy = false,
     opts = {
       options = {
         transparent = true,
