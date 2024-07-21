@@ -13,6 +13,12 @@ return {
       },
     }
 
+    opts.sections.lualine_z = {
+      function()
+        return " " .. os.date("%I:%M %p")
+      end,
+    }
+
     -- Extensions
     table.insert(opts.extensions, "oil")
   end,
