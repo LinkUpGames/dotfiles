@@ -1,6 +1,15 @@
-local theme = "tokyonight"
+local theme = "flow"
 
 return {
+  {
+    "0xstepit/flow.nvim",
+    lazy = false,
+    config = function()
+      require("flow").setup_options({
+        transparent = true, -- Set transparent background.
+      })
+    end,
+  },
   {
     "ellisonleao/gruvbox.nvim",
     lazy = true,
@@ -77,68 +86,11 @@ return {
     },
   },
   {
-    "eldritch-theme/eldritch.nvim",
-    lazy = true,
-    priority = 1000,
-    opts = {
-      transparent = true,
-      styles = {
-        floats = "transparent",
-        sidebars = "transparent",
-      },
-      on_highlights = function(hl)
-        hl.LineNrAbove = {
-          fg = "#40b4e3",
-          bold = true,
-          bg = "none",
-        }
-
-        hl.LineNr = {
-          fg = "#9ee4ff",
-          bg = "none",
-          bold = true,
-        }
-
-        hl.LineNrBelow = {
-          fg = "#40b4e3",
-          bg = "none",
-          bold = true,
-        }
-      end,
-    },
-  },
-  {
     "Tsuzat/NeoSolarized.nvim",
     priority = 1000,
     opts = {
       style = "light",
       transparent = false,
-    },
-  },
-  {
-    "maxmx03/fluoromachine.nvim",
-    lazy = true,
-    opts = {
-      glow = false,
-      theme = "retrowave",
-      transparent = true,
-      overrides = {
-        ["LineNrAbove"] = {
-          fg = "#8b46b0",
-          bold = true,
-          bg = "none",
-        },
-        ["LineNr"] = {
-          fg = "#ce7dfa",
-          bg = "none",
-          bold = true,
-        },
-        ["LineNrBelow"] = {
-          fg = "#8b46b0",
-          bg = "none",
-          bold = true,
-        },
-      },
     },
   },
   {
