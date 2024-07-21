@@ -4,9 +4,13 @@ return {
   {
     "0xstepit/flow.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
       require("flow").setup_options({
         transparent = true, -- Set transparent background.
+        fluo_color = "orange",
+        mode = "bright",
+        aggressive_spell = true,
       })
     end,
   },
