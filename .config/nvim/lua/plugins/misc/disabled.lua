@@ -1,6 +1,6 @@
 return {
   {
-    "nvim-pack/nvim-spectre",
+    "MagicDuck/grug-far.nvim",
     enabled = false,
   },
 }
