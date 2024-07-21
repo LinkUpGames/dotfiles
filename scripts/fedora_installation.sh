@@ -12,6 +12,8 @@ dnf install zsh -y
 # Make zsh default
 chsh -s $(which zsh)
 
+# exec zsh
+
 # Zap plugin manager
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 cd $HOME
@@ -28,7 +30,7 @@ dnf install neovim -y
 dnf install fzf -y
 
 # yazi
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
 . "$HOME/.cargo/env" # For sh/bash/zsh/ash/dash/pdksh
 rustup update
 
