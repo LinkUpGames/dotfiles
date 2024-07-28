@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 -- Set the font
 config.font = wezterm.font({ family = "Hack Nerd Font Mono" })
-config.font_size = 15
+config.font_size = 14
 config.line_height = 1.2
 config.adjust_window_size_when_changing_font_size = false
 
