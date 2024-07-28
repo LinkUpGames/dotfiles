@@ -2,15 +2,15 @@
 size = 14.0
 
 [font.bold]
-family = "Hack Nerd Font Mono"
+family = "JetBrainsMono NF"
 style = "Bold"
 
 [font.italic]
-family = "Hack Nerd Font Mono"
+family = "JetBrainsMono NF"
 style = "Italic"
 
 [font.normal]
-family = "Hack Nerd Font Mono"
+family = "JetBrainsMono NF"
 style = "Regular"
 
 [font.offset]
