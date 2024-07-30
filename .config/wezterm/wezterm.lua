@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 -- Set the font
 config.font = wezterm.font({ family = "JetBrainsMono Nerd Font Mono" })
 config.font_size = 14
-config.line_height = 1.2
+config.line_height = 1.1
 config.adjust_window_size_when_changing_font_size = false
 
 -- Define the way that fonts should be loaded
