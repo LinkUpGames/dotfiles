@@ -23,6 +23,15 @@ return {
     use_default_keymaps = false,
   },
   keys = {
-    { "<leader>e", "<CMD>Oil --float<CR>", mode = { "n" }, desc = "Open current directory" },
+    {
+      "<leader>e",
+      function()
+        local oil = require("oil")
+
+        oil.toggle_float()
+      end,
+      mode = { "n" },
+      desc = "Open current directory",
+    },
   },
 }
