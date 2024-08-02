@@ -1,4 +1,4 @@
-local theme = "flow"
+local theme = "catppuccin"
 
 return {
   {
@@ -14,7 +14,7 @@ return {
   },
   {
     "ellisonleao/gruvbox.nvim",
-    lazy = true,
+    lazy = false,
     config = true,
     opts = {
       terminal_colors = true,
