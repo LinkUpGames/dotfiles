@@ -8,7 +8,7 @@ return {
     event = "VeryLazy",
     cond = os.getenv("GEMINI_API_KEY") ~= nil,
     opts = {
-      chat_free_cursor = true,
+      chat_free_cursor = false,
       toggle_target = "popup",
       chat_shortcut_respond = { modes = { "n" }, shortcut = "<CR>" },
       chat_shortcut_delete = { modes = { "n" }, shortcut = "<leader>ad" },
@@ -16,15 +16,9 @@ return {
       providers = {
         gemini = {
           api_key = os.getenv("GEMINI_API_KEY"),
-        },
-      },
-      agents = {
-        chat = {
-          name = "Gemini",
-          model = {
+          topic_prompt = "You are helping me with my codebase",
+          topic = {
             model = "gemini-1.5-flash",
-            system_prompt = "You are helping me with my codebase",
-            provider = "gemini",
           },
         },
       },
