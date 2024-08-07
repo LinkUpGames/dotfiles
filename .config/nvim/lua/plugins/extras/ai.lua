@@ -31,6 +31,52 @@ return {
 
       require("gp").setup(opts)
     end,
-    enabled = false,
+    enabled = true,
+    keys = {
+      {
+        "<leader>aj",
+        "<CMD>GpChatToggle split<CR>",
+        mode = "n",
+        desc = "Toggle AI Chat",
+      },
+      {
+        "<leader>ak",
+        ":GpChatNew split<CR>",
+        mode = "n",
+        desc = "Open a new AI Chat",
+      },
+      {
+        "<leader>aj",
+        ":'<,'>GpChatToggle split<CR>",
+        mode = { "x", "o" },
+        desc = "Toggle AI Chat",
+      },
+      {
+        "<leader>ak",
+        "<CMD>'<,'>GpChatNew split<CR>",
+        mode = { "x", "o" },
+        desc = "Open a new AI Chat",
+      },
+      {
+        "<leader>ad",
+        "<CMD>GpChatDelete<CR>",
+        mode = { "n" },
+        desc = "Delete the ai chat",
+      },
+      {
+        "<leader>a<CR>",
+        "<CMD>GpChatRespond<CR>",
+        mode = "n",
+        desc = "AI Chat Respond",
+      },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        { "<leader>a", group = "AI Chat", icon = "󰆽" },
+      },
+    },
   },
 }
