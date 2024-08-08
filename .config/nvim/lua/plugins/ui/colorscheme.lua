@@ -1,4 +1,4 @@
-local theme = "catppuccin"
+local theme = "eldritch"
 
 return {
   {
@@ -13,16 +13,34 @@ return {
     },
   },
   {
-    "ellisonleao/gruvbox.nvim",
+    "eldritch-theme/eldritch.nvim",
     lazy = false,
-    config = true,
+    priority = 1000,
     opts = {
-      terminal_colors = true,
-      transparent_mode = true,
+      transparent = true,
       styles = {
-        sidebars = "transparent",
         floats = "transparent",
+        sidebars = "transparent",
       },
+      on_highlights = function(hl)
+        hl.LineNrAbove = {
+          fg = "#40b4e3",
+          bold = true,
+          bg = "none",
+        }
+
+        hl.LineNr = {
+          fg = "#9ee4ff",
+          bg = "none",
+          bold = true,
+        }
+
+        hl.LineNrBelow = {
+          fg = "#40b4e3",
+          bg = "none",
+          bold = true,
+        }
+      end,
     },
   },
   {
