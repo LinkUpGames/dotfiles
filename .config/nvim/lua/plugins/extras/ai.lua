@@ -8,7 +8,7 @@ return {
     event = "VeryLazy",
     cond = os.getenv("GEMINI_API_KEY") ~= nil,
     opts = {
-      chat_free_cursor = false,
+      chat_free_cursor = true,
       toggle_target = "popup",
       chat_shortcut_respond = { modes = { "n" }, shortcut = "<CR>" },
       chat_shortcut_delete = { modes = { "n" }, shortcut = "<leader>ad" },
