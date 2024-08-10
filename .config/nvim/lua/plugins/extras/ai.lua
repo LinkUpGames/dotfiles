@@ -8,6 +8,8 @@ return {
     event = "VeryLazy",
     cond = os.getenv("GEMINI_API_KEY") ~= nil,
     opts = {
+      chat_user_prefix = "💬: ",
+      llm_prefix = "🤖: ",
       chat_free_cursor = true,
       toggle_target = "popup",
       chat_shortcut_respond = { modes = { "n" }, shortcut = "<CR>" },
