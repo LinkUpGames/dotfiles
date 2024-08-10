@@ -5,7 +5,7 @@ return {
     "hrsh7th/cmp-cmdline",
   },
   lazy = true,
-  opts = function(_, opts)
+  opts = function(_, _)
     local cmp = require("cmp")
     -- `:` cmdline setup.
     cmp.setup.cmdline(":", {
@@ -49,22 +49,5 @@ return {
         { name = "buffer" },
       },
     })
-
-    -- Exclude these files
-    opts.enabled = function()
-      local files = {
-        "oil",
-      }
-
-      local buffer = vim.bo.filetype
-
-      for _, f in ipairs(files) do
-        if buffer == f then
-          return false
-        end
-      end
-
-      return true
-    end
   end,
 }
