@@ -8,6 +8,7 @@ return {
     event = "VeryLazy",
     cond = os.getenv("GEMINI_API_KEY") ~= nil,
     opts = {
+      style_popup_border = "rounded",
       chat_user_prefix = "💬: ",
       llm_prefix = "🤖: ",
       chat_free_cursor = true,
