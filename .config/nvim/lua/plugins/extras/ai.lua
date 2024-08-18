@@ -13,7 +13,7 @@ return {
       llm_prefix = "🤖: ",
       chat_free_cursor = true,
       toggle_target = "popup",
-      chat_shortcut_respond = { modes = { "n" }, shortcut = "<CR>" },
+      chat_shortcut_respond = { modes = { "n", "i" }, shortcut = "<CR>" },
       chat_shortcut_delete = { modes = { "n" }, shortcut = "<leader>ad" },
       chat_confirm_delete = false,
       providers = {
