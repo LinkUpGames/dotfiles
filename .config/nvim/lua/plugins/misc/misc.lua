@@ -14,6 +14,11 @@ return {
     "mistricky/codesnap.nvim",
     event = "BufEnter",
     build = "make",
+    enabled = function()
+      local sys = jit.os
+
+      return sys ~= "Windows"
+    end,
     opts = {
       watermark = "Code Snippet",
       mac_window_bar = false,
