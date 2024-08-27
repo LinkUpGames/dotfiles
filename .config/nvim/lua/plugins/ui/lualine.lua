@@ -20,6 +20,19 @@ return {
         end,
       }
 
+      -- Show the file name
+      opts.sections.lualine_c[4] = {
+        "filename",
+        file_status = true,
+        path = 0,
+        symbols = {
+          modified = "[]",
+          readonly = "[󰌾]",
+          unnamed = "[No Name]",
+          newfile = "[]",
+        },
+      }
+
       -- Extensions
       local oil = {
         sections = {
