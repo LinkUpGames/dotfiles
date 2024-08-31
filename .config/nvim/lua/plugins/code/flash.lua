@@ -8,7 +8,7 @@ return {
         enabled = false,
       },
       search = {
-        enabled = false,
+        enabled = true,
       },
     },
   },
