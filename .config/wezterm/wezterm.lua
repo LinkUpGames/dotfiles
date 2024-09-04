@@ -21,7 +21,7 @@ elseif wezterm.target_triple:find("linux") then
 	config.window_decorations = "NONE"
 else
 	config.window_decorations = "TITLE"
-	config.default_prog = { "powershell" }
+	config.default_prog = { "bash" }
 end
 
 config.window_background_opacity = 0.75
