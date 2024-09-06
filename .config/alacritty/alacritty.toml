@@ -16,6 +16,9 @@ style = "Regular"
 [font.offset]
 y = 3
 
+[cursor.style]
+blinking = "Always"
+
 [window]
 opacity = 0.70
 decorations = "buttonless"
