@@ -9,7 +9,14 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        gml = {},
+        gml = { "gobo" },
+      },
+      formatters = {
+        gobo = {
+          command = "C:\\Users\\mjcev\\.local\\bin\\gobo\\gobo.exe",
+          args = { "$FILENAME" },
+          stdin = false,
+        },
       },
     },
   },
