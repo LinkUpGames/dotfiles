@@ -1,4 +1,4 @@
-local theme = "catppuccin"
+local theme = "flow"
 
 return {
   {
