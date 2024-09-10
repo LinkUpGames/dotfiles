@@ -1,4 +1,4 @@
-local theme = "flow"
+local theme = "eldritch"
 
 return {
   {
