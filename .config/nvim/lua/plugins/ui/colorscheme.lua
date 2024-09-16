@@ -1,4 +1,17 @@
-local theme = "eldritch"
+local theme = ""
+
+local themes = {
+  "eldritch",
+  "flow",
+  "tokyonight",
+  "catppuccin",
+  "vscode",
+}
+
+local i = math.random(os.time()) % #themes
+i = i == 0 and #themes or i
+
+theme = themes[i]
 
 return {
   {
@@ -114,30 +127,33 @@ return {
     },
   },
   {
-    "EdenEast/nightfox.nvim",
-    lazy = false,
-    opts = {
-      options = {
+    "Mofiqul/vscode.nvim",
+    opts = function(_, opts)
+      local c = require("vscode.colors").get_colors()
+
+      local extend = {
         transparent = true,
-        dim_inactive = false,
-      },
-      groups = {
-        all = {
+        group_overrides = {
           LineNrAbove = {
+            fg = c.vscLightBlue,
             bg = "none",
-            fg = "#a32166",
+            bold = true,
           },
           LineNr = {
-            fg = "#e83393",
+            fg = c.vscLightRed,
             bg = "none",
+            bold = true,
           },
           LineNrBelow = {
-            fg = "#a32166",
+            fg = c.vscLightBlue,
             bg = "none",
+            bold = true,
           },
         },
-      },
-    },
+      }
+
+      return vim.tbl_deep_extend("force", opts, extend)
+    end,
   },
   {
     "LazyVim/LazyVim",
