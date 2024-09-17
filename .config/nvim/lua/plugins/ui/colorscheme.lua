@@ -6,6 +6,8 @@ local themes = {
   "tokyonight",
   "catppuccin",
   "vscode",
+  "material",
+  "material-oceanic",
 }
 
 local i = math.random(os.time()) % #themes
@@ -119,11 +121,37 @@ return {
     },
   },
   {
-    "Tsuzat/NeoSolarized.nvim",
-    priority = 1000,
+    "marko-cerovac/material.nvim",
     opts = {
-      style = "light",
-      transparent = false,
+      plugins = {
+        "which-key",
+        "dashboard",
+        "telescope",
+      },
+      disable = {
+        background = true,
+      },
+      high_visibility = {
+        darker = true,
+      },
+      custom_highlights = {
+        LineNrAbove = {
+          fg = "#8a9bb8",
+          bg = "none",
+          bold = true,
+        },
+        LineNrBelow = {
+          fg = "#8a9bb8",
+          bg = "none",
+          bold = true,
+        },
+        LineNr = {
+          fg = "#ffffff",
+          bg = "none",
+          bold = true,
+        },
+      },
+      lualine_style = "stealth",
     },
   },
   {
@@ -132,6 +160,7 @@ return {
       local c = require("vscode.colors").get_colors()
 
       local extend = {
+        -- style = "light",
         transparent = true,
         group_overrides = {
           LineNrAbove = {
