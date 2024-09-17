@@ -1,7 +1,7 @@
 local vaults = {
   {
     name = "school",
-    path = "/School/",
+    path = "/Development/School/Obsidian/",
   },
 }
 
