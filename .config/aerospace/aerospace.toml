@@ -90,7 +90,7 @@ alt-ctrl-l = 'resize smart +50'
 
 # Focus Monitor
 alt-s = 'focus-monitor --wrap-around prev'
-alt-t = 'focus-monitor --wrap-around next'
+alt-g = 'focus-monitor --wrap-around next'
 
 # Move Window to Monitor
 alt-shift-s = 'move-node-to-monitor --wrap-around prev'
