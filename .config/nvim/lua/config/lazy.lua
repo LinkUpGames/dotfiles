@@ -26,7 +26,6 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
     -- import/override with your plugins
-    { import = "lazyvim.plugins.extras.coding.codeium" },
 
     -- Import Custom Plugin Settings
     { import = "plugins" },
