@@ -24,7 +24,7 @@ else
 	config.default_prog = { "bash" }
 end
 
-config.window_background_opacity = 0.75
+config.window_background_opacity = 0.65
 config.macos_window_background_blur = 100
 
 -- Window Padding
