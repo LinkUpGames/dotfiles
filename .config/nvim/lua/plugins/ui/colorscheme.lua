@@ -2,12 +2,13 @@ local theme = ""
 
 local themes = {
   "eldritch",
-  "flow",
   "tokyonight",
   "catppuccin",
   "vscode",
   "material",
   "material-oceanic",
+  "dracula-soft",
+  "dracula",
 }
 
 local i = math.random(os.time()) % #themes
@@ -16,17 +17,6 @@ i = i == 0 and #themes or i
 theme = themes[i]
 
 return {
-  {
-    "0xstepit/flow.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      transparent = true, -- Set transparent background.
-      fluo_color = "orange",
-      mode = "bright",
-      aggressive_spell = true,
-    },
-  },
   {
     "eldritch-theme/eldritch.nvim",
     lazy = false,
@@ -182,6 +172,39 @@ return {
       }
 
       return vim.tbl_deep_extend("force", opts, extend)
+    end,
+  },
+  {
+    "Mofiqul/dracula.nvim",
+    opts = function()
+      local dracula = require("dracula")
+
+      local colors = dracula.colors()
+
+      return {
+        transparent_bg = true,
+        italic_comment = true,
+        overrides = {
+          LineNrAbove = {
+            ---@diagnostic disable-next-line
+            fg = colors.orange,
+            bg = "none",
+            bold = true,
+          },
+          LineNrBelow = {
+            ---@diagnostic disable-next-line
+            fg = colors.orange,
+            bg = "none",
+            bold = true,
+          },
+          LineNr = {
+            ---@diagnostic disable-next-line
+            fg = colors.bright_blue,
+            bg = "none",
+            bold = true,
+          },
+        },
+      }
     end,
   },
   {
