@@ -5,10 +5,9 @@ local themes = {
   "tokyonight",
   "catppuccin",
   "vscode",
-  "material",
-  "material-oceanic",
   "dracula-soft",
   "dracula",
+  "fluoromachine",
 }
 
 local i = math.random(os.time()) % #themes
@@ -108,40 +107,6 @@ return {
           }
         end,
       },
-    },
-  },
-  {
-    "marko-cerovac/material.nvim",
-    opts = {
-      plugins = {
-        "which-key",
-        "dashboard",
-        "telescope",
-      },
-      disable = {
-        background = true,
-      },
-      high_visibility = {
-        darker = true,
-      },
-      custom_highlights = {
-        LineNrAbove = {
-          fg = "#8a9bb8",
-          bg = "none",
-          bold = true,
-        },
-        LineNrBelow = {
-          fg = "#8a9bb8",
-          bg = "none",
-          bold = true,
-        },
-        LineNr = {
-          fg = "#ffffff",
-          bg = "none",
-          bold = true,
-        },
-      },
-      lualine_style = "stealth",
     },
   },
   {
