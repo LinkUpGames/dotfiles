@@ -7,7 +7,6 @@ local themes = {
   "vscode",
   "dracula-soft",
   "dracula",
-  "fluoromachine",
 }
 
 local i = math.random(os.time()) % #themes
