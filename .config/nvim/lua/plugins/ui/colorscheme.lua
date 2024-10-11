@@ -5,7 +5,6 @@ local themes = {
   "tokyonight",
   "catppuccin",
   "vscode",
-  "dracula-soft",
   "dracula",
 }
 
