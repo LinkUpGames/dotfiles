@@ -116,6 +116,8 @@ return {
       local extend = {
         -- style = "light",
         transparent = true,
+        underline_links = true,
+        italic_comments = true,
         group_overrides = {
           LineNrAbove = {
             fg = c.vscLightBlue,
@@ -132,6 +134,9 @@ return {
             bg = "none",
             bold = true,
           },
+          NormalFloat = { fg = "none", bg = "none" },
+          FlashBackdrop = { fg = c.vscGray },
+          FlashLabel = { bg = "#fd0178" },
         },
       }
 
