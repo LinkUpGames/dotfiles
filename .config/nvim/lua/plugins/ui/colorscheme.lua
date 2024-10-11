@@ -172,6 +172,17 @@ return {
             bg = "none",
             bold = true,
           },
+          NormalFloat = {
+            fg = "none",
+            bg = "none",
+          },
+          FlashBackdrop = {
+            ---@diagnostic disable-next-line
+            fg = colors.nontext,
+          },
+          FlashLabel = {
+            bg = "#fd0178",
+          },
         },
       }
     end,
