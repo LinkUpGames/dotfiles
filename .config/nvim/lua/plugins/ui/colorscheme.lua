@@ -5,7 +5,7 @@ local themes = {
   "tokyonight",
   "catppuccin",
   "vscode",
-  "dracula",
+  "rose-pine",
 }
 
 local i = math.random(os.time()) % #themes
@@ -143,44 +143,32 @@ return {
     end,
   },
   {
-    "Mofiqul/dracula.nvim",
-    opts = function()
-      local dracula = require("dracula")
+    "rose-pine/neovim",
+    name = "rose-pine",
 
-      local colors = dracula.colors()
+    opts = function()
+      local rose = require("rose-pine.palette")
 
       return {
-        transparent_bg = true,
-        italic_comment = true,
-        overrides = {
+        variant = "moon",
+        styles = {
+          transparency = true,
+        },
+        highlight_groups = {
           LineNrAbove = {
-            ---@diagnostic disable-next-line
-            fg = colors.orange,
+            fg = rose.subtle,
+            bold = true,
+            bg = "none",
+          },
+          LineNr = {
+            fg = rose.leaf,
             bg = "none",
             bold = true,
           },
           LineNrBelow = {
-            ---@diagnostic disable-next-line
-            fg = colors.orange,
+            fg = rose.subtle,
             bg = "none",
             bold = true,
-          },
-          LineNr = {
-            ---@diagnostic disable-next-line
-            fg = colors.bright_blue,
-            bg = "none",
-            bold = true,
-          },
-          NormalFloat = {
-            fg = "none",
-            bg = "none",
-          },
-          FlashBackdrop = {
-            ---@diagnostic disable-next-line
-            fg = colors.nontext,
-          },
-          FlashLabel = {
-            bg = "#fd0178",
           },
         },
       }
