@@ -27,12 +27,6 @@ Development
         icon = " ",
         key = "f",
       },
-      {
-        action = LazyVim.pick("oldfiles"),
-        desc = " Recent Files",
-        icon = " ",
-        key = "r",
-      },
       { action = LazyVim.pick.config_files(), desc = " Config", icon = " ", key = "c" },
       {
         action = "Lazy",
