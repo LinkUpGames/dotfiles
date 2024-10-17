@@ -1,4 +1,30 @@
 return {
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   config = true,
+  --   opts = {
+  --     adapters = {
+  --       gemini = function()
+  --         return require("codecompanion.adapters").extend("gemini", {
+  --           env = {
+  --             api_key = os.getenv("GEMINI_API_KEY"),
+  --           },
+  --         })
+  --       end,
+  --     },
+  --     strategies = {
+  --       chat = {
+  --         adapter = "gemini",
+  --       },
+  --       inline = {
+  --         adapter = "gemini",
+  --       },
+  --       agent = {
+  --         adapter = "gemini",
+  --       },
+  --     },
+  --   },
+  -- },
   {
     "frankroeder/parrot.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
