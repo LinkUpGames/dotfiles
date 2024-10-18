@@ -6,11 +6,16 @@ return {
       opts.options.component_separators = { left = "", right = "" }
       opts.options.section_separators = { left = "", right = "" }
 
+      opts.sections.lualine_a = {
+        {
+          "mode",
+          icon = "󱇪",
+        },
+      }
+
       opts.sections.lualine_y = {
         {
           "location",
-          icon = "󱇪",
-          padding = { left = 0, right = 1 },
         },
       }
 
