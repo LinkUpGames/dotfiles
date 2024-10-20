@@ -1,3 +1,23 @@
+---Save the colorscheme and date to a save file
+---@param colorscheme string The colorscheme to save
+---@param date string The date saved as yyyy-mm-dd
+local save_file = function(colorscheme, date)
+  local notify = require("noice").notify
+
+  notify("Path: " .. vim.fn.stdpath("data"), 0, {})
+
+  local file, err = io.open(vim.fn.stdpath("data") .. "/colorscheme", "w+")
+
+  if file then
+    file:write(colorscheme .. " " .. date)
+    file:close()
+  else
+    notify("Error " .. err, 0, {})
+  end
+end
+
+save_file("BRUH", "Other")
+
 local theme = ""
 
 local themes = {
