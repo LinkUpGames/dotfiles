@@ -1,3 +1,12 @@
+-- Themes that we can use
+local themes = {
+  "eldritch",
+  "tokyonight",
+  "catppuccin",
+  "vscode",
+  "rose-pine",
+}
+
 ---Save the colorscheme and date to a save file
 ---@param colorscheme string The colorscheme to save
 ---@param date string The date saved as yyyy-mm-dd
@@ -30,20 +39,73 @@ local check_file = function()
   return table
 end
 
-local theme = ""
+---Return the date as a table with the year, month and day
+---@param date_string any
+local parse_date = function(date_string)
+  -- Split the date string by hyphens
+  local year, month, day = date_string:match("(%d+)-(%d+)-(%d+)")
 
-local themes = {
-  "eldritch",
-  "tokyonight",
-  "catppuccin",
-  "vscode",
-  "rose-pine",
-}
+  -- Convert the parts to integers
+  year = tonumber(year)
+  month = tonumber(month)
+  day = tonumber(day)
 
-local i = math.random(os.time()) % #themes
-i = i == 0 and #themes or i
+  -- Return the year, month, and day
+  return { year = year, month = month, day = day }
+end
 
-theme = themes[i]
+---Compares a previous and current date and checks if the current date is more than a day away
+---@param current any
+---@param previous any
+local next_day = function(current, previous)
+  local current_date = parse_date(current)
+  local previous_date = parse_date(previous)
+
+  if current_date.year > previous_date.year then -- Different Years
+    return true
+  elseif current_date.month > previous_date.month then -- Different months
+    return true
+  else
+    if current_date.day > previous_date.day then
+      return true
+    end
+  end
+
+  return false
+end
+
+---Returns a random colorscheme from the themes table
+---@return string The colorscheme
+local random_theme = function()
+  local i = math.random(os.time()) % #themes
+
+  return themes[i]
+end
+
+---Get the theme that is in the saved file and check if it's the next day
+local get_theme = function()
+  local colorscheme = random_theme()
+  local date = os.date("%Y-%m-%d")
+
+  -- Check the saved file
+  local data = check_file()
+
+  if data.date ~= nil and data.date ~= "" then -- Save file exists
+    -- Check if it's the next day and get new theme
+    if next_day(date, data.date) then
+      save_file(colorscheme, tostring(date))
+    else
+      colorscheme = data.colorscheme
+    end
+  else -- Create a saved file
+    save_file(colorscheme, tostring(date))
+  end
+
+  return colorscheme
+end
+
+-- Get the current theme for the day
+local theme = get_theme()
 
 return {
   {
