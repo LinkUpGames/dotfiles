@@ -5,6 +5,7 @@ local themes = {
   "catppuccin",
   "vscode",
   "rose-pine",
+  "onedark",
 }
 
 ---Save the colorscheme and date to a save file
@@ -265,6 +266,46 @@ return {
             bg = "none",
             bold = true,
           },
+        },
+      }
+    end,
+  },
+  {
+    "navarasu/onedark.nvim",
+    opts = function(_, _)
+      local palette = require("onedark.palette")
+      return {
+        style = "deep",
+        transparent = true,
+        term_colors = true,
+        code_style = {
+          comment = "italic",
+          keywords = "bold",
+          functions = "bold,italic",
+          variables = "italic",
+        },
+        lualine = {
+          transparent = true,
+        },
+        highlights = {
+          LineNrAbove = {
+            fg = palette.deep.green,
+            bold = true,
+            bg = "none",
+          },
+          LineNr = {
+            fg = palette.deep.purple,
+            bold = true,
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = palette.deep.green,
+            bold = true,
+            bg = "none",
+          },
+          NormalFloat = { fg = "none", bg = "none" },
+          FlashBackdrop = { fg = palette.deep.grey },
+          FlashLabel = { bg = "#fd0178" },
         },
       }
     end,
