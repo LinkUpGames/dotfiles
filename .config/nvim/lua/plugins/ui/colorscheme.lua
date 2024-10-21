@@ -78,6 +78,7 @@ end
 ---@return string The colorscheme
 local random_theme = function()
   local i = math.random(os.time()) % #themes
+  i = i == 0 and #themes or i
 
   return themes[i]
 end
