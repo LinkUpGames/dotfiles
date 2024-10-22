@@ -285,7 +285,7 @@ return {
           variables = "italic",
         },
         lualine = {
-          transparent = true,
+          transparent = false,
         },
         highlights = {
           LineNrAbove = {
