@@ -10,6 +10,10 @@ return {
         {
           "mode",
           icon = "󱇪",
+          separator = {
+            left = "",
+            right = "",
+          },
         },
       }
 
@@ -20,9 +24,15 @@ return {
       }
 
       opts.sections.lualine_z = {
-        function()
-          return " " .. os.date("%I:%M %p")
-        end,
+        {
+          function()
+            return " " .. os.date("%I:%M %p")
+          end,
+          separator = {
+            left = "",
+            right = "",
+          },
+        },
       }
 
       -- Show the file name
