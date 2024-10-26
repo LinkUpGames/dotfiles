@@ -2,9 +2,8 @@ lastupdatecheck: 0
 recentrepos:
     - /home/anonymous/dotfiles
     - /home/anonymous/Development/portfolio
-    - /home/anonymous/School
 startuppopupversion: 5
-lastversion: 0.43.1
+lastversion: 0.44.0
 customcommandshistory: []
 hidecommandlog: false
 ignorewhitespaceindiffview: false
