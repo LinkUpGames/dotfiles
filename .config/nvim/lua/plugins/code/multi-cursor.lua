@@ -28,7 +28,7 @@ return {
         desc = "Add cursor to next selection",
       },
       {
-        "<Leader>Af",
+        "<Leader>mf",
         "<Cmd>MultipleCursorsAddMatches<CR>",
         mode = { "n", "x" },
         desc = "Add cursors to the word under the cursor",
