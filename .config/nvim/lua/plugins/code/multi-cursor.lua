@@ -19,10 +19,10 @@ return {
       end,
     }, -- This causes the plugin setup function to be called
     keys = {
-      { "<leader>Aj", "<Cmd>MultipleCursorsAddDown<CR>", mode = { "n", "x" }, desc = "Add a cursor then move down" },
-      { "<leader>Ak", "<Cmd>MultipleCursorsAddUp<CR>", mode = { "n", "x" }, desc = "Add a cursor then move up" },
+      { "<leader>mj", "<Cmd>MultipleCursorsAddDown<CR>", mode = { "n", "x" }, desc = "Add a cursor then move down" },
+      { "<leader>mk", "<Cmd>MultipleCursorsAddUp<CR>", mode = { "n", "x" }, desc = "Add a cursor then move up" },
       {
-        "<leader>Ad",
+        "<leader>md",
         "<Cmd>MultipleCursorsAddJumpNextMatch<CR>",
         mode = { "n", "x" },
         desc = "Add cursor to next selection",
@@ -39,7 +39,7 @@ return {
     "folke/which-key.nvim",
     opts = {
       spec = {
-        { "<leader>A", group = "Cursor", icon = "󰆽" },
+        { "<leader>m", group = "Cursor", icon = "󰆽" },
       },
     },
   },
