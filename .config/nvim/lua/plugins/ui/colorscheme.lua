@@ -142,7 +142,7 @@ return {
     },
   },
   {
-    "tokyonight.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     opts = {
       transparent = true,
