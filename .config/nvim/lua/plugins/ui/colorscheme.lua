@@ -84,22 +84,38 @@ local random_theme = function()
   return themes[i]
 end
 
+---Get a colorschema from the table that does not match the one provided
+---@param colorscheme string The colorscheme
+local get_truly_random = function(colorscheme)
+  local newcolorscheme
+  repeat
+    newcolorscheme = random_theme()
+  until colorscheme ~= newcolorscheme
+
+  return newcolorscheme
+end
+
 ---Get the theme that is in the saved file and check if it's the next day
+---@return string colorschem The colorscheme
 local get_theme = function()
-  local colorscheme = random_theme()
+  local colorscheme
   local date = os.date("%Y-%m-%d")
 
   -- Check the saved file
   local data = check_file()
 
   if data.date ~= nil and data.date ~= "" then -- Save file exists
+    local savedcolorscheme = data.colorscheme
     -- Check if it's the next day and get new theme
     if next_day(date, data.date) then
+      colorscheme = get_truly_random(savedcolorscheme)
+
       save_file(colorscheme, tostring(date))
     else
-      colorscheme = data.colorscheme
+      colorscheme = savedcolorscheme
     end
   else -- Create a saved file
+    colorscheme = random_theme()
     save_file(colorscheme, tostring(date))
   end
 
