@@ -34,6 +34,7 @@ Development
     return {
       ---@type snacks.Config
       dashboard = {
+        width = 100,
         enabled = true,
         pane_gap = 1,
         preset = {
