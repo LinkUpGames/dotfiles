@@ -11,4 +11,8 @@ return {
     "iamcco/markdown-preview.nvim",
     enabled = false,
   },
+  {
+    "nvimdev/dashboard-nvim",
+    enabled = false,
+  },
 }
