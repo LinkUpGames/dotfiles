@@ -44,7 +44,7 @@ return {
           api_key = os.getenv("GEMINI_API_KEY"),
           topic_prompt = "You are helping me with my codebase",
           topic = {
-            model = "gemini-1.5-flash",
+            model = "gemini-1.5-pro",
           },
         },
       },
