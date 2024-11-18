@@ -1,5 +1,6 @@
 return {
   "folke/snacks.nvim",
+  lazy = false,
   opts = function()
     local logo = [[
 ███████╗ ██████╗ ██████╗██╗     ███████╗███████╗██╗ █████╗ ███████╗████████╗███████╗███████╗     █████╗     ██╗ ██████╗
@@ -28,7 +29,9 @@ Development
     }
 
     return {
+      ---@type snacks.Config
       dashboard = {
+        enabled = true,
         preset = {
           header = logo,
           keys = keys,
