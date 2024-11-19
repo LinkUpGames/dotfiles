@@ -80,6 +80,54 @@ return {
       }
 
       table.insert(opts.extensions, oil)
+
+      -- Code Companion
+      local companion = {
+        sections = {
+          lualine_a = {
+            function()
+              return "Code Companion"
+            end,
+          },
+          lualine_b = {
+            function()
+              local code = require("codecompanion")
+              local chat = code.last_chat()
+
+              if chat then
+                local adapter = chat.adapter
+
+                return adapter.name
+              else
+                return "unknown"
+              end
+            end,
+          },
+          lualine_z = {
+            function()
+              local code = require("codecompanion")
+              local chat = code.last_chat()
+
+              if chat then
+                local status = chat.status
+
+                if #status > 0 then
+                  return status
+                else
+                  return "No Request"
+                end
+              else
+                return "No Request"
+              end
+            end,
+          },
+        },
+        filetypes = {
+          "codecompanion",
+        },
+      }
+
+      table.insert(opts.extensions, companion)
     end,
   },
 }
