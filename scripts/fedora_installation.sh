@@ -68,6 +68,9 @@ cargo install --locked yazi-fm yazi-cli
 # csvlens
 cargo install csvlens
 
+# Spicetify
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+
 ## Now link all the dependencies install
 cd $HOME
 

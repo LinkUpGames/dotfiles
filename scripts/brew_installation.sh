@@ -55,6 +55,9 @@ brew install terminal-notifier
 # SKHD
 brew install koekeishiya/formulae/skhd
 
+# Spicetify
+brew install spicetify-cli
+
 # Yabai
 brew install koekeishiya/formulae/yabai
 
