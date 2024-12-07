@@ -1,26 +1,6 @@
-local vaults = {
-  {
-    name = "school",
-    path = "/Development/School/Obsidian/",
-  },
-}
+local workspaces = {} -- The workspaces in which obsidian will run
 
-local events = {}
-local workspaces = {}
-
-for _, vault in ipairs(vaults) do
-  local BufReadPre = "BufReadPre " .. vim.fn.expand("~") .. vault.path .. "**.md"
-  local BufNewFile = "BufNewFile " .. vim.fn.expand("~") .. vault.path .. "**.md"
-
-  table.insert(events, BufReadPre)
-  table.insert(events, BufNewFile)
-
-  table.insert(workspaces, {
-    name = vault.name,
-    path = vim.fn.expand("~") .. vault.path,
-  })
-end
-
+-- Run Obsidian in any directory
 table.insert(workspaces, {
   name = "obsidian",
   path = function()
@@ -40,14 +20,13 @@ return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = false,
-  event = events,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
   opts = {
     workspaces = workspaces,
   },
-  cond = function()
+  cond = function() -- Only run in an obsidian based vault
     local obsidian_dir = vim.fn.finddir(".obsidian", vim.fn.getcwd())
 
     return obsidian_dir ~= ""
