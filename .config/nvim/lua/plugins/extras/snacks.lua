@@ -33,12 +33,16 @@ Development
 
     ---@class snacks.Config
     ---@field scroll? snacks.scroll.Config
+    ---@field input? snacks.input.Config
     return {
       ---@type snacks.Config
       notifier = {
         enabled = true,
       },
       scroll = {
+        enabled = true,
+      },
+      input = {
         enabled = true,
       },
       dashboard = {
