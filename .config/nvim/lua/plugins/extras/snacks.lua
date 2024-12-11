@@ -31,9 +31,14 @@ Development
       { icon = " ", key = "q", desc = "Quit", action = ":qa" },
     }
 
+    ---@class snacks.Config
+    ---@field scroll? snacks.scroll.Config
     return {
       ---@type snacks.Config
       notifier = {
+        enabled = true,
+      },
+      scroll = {
         enabled = true,
       },
       dashboard = {
