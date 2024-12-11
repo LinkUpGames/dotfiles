@@ -52,4 +52,14 @@ Development
       },
     }
   end,
+  keys = {
+    {
+      "<leader>z",
+      function()
+        Snacks.zen()
+      end,
+      mode = { "n" },
+      desc = "Toggle Zen Mode",
+    },
+  },
 }
