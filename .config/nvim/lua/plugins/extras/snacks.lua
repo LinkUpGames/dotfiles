@@ -34,6 +34,8 @@ Development
     ---@class snacks.Config
     ---@field scroll? snacks.scroll.Config
     ---@field input? snacks.input.Config
+    ---@field indent? snacks.indent.Config
+    ---@field scope? snacks.scope.Config
     return {
       ---@type snacks.Config
       notifier = {
@@ -43,6 +45,20 @@ Development
         enabled = true,
       },
       input = {
+        enabled = true,
+      },
+      indent = {
+        enabled = true,
+        indent = {
+          only_scope = true,
+          enabled = true,
+        },
+        scope = {
+          enabled = true,
+        },
+        chunk = { enabled = true, only_current = true },
+      },
+      scope = {
         enabled = true,
       },
       dashboard = {
@@ -61,14 +77,4 @@ Development
       },
     }
   end,
-  keys = {
-    {
-      "<leader>z",
-      function()
-        Snacks.zen()
-      end,
-      mode = { "n" },
-      desc = "Toggle Zen Mode",
-    },
-  },
 }

@@ -21,9 +21,6 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.lang.json" },
 
     -- Coding UI
-    { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
-    -- { import = "lazyvim.plugins.extras.ui.treesitter-context" },
-    { import = "lazyvim.plugins.extras.coding.blink" },
 
     -- import/override with your plugins
 
