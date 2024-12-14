@@ -50,7 +50,7 @@ Development
       indent = {
         enabled = true,
         indent = {
-          only_scope = true,
+          only_scope = false,
           enabled = true,
         },
         scope = {
