@@ -47,6 +47,9 @@ Development
       input = {
         enabled = true,
       },
+      bigfile = {
+        enabled = true,
+      },
       indent = {
         enabled = true,
         indent = {

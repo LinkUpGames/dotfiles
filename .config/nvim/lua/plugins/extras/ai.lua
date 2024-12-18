@@ -125,6 +125,20 @@ return {
   --     },
   --   },
   -- },
+  { -- Add blink code completion
+    "Saghen/blink.cmp",
+    opts = function(_, opts)
+      -- Add Code Companion Provider
+      opts.sources.providers.codecompanion = {
+        name = "CodeCompanion",
+        module = "codecompanion.providers.completion.blink",
+        enabled = true,
+      }
+
+      -- Add Code Compantion
+      table.insert(opts.sources.default, "codecompanion")
+    end,
+  },
   {
     "folke/which-key.nvim",
     opts = {
