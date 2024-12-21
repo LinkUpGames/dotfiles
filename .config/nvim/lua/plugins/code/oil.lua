@@ -36,14 +36,36 @@ return {
     },
   },
   {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, _)
-      local cmp = require("cmp")
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      -- Add the oil extension
+      local oil = {
+        sections = {
+          lualine_a = {
+            function()
+              return " OIL"
+            end,
+          },
+          lualine_b = {
+            function()
+              local ok, oil = pcall(require, "oil")
 
-      -- Exclude this file
-      cmp.setup.filetype("oil", {
-        sources = {},
-      })
+              -- Load oil file
+              if ok then
+                ---@diagnostic disable-next-line: param-type-mismatch
+                return vim.fn.fnamemodify(oil.get_current_dir(), ":~")
+              else
+                return "ERROR"
+              end
+            end,
+          },
+        },
+        filetypes = {
+          "oil",
+        },
+      }
+
+      table.insert(opts.extensions, oil)
     end,
   },
 }

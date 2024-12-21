@@ -1,3 +1,34 @@
+local processing = false
+
+local spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+local spinner_index = 1
+
+local function update_processing_status(status)
+  processing = status
+end
+
+vim.api.nvim_create_autocmd({ "User" }, {
+  pattern = "CodeCompanionRequest*",
+  group = vim.api.nvim_create_augroup("CodeCompanionHooks", {}),
+  callback = function(request)
+    if request.match == "CodeCompanionRequestStarted" then
+      update_processing_status(true)
+    elseif request.match == "CodeCompanionRequestFinished" then
+      update_processing_status(false)
+    end
+  end,
+})
+
+local function get_spinner_status()
+  if processing then
+    spinner_index = (spinner_index % #spinner_symbols) + 1
+
+    return spinner_symbols[spinner_index]
+  else
+    return "complete"
+  end
+end
+
 return {
   -- Code Companion
   {
@@ -87,44 +118,6 @@ return {
       },
     },
   },
-
-  -- Parrot
-  -- {
-  --   "frankroeder/parrot.nvim",
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  --   event = "VeryLazy",
-  --   cond = os.getenv("GEMINI_API_KEY") ~= nil,
-  --   opts = {
-  --     style_popup_border = "rounded",
-  --     chat_user_prefix = "💬:",
-  --     llm_prefix = "🤖:",
-  --     chat_free_cursor = true,
-  --     toggle_target = "popup",
-  --     online_model_selection = true,
-  --     chat_shortcut_respond = { modes = { "n", "i" }, shortcut = "<CR>" },
-  --     chat_shortcut_delete = { modes = { "n" }, shortcut = "<leader>ad" },
-  --     chat_confirm_delete = false,
-  --     providers = {
-  --       gemini = {
-  --         api_key = os.getenv("GEMINI_API_KEY"),
-  --         topic_prompt = "You are helping me with my codebase",
-  --         topic = {
-  --           model = "gemini-1.5-flash",
-  --         },
-  --       },
-  --     },
-  --   },
-  --   keys = {
-  --     { "<leader>aj", "<CMD>PrtChatToggle popup<CR>", mode = { "n" }, desc = "Toggle AI Chat" },
-  --     { "<leader>ak", "<CMD>PrtChatNew popup<CR>", mode = { "n" }, desc = "Open new AI Chat" },
-  --     {
-  --       "<leader>aj",
-  --       ":'<,'>PrtChatPaste popup<CR>",
-  --       mode = { "x" },
-  --       desc = "Paste the selected into the latest AI Chat",
-  --     },
-  --   },
-  -- },
   { -- Add blink code completion
     "Saghen/blink.cmp",
     opts = function(_, opts)
@@ -137,6 +130,61 @@ return {
 
       -- Add Code Compantion
       table.insert(opts.sources.default, "codecompanion")
+    end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      -- Add code companion extension
+      local companion = {
+        sections = {
+          lualine_a = {
+            function()
+              return "Code Companion"
+            end,
+          },
+          lualine_b = {
+            function()
+              local code = require("codecompanion")
+              local chat = code.last_chat()
+
+              if chat then
+                local adapter = chat.adapter
+
+                return adapter.name
+              else
+                return "unknown"
+              end
+            end,
+          },
+          lualine_z = {
+            function()
+              local code = require("codecompanion")
+              local chat = code.last_chat()
+
+              if chat then
+                local status = chat.status
+
+                if #status > 0 then
+                  return status
+                else
+                  return "No Request"
+                end
+              else
+                return "No Request"
+              end
+            end,
+          },
+          lualine_y = {
+            get_spinner_status,
+          },
+        },
+        filetypes = {
+          "codecompanion",
+        },
+      }
+
+      table.insert(opts.extensions, companion)
     end,
   },
   {
