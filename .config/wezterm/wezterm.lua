@@ -58,6 +58,6 @@ config.win32_system_backdrop = "Acrylic"
 config.enable_wayland = false
 
 -- Theme
-config.color_scheme = "MaterialDesignColors"
+config.color_scheme = "Tokyo Night"
 
 return config
