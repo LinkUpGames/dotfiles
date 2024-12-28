@@ -1,0 +1,17 @@
+font-family = "JetBrainsMono Nerd Font Mono"
+font-style = "Medium"
+font-size = 14
+adjust-cell-height = 4
+
+theme = "tokyonight"
+
+background-opacity = 0.70
+
+title = " "
+
+window-decoration = false
+
+window-theme = system
+
+clipboard-read = allow
+clipboard-write = allow
