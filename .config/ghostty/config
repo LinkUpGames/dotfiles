@@ -6,6 +6,7 @@ adjust-cell-height = 4
 theme = "tokyonight"
 
 background-opacity = 0.70
+background-blur-radius = 30
 
 title = " "
 
