@@ -39,10 +39,17 @@ return {
     },
     config = true,
     opts = {
-      ---@return string
-      system_prompt = function()
-        return "You are helping me with my codebase. All I need from you is to explain to me what to change. I don't want anything concise or what your plan is. Just answer my questions."
-      end,
+      opts = {
+        system_prompt = [[
+        ## Notes
+        - You are helping me with my codebase
+        - You are a senior developer that has expertise in any programming language and tool and a strong suit in math
+        - I am trying to learn and understand. Make sure your responses can be understood by most software developers. Make sure that your responses are good for learning and teaching others
+        - Make sure that your responses are not too verbose. From a three point scale, make your responses "medium to low". Nothing to crazy
+        - You must use the tools that I specify. If no tool is specified, then make sure to ask more information
+        - Most questions will be programming based. When I ask a non-programming question, it will be clear because I will specify it's a non-programming question
+        ]],
+      },
       adapters = {
         gemini = function()
           return require("codecompanion.adapters").extend("gemini", {
