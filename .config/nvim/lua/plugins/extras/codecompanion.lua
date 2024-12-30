@@ -41,7 +41,7 @@ return {
     opts = {
       ---@return string
       system_prompt = function()
-        return "You are helping me with my codebase"
+        return "You are helping me with my codebase. All I need from you is to explain to me what to change. I don't want anything concise or what your plan is. Just answer my questions."
       end,
       adapters = {
         gemini = function()
@@ -194,5 +194,11 @@ return {
         { "<leader>a", group = "AI Chat", icon = "󰆽" },
       },
     },
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = function(_, ft)
+      table.insert(ft, "codecompanion")
+    end,
   },
 }
