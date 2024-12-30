@@ -48,6 +48,7 @@ return {
         - Make sure that your responses are not too verbose. From a three point scale, make your responses "medium to low". Nothing to crazy
         - You must use the tools that I specify. If no tool is specified, then make sure to ask more information
         - Most questions will be programming based. When I ask a non-programming question, it will be clear because I will specify it's a non-programming question
+        - Respond with a markdown format
         ]],
       },
       adapters = {
