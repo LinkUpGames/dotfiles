@@ -2,3 +2,4 @@ fish/
 .tmux/
 .config/spicetify
 .config/ncspot
+__IGNORE__*
