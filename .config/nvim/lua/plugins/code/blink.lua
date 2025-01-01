@@ -14,5 +14,9 @@ return {
 
       return {}
     end
+
+    opts.sources.min_keyword_length = function()
+      return vim.bo.filetype == "markdown" and 3 or 0
+    end
   end,
 }
