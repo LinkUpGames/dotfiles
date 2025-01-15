@@ -64,5 +64,16 @@ Development
     opts.scope = {
       enabled = true,
     }
+
+    -- Picker
+    opts.picker = {
+      layout = {
+        preset = function()
+          return vim.o.columns >= 120 and "telescope" or "vertical"
+        end,
+      },
+    }
+
+    return opts
   end,
 }
