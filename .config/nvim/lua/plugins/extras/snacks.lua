@@ -1,15 +1,3 @@
-local filename_first = function(item, picker)
-  local formatted = Snacks.picker.format.file(file, picker)
-
-  if formatted[2][2] == "SnacksPickerDir" then
-    local item = table.remove(formatted, 2)
-
-    table.insert(formatted, 4, item)
-  end
-
-  return formatted
-end
-
 return {
   "folke/snacks.nvim",
 
@@ -83,6 +71,11 @@ Development
         preset = function()
           return vim.o.columns >= 120 and "telescope" or "vertical"
         end,
+      },
+      formatters = {
+        file = {
+          filename_first = true,
+        },
       },
     }
 
