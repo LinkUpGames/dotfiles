@@ -69,7 +69,7 @@ Development
     opts.picker = {
       layout = {
         preset = function()
-          return vim.o.columns >= 120 and "telescope" or "vertical"
+          return vim.o.columns >= 120 and "default" or "vertical"
         end,
       },
       formatters = {

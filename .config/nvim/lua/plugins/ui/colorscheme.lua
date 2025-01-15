@@ -131,10 +131,18 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
+      palette = "default",
       transparent = true,
       styles = {
         floats = "transparent",
         sidebars = "transparent",
+        functions = {
+          italic = true,
+          bold = true,
+        },
+        keywords = {
+          italic = true,
+        },
       },
       on_highlights = function(hl)
         hl.LineNrAbove = {
