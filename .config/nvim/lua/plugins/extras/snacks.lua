@@ -1,3 +1,15 @@
+local filename_first = function(item, picker)
+  local formatted = Snacks.picker.format.file(file, picker)
+
+  if formatted[2][2] == "SnacksPickerDir" then
+    local item = table.remove(formatted, 2)
+
+    table.insert(formatted, 4, item)
+  end
+
+  return formatted
+end
+
 return {
   "folke/snacks.nvim",
 
