@@ -67,11 +67,6 @@ Development
 
     -- Picker
     opts.picker = {
-      layout = {
-        preset = function()
-          return vim.o.columns >= 120 and "default" or "vertical"
-        end,
-      },
       formatters = {
         file = {
           filename_first = true,
