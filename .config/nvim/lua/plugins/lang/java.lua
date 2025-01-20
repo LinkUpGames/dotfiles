@@ -1,5 +1,13 @@
 return {
   {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        java = { "checkstyle" },
+      },
+    },
+  },
+  {
     "mfussenegger/nvim-jdtls",
     opts = {
       jdtls = function(opts)
