@@ -5,6 +5,14 @@ return {
       linters_by_ft = {
         java = { "checkstyle" },
       },
+      ---@type table<string, table>
+      linters = {
+        checkstyle = {
+          condition = function(ctx)
+            return vim.fs.find({ "checkstyle.xml" }, { path = ctx.filename, upward = true })[1]
+          end,
+        },
+      },
     },
   },
   {
