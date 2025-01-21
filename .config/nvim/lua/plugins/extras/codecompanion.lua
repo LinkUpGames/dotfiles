@@ -95,7 +95,7 @@ return {
         },
         chat = {
           window = {
-            layout = "float",
+            layout = "vertical",
           },
           intro_message = "Start The Chat! Press ? for options",
           show_settings = true,
