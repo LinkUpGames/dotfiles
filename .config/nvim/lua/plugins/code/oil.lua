@@ -66,6 +66,8 @@ return {
       }
 
       table.insert(opts.extensions, oil)
+
+      return opts
     end,
   },
 }
