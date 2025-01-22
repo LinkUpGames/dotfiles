@@ -56,7 +56,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 echo $password | sudo dnf install stow -y
 
 # Switch Shell
-zsh
+0 | zsh
 
 # yazi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
@@ -74,6 +74,8 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 
 ## Now link all the dependencies install
 cd $HOME
+
+rm -rf .zshrc
 
 cd dotfiles
 
