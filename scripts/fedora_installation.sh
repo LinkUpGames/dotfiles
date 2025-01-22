@@ -63,7 +63,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
 . "$HOME/.cargo/env" # For sh/bash/zsh/ash/dash/pdksh
 rustup update
 
-cargo install --locked yazi-fm yazi-cli
+echo $password | sudo dnf copr enable varlad/yazi - y
+echo $password | sudo dnf install yazi
 
 # csvlens
 cargo install csvlens
