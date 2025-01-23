@@ -72,6 +72,11 @@ Development
           filename_first = true,
         },
       },
+      sources = {
+        files = {
+          hidden = true,
+        },
+      },
     }
 
     return opts
