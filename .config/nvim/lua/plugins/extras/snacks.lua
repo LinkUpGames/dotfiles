@@ -77,6 +77,16 @@ Development
           hidden = true,
         },
       },
+      win = {
+        input = {
+          keys = {
+            ["<c-h>"] = false,
+            ["<c-l>"] = false,
+            ["<c-j>"] = false,
+            ["<c-k>"] = false,
+          },
+        },
+      },
     }
 
     return opts
