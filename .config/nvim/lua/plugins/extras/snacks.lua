@@ -82,8 +82,8 @@ Development
           keys = {
             ["<c-h>"] = false,
             ["<c-l>"] = false,
-            ["<c-j>"] = false,
-            ["<c-k>"] = false,
+            ["<c-j>"] = { "preview_scroll_left", mode = { "i", "n" } },
+            ["<c-k>"] = { "preview_scroll_right", mode = { "i", "n" } },
           },
         },
       },
