@@ -2,6 +2,7 @@ configuration {
   display-drun: "Applications:";
   display-windows: "Windows:";
   display-run: "CLI:";
+  display-combi: "Launcher:";
   drun-display-format: "{icon} {name}";
   font: "JetBrainsMono Nerd Font Mono Medium 14";
   modi: "drun,run,window";
