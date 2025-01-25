@@ -1,0 +1,11 @@
+configuration {
+  display-drun: "Applications:";
+  display-windows: "Windows:";
+  display-run: "CLI:";
+  drun-display-format: "{icon} {name}";
+  font: "JetBrainsMono Nerd Font Mono Medium 14";
+  modi: "drun,run,window";
+  show-icons: true;
+}
+
+@theme "./themes/tokyonight_big.rasi"
