@@ -207,10 +207,4 @@ return {
       },
     },
   },
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = function(_, ft)
-      table.insert(ft, "codecompanion")
-    end,
-  },
 }
