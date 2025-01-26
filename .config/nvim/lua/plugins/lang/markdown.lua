@@ -24,9 +24,9 @@ return {
     lazy = true,
     ft = { "markdown", "codecompanion" },
     opts = {
-      filetypes = { "markdown", "codecompanion" },
-      buf_ignore = {},
       preview = {
+        ignore_buftypes = {},
+        filetypes = { "markdown", "codecompanion", "md" },
         icon_provider = "mini",
       },
     },
