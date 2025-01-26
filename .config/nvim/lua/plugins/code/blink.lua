@@ -20,6 +20,22 @@ return {
       return vim.bo.filetype == "markdown" and 3 or 0
     end
 
+    -- Don't show until shown in cmd_line
+    opts.completion = {
+      menu = {
+        auto_show = function(ctx)
+          return ctx.mode ~= "cmdline" and not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
+        end,
+      },
+    }
+
+    -- Add the cmdline keymaps to run only when wanted
+    opts.keymap.cmdline = {
+      preset = "enter",
+      ["<C-space>"] = {},
+      ["<Tab>"] = { "show", "hide", "show_documentation", "hide_documentation" },
+    }
+
     return opts
   end,
 }
