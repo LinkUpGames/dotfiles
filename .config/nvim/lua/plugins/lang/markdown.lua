@@ -15,6 +15,19 @@ return {
         textlsp = {
           filetypes = { "markdown", "tex" },
         },
+        marksman = {},
+      },
+    },
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = true,
+    ft = { "markdown", "codecompanion" },
+    opts = {
+      filetypes = { "markdown", "codecompanion" },
+      buf_ignore = {},
+      preview = {
+        icon_provider = "mini",
       },
     },
   },
