@@ -80,6 +80,12 @@ return {
               },
               description = "Send the message over",
             },
+            close = {
+              modes = {
+                n = "<leader>ad",
+              },
+              description = "Close chat buffer",
+            },
           },
         },
         inline = {
@@ -111,33 +117,30 @@ return {
         "<cmd>CodeCompanionChat Add<cr>",
         desc = "Paste the selected into the latest AI Chat",
       },
-      {
-        "<leader>ad",
-        function()
-          local code = require("codecompanion")
-          local chat = code.last_chat()
-
-          if chat then
-            chat.close(chat)
-          end
-        end,
-        mode = { "n" },
-        desc = "Close the last chat buffer",
-      },
+      -- {
+      --   "<leader>ad",
+      --   function()
+      --     local code = require("codecompanion")
+      --     local chat = code.last_chat()
+      --
+      --     if chat then
+      --       chat.close(chat)
+      --     end
+      --   end,
+      --   mode = { "n" },
+      --   desc = "Close the last chat buffer",
+      -- },
     },
   },
   { -- Add blink code completion
     "Saghen/blink.cmp",
     opts = function(_, opts)
       -- Add Code Companion Provider
-      opts.sources.providers.codecompanion = {
-        name = "CodeCompanion",
-        module = "codecompanion.providers.completion.blink",
-        enabled = true,
+      opts.sources = {
+        per_filetype = {
+          codecompanion = { "codecompanion" },
+        },
       }
-
-      -- Add Code Compantion
-      table.insert(opts.sources.default, "codecompanion")
 
       return opts
     end,
@@ -204,6 +207,17 @@ return {
     opts = {
       spec = {
         { "<leader>a", group = "AI Chat", icon = "󰆽" },
+      },
+    },
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = true,
+    ft = { "codecompanion" },
+    opts = {
+      preview = {
+        filetypes = { "codecompanion" },
+        ignore_buftypes = {},
       },
     },
   },
