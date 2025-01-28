@@ -265,10 +265,17 @@ return {
   {
     "maxmx03/fluoromachine.nvim",
     opts = function(_, _)
+      local colors = require("fluoromachine.colors.fluoromachine")
+
       return {
         -- theme = "retrowave",
         transparent = true,
         glow = false,
+        styles = {
+          comments = { italic = true },
+          functions = { bold = true, italic = true },
+          variables = { italic = true },
+        },
         overrides = {
           NormalFloat = {
             fg = "none",
@@ -276,17 +283,21 @@ return {
           },
           LineNr = {
             bold = true,
-            fg = "#FFFFFF",
+            fg = colors.pink,
             bg = "none",
           },
           LineNrAbove = {
-            fg = "#ffffff",
+            fg = colors.cyan,
             bg = "none",
           },
           LineNrBelow = {
-            fg = "#ffffff",
+            fg = colors.cyan,
             bg = "none",
           },
+          FlashBackdrop = {
+            fg = colors.fg,
+          },
+          FlashLabel = { bg = colors.purple, fg = colors.bgdark },
         },
       }
     end,
