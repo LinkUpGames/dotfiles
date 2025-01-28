@@ -77,6 +77,12 @@ Development
           hidden = true,
         },
       },
+      icons = {
+        ui = {
+          hidden = "",
+          live = "󰍉",
+        },
+      },
       win = {
         input = {
           keys = {
