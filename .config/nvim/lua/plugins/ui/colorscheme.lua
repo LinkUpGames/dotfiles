@@ -4,8 +4,8 @@ local themes = {
   "tokyonight",
   "catppuccin",
   "vscode",
-  "rose-pine",
   "onedark",
+  "fluoromachine",
 }
 
 ---Save the colorscheme and date to a save file
@@ -263,32 +263,29 @@ return {
     end,
   },
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
-
-    opts = function()
-      local rose = require("rose-pine.palette")
-
+    "maxmx03/fluoromachine.nvim",
+    opts = function(_, _)
       return {
-        variant = "moon",
-        styles = {
-          transparency = true,
-        },
-        highlight_groups = {
-          LineNrAbove = {
-            fg = rose.subtle,
-            bold = true,
+        -- theme = "retrowave",
+        transparent = true,
+        glow = false,
+        overrides = {
+          NormalFloat = {
+            fg = "none",
             bg = "none",
           },
           LineNr = {
-            fg = rose.leaf,
-            bg = "none",
             bold = true,
+            fg = "#FFFFFF",
+            bg = "none",
+          },
+          LineNrAbove = {
+            fg = "#ffffff",
+            bg = "none",
           },
           LineNrBelow = {
-            fg = rose.subtle,
+            fg = "#ffffff",
             bg = "none",
-            bold = true,
           },
         },
       }
