@@ -268,7 +268,7 @@ return {
       local colors = require("fluoromachine.colors.fluoromachine")
 
       return {
-        -- theme = "retrowave",
+        theme = "retrowave",
         transparent = true,
         glow = false,
         styles = {
