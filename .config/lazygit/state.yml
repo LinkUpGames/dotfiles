@@ -1,12 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
     - /home/anonymous/dotfiles
-    - /home/anonymous/Development/School/Classes/CIS4650/A1
-    - /home/anonymous/Development/Unity/A1
-    - /home/anonymous/Development/School/Classes/yatdl
-    - /home/anonymous/Development/portfolio
 startuppopupversion: 5
-lastversion: 0.45.0
+lastversion: 0.45.2
 customcommandshistory: []
 hidecommandlog: false
 ignorewhitespaceindiffview: false
