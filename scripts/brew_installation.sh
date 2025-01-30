@@ -6,6 +6,9 @@
 # Wezterm
 brew install --cask wezterm
 
+# Install ollama
+brew install ollama
+
 # Make zsh default
 brew install zsh
 chsh - $(which zsh)

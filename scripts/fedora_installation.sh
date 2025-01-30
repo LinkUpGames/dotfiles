@@ -9,6 +9,9 @@ read -p "Enter SUDO Password: " password
 echo $password | sudo dnf copr enable wezfurlong/wezterm-nightly -y
 echo $password | sudo dnf install wezterm -y
 
+# Install ollama
+curl -fsSL https://ollama.com/install.sh | sh
+
 # Install zsh
 echo $passowrd | sudo dnf install zsh -y
 

@@ -52,6 +52,16 @@ return {
         ]],
       },
       adapters = {
+        coder = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            name = "code",
+            schema = {
+              model = {
+                default = "qwen2.5-coder:3b",
+              },
+            },
+          })
+        end,
         gemini = function()
           return require("codecompanion.adapters").extend("gemini", {
             schema = {
@@ -67,11 +77,11 @@ return {
       },
       strategies = {
         chat = {
+          adapter = "coder",
           roles = {
             llm = "🤖",
             user = "Me",
           },
-          adapter = "gemini",
           keymaps = {
             send = {
               modes = {
@@ -89,10 +99,10 @@ return {
           },
         },
         inline = {
-          adapter = "gemini",
+          adapter = "coder",
         },
         agent = {
-          adapter = "gemini",
+          adapter = "coder",
         },
       },
       display = {
@@ -104,7 +114,7 @@ return {
             layout = "vertical",
           },
           intro_message = "Start The Chat! Press ? for options",
-          show_settings = true,
+          -- show_settings = true,
         },
       },
     },
