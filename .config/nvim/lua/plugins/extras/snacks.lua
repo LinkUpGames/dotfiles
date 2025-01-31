@@ -2,6 +2,8 @@ return {
   "folke/snacks.nvim",
 
   opts = function(_, opts)
+    opts.explorer = {}
+
     local logo = [[
  _____                                                                                 _____ 
 ( ___ )                                                                               ( ___ )
