@@ -229,10 +229,10 @@ return {
   },
   {
     "Mofiqul/vscode.nvim",
-    opts = function(_, opts)
+    opts = function(_, _)
       local c = require("vscode.colors").get_colors()
 
-      local extend = {
+      return {
         -- style = "light",
         transparent = true,
         underline_links = true,
@@ -258,8 +258,6 @@ return {
           FlashLabel = { bg = "#fd0178" },
         },
       }
-
-      return vim.tbl_deep_extend("force", opts, extend)
     end,
   },
   {
