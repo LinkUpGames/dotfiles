@@ -145,12 +145,12 @@ return {
   { -- Add blink code completion
     "Saghen/blink.cmp",
     opts = function(_, opts)
-      -- Add Code Companion Provider
-      opts.sources = {
+      -- Add codecompanion as a source
+      vim.list_extend(opts.sources, {
         per_filetype = {
           codecompanion = { "codecompanion" },
         },
-      }
+      })
     end,
   },
   {
