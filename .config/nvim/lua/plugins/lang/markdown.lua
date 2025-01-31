@@ -22,10 +22,11 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = true,
-    ft = { "markdown" },
+    ft = { "markdown", "codecompanion" },
     opts = {
       preview = {
-        filetypes = { "markdown", "md" },
+        filetypes = { "markdown", "md", "codecompanion" },
+        ignore_buftypes = {},
         icon_provider = "mini",
       },
     },

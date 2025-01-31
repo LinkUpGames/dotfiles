@@ -220,15 +220,4 @@ return {
       },
     },
   },
-  {
-    "OXY2DEV/markview.nvim",
-    lazy = true,
-    ft = { "codecompanion" },
-    opts = {
-      preview = {
-        filetypes = { "codecompanion" },
-        ignore_buftypes = {},
-      },
-    },
-  },
 }
