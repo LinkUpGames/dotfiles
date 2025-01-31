@@ -97,4 +97,15 @@ Development
 
     opts.picker = vim.tbl_deep_extend("force", opts.picker, picker)
   end,
+  keys = {
+    {
+      "<leader>E",
+      function()
+        local snacks = require("snacks")
+        snacks.picker.explorer()
+      end,
+      mode = { "n" },
+      desc = "Open the file explorer",
+    },
+  },
 }
