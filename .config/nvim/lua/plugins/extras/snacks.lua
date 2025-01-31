@@ -69,6 +69,11 @@ Development
 
     -- Picker
     local picker = {
+      layout = {
+        preset = function()
+          return vim.o.columns >= 120 and "telescope" or "vertical"
+        end,
+      },
       formatters = {
         file = {
           filename_first = true,
