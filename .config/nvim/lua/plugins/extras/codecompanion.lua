@@ -216,4 +216,19 @@ return {
       },
     },
   },
+  {
+    "OXY2DEV/markview.nvim",
+    ft = function(_, ft)
+      table.insert(ft, "codecompanion")
+    end,
+    opts = function(_, opts)
+      table.insert(opts.preview.filetypes, "codecompanion")
+
+      local preview = {
+        ignore_buftypes = {},
+      }
+
+      opts.preview = vim.tbl_deep_extend("keep", opts.preview, preview)
+    end,
+  },
 }
