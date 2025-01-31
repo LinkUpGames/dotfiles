@@ -79,9 +79,20 @@ Development
           filename_first = true,
         },
       },
+      ---@class snacks.picker.sources.Config
       sources = {
         files = {
           hidden = true,
+        },
+        explorer = {
+          win = {
+            list = {
+              keys = {
+                ["-"] = "explorer_up",
+                ["<c-c>"] = "",
+              },
+            },
+          },
         },
       },
       icons = {
@@ -101,7 +112,6 @@ Development
         },
       },
     }
-
     opts.picker = vim.tbl_deep_extend("force", opts.picker, picker)
   end,
   keys = {
