@@ -151,8 +151,6 @@ return {
           codecompanion = { "codecompanion" },
         },
       }
-
-      return opts
     end,
   },
   {
@@ -208,8 +206,6 @@ return {
       }
 
       table.insert(opts.extensions, companion)
-
-      return opts
     end,
   },
   {

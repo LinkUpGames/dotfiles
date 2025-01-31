@@ -94,7 +94,5 @@ Development
         },
       },
     }
-
-    return opts
   end,
 }

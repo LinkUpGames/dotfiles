@@ -1,5 +1,7 @@
 return {
   "Saghen/blink.cmp",
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
   opts = {
     sources = {
       cmdline = function()
@@ -12,7 +14,10 @@ return {
         if type == ":" then
           return { "cmdline" }
         end
+
+        return {}
       end,
+
       min_keyword_length = function()
         return vim.bo.filetype == "markdown" and 3 or 0
       end,
