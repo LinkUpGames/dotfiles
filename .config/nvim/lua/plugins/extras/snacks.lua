@@ -32,7 +32,7 @@ Development
     }
 
     -- Update Dashboard
-    opts.dashboard = {
+    local dashboard = {
       -- width = 100,
       enabled = true,
       pane_gap = 1,
@@ -46,9 +46,10 @@ Development
         { section = "startup" },
       },
     }
+    opts.dashboard = vim.tbl_deep_extend("force", opts.dashboard, dashboard)
 
     -- Indent
-    opts.indent = {
+    local indent = {
       enabled = true,
       indent = {
         only_scope = false,
@@ -59,14 +60,13 @@ Development
       },
       chunk = { enabled = true, only_current = true },
     }
+    opts.indent = vim.tbl_deep_extend("force", opts.indent, indent)
 
     -- Scope
-    opts.scope = {
-      enabled = true,
-    }
+    opts.scope.enabled = true
 
     -- Picker
-    opts.picker = {
+    local picker = {
       formatters = {
         file = {
           filename_first = true,
@@ -94,5 +94,7 @@ Development
         },
       },
     }
+
+    opts.picker = vim.tbl_deep_extend("force", opts.picker, picker)
   end,
 }
