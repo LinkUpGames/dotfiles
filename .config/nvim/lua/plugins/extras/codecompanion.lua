@@ -120,7 +120,7 @@ return {
     },
     keys = {
       { "<leader>aj", mode = { "n" }, "<cmd>CodeCompanionChat Toggle<cr>", desc = "Open a new chat buffer" },
-      { "<leader>ap", mode = { "n", "x" }, "<cmd>CodeCompanionActions<cr>" },
+      { "<leader>ap", mode = { "n", "x" }, "<cmd>CodeCompanionActions<cr>", desc = "AI Available Actions" },
       {
         "<leader>aj",
         mode = { "x" },
