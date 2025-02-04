@@ -12,7 +12,7 @@ return {
       linters = {
         eslint_d = {
           condition = function(ctx)
-            return vim.fs.find({ ".eslintrc" }, { path = ctx.filename, upward = true })[1]
+            return vim.fs.find({ ".eslintrc", "eslint.config.js" }, { path = ctx.filename, upward = true })[1]
           end,
         },
       },
