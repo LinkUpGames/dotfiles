@@ -314,6 +314,7 @@ return {
         },
         disable = {
           background = false,
+          colored_cursor = true,
         },
         custom_highlights = {
           LineNr = { bg = "none", fg = colors.main.white },
