@@ -4,7 +4,10 @@ local themes = {
   "tokyonight",
   "catppuccin",
   "vscode",
-  "onedark",
+  "material",
+  "material-oceanic",
+  "materia-palenight",
+  "material-deep-ocean",
   "fluoromachine",
 }
 
@@ -301,42 +304,24 @@ return {
     end,
   },
   {
-    "navarasu/onedark.nvim",
-    opts = function(_, _)
-      local palette = require("onedark.palette")
+    "marko-cerovac/material.nvim",
+    opts = function()
+      local colors = require("material.colors")
+
       return {
-        style = "deep",
-        transparent = true,
-        term_colors = true,
-        code_style = {
-          comment = "italic",
-          keywords = "bold",
-          functions = "bold,italic",
-          variables = "italic",
+        styles = {
+          comments = { italic = true },
         },
-        lualine = {
-          transparent = false,
+        disable = {
+          background = false,
         },
-        highlights = {
-          LineNrAbove = {
-            fg = palette.deep.green,
-            bold = true,
-            bg = "none",
-          },
-          LineNr = {
-            fg = palette.deep.purple,
-            bold = true,
-            bg = "none",
-          },
-          LineNrBelow = {
-            fg = palette.deep.green,
-            bold = true,
-            bg = "none",
-          },
-          NormalFloat = { fg = "none", bg = "none" },
-          FlashBackdrop = { fg = palette.deep.grey },
-          FlashLabel = { bg = "#fd0178" },
+        custom_highlights = {
+          LineNr = { bg = "none", fg = colors.main.white },
+          LineNrAbove = { bg = "none", fg = colors.main.gray },
+          LineNrBelow = { bg = "none", fg = colors.main.gray },
+          FlashLabel = { bg = colors.main.black, fg = colors.main.white },
         },
+        lualine_style = "stealth",
       }
     end,
   },
