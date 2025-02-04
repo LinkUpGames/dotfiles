@@ -316,6 +316,9 @@ return {
           background = false,
           colored_cursor = true,
         },
+        high_visibility = {
+          darker = true,
+        },
         custom_highlights = {
           LineNr = { bg = "none", fg = colors.main.white },
           LineNrAbove = { bg = "none", fg = colors.main.gray },
