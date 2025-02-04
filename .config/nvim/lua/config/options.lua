@@ -13,6 +13,6 @@ vim.o.guicursor = old_guicursor .. ",n-v-c:block-blinkon700-blinkoff400,i-ci-ve:
 -- Setup The column
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
-vim.opt.cursorline = false
+vim.o.cursorline = false
 
 vim.g.lazyvim_picker = "snacks"
