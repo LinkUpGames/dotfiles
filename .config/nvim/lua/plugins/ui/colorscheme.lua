@@ -6,7 +6,7 @@ local themes = {
   "vscode",
   "material",
   "material-oceanic",
-  "materia-palenight",
+  "material-palenight",
   "material-deep-ocean",
   "fluoromachine",
 }
