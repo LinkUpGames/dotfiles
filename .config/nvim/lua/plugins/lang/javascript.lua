@@ -19,6 +19,27 @@ return {
     },
   },
   {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        tailwindcss = {
+          filetypes = {
+            "html",
+            "css",
+            "javascriptreact",
+            "typescriptreact",
+            "mdx",
+            "postcss",
+            "sass",
+            "scss",
+            "sugarss",
+            "php",
+          },
+        },
+      },
+    },
+  },
+  {
     "stevearc/conform.nvim",
     opts = {
       -- Define your formatters
