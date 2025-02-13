@@ -308,7 +308,6 @@ return {
 
       return {
         transparent = true,
-        theme = "auto",
         italic_comments = true,
         highlights = {
           NormalFloat = {
