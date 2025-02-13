@@ -4,10 +4,8 @@ local themes = {
   "tokyonight",
   "catppuccin",
   "vscode",
-  "material",
-  "material-oceanic",
-  "material-palenight",
-  "material-deep-ocean",
+  "flow",
+  "cyberdream",
   "fluoromachine",
 }
 
@@ -304,30 +302,43 @@ return {
     end,
   },
   {
-    "marko-cerovac/material.nvim",
+    "scottmckendry/cyberdream.nvim",
     opts = function()
-      local colors = require("material.colors")
+      local colors = require("cyberdream.colors")
 
       return {
-        styles = {
-          comments = { italic = true },
+        transparent = true,
+        theme = "auto",
+        italic_comments = true,
+        highlights = {
+          NormalFloat = {
+            fg = "none",
+            bg = "none",
+          },
+          LineNr = {
+            fg = colors.default.red,
+            bg = "none",
+          },
+          LineNrAbove = {
+            fg = colors.default.orange,
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = colors.default.orange,
+            bg = "none",
+          },
         },
-        disable = {
-          background = false,
-          colored_cursor = true,
-        },
-        high_visibility = {
-          darker = true,
-        },
-        custom_highlights = {
-          LineNr = { bg = "none", fg = colors.main.white },
-          LineNrAbove = { bg = "none", fg = colors.main.gray },
-          LineNrBelow = { bg = "none", fg = colors.main.gray },
-          FlashLabel = { bg = colors.main.black, fg = colors.main.white },
-        },
-        lualine_style = "stealth",
       }
     end,
+  },
+  {
+    "0xstepit/flow.nvim",
+    opts = {
+      theme = {
+        style = "dark",
+        transparent = true,
+      },
+    },
   },
   {
     "LazyVim/LazyVim",
