@@ -16,3 +16,24 @@ vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.o.cursorline = false
 
 vim.g.lazyvim_picker = "snacks"
+
+-- Copy/Paste
+local paste = function()
+  return {
+    vim.fn.split(vim.fn.getreg(""), "\n"),
+    vim.fn.getregtype(""),
+  }
+end
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["-"] = require("vim.ui.clipboard.osc52").copy("-"),
+  },
+  paste = {
+    ["+"] = paste,
+    ["-"] = paste,
+  },
+}
