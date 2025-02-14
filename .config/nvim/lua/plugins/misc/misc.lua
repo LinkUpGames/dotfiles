@@ -4,12 +4,12 @@ return {
     config = true,
     event = "VeryLazy",
   },
-  {
-    "ibhagwan/smartyank.nvim",
-    opts = {
-      hightlight = false,
-    },
-  },
+  -- {
+  --   "ibhagwan/smartyank.nvim",
+  --   opts = {
+  --     hightlight = false,
+  --   },
+  -- },
   {
     "mistricky/codesnap.nvim",
     event = "BufEnter",
