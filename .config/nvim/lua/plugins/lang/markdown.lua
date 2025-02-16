@@ -12,8 +12,16 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        textlsp = {
-          filetypes = { "markdown", "tex" },
+        ltex = {
+          filetypes = {
+            "markdown",
+            "text",
+            "tex",
+          },
+          language = "en",
+          additionalRules = {
+            languageModel = "~/ngrams/",
+          },
         },
         marksman = {},
       },
