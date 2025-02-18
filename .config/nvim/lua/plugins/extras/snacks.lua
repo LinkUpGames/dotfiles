@@ -114,6 +114,11 @@ Development
       },
     }
     opts.picker = vim.tbl_deep_extend("force", opts.picker, picker)
+
+    -- Image
+    ---@class snacks.image.Config
+    local image = {}
+    opts.image = image
   end,
   keys = {
     {
