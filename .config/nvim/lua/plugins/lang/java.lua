@@ -21,7 +21,7 @@ return {
       jdtls = function(opts)
         opts.dap_main = false
 
-        opts.settings = {
+        local settings = {
           java = {
             format = {
               enabled = true,
@@ -33,6 +33,8 @@ return {
             },
           },
         }
+
+        opts.settings = vim.tbl_deep_extend("force", opts.settings, settings)
 
         return opts
       end,
