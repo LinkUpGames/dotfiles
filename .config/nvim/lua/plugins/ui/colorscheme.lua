@@ -175,21 +175,24 @@ return {
         sidebars = "transparent",
         floats = "transparent",
       },
-      on_highlights = function(hl)
+      on_highlights = function(hl, colors)
+        -- local col = require("tokyonight.colors.moon")
+        -- col.blue0
+
         hl.LineNrAbove = {
-          fg = "#8b46b0",
+          fg = colors.blue1,
           bold = true,
           bg = "none",
         }
 
         hl.LineNr = {
-          fg = "#ce7dfa",
+          fg = colors.blue2,
           bg = "none",
           bold = true,
         }
 
         hl.LineNrBelow = {
-          fg = "#8b46b0",
+          fg = colors.blue1,
           bg = "none",
           bold = true,
         }
