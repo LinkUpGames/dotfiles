@@ -4,7 +4,6 @@ local themes = {
   "tokyonight",
   "catppuccin",
   "vscode",
-  "flow",
   "cyberdream",
   "fluoromachine",
 }
@@ -333,15 +332,29 @@ return {
       }
     end,
   },
-  {
-    "0xstepit/flow.nvim",
-    opts = {
-      theme = {
-        style = "dark",
-        transparent = true,
-      },
-    },
-  },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   opts = function()
+  --     local colors = require("gruvbox").palette
+  --
+  --     return {
+  --       overrides = {
+  --         LineNr = {
+  --           fg = colors.bright_orange,
+  --           bg = "none",
+  --         },
+  --         LineNrAbove = {
+  --           fg = colors.light_green_soft,
+  --           bg = "none",
+  --         },
+  --         LineNrBelow = {
+  --           fg = colors.light_green_soft,
+  --           bg = "none",
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
   {
     "LazyVim/LazyVim",
     opts = {
