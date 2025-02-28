@@ -27,6 +27,16 @@ return {
         preset = "enter",
         ["<C-space>"] = {},
         ["<Tab>"] = { "show", "hide", "show_documentation", "hide_documentation" },
+        ["<CR>"] = {
+          function(cmp)
+            local type = vim.fn.getcmdtype()
+
+            if type == ":" then
+              return cmp.accept()
+            end
+          end,
+          "fallback", -- Don't accept suggestion when searching normally
+        },
       },
       completion = {
         ghost_text = {
