@@ -29,10 +29,11 @@ return {
         ["<Tab>"] = { "show", "hide", "show_documentation", "hide_documentation" },
       },
       completion = {
+        ghost_text = {
+          enabled = true, -- Show the completion
+        },
         menu = {
-          auto_show = function(ctx)
-            return ctx.mode ~= "cmdline" and not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
-          end,
+          auto_show = false,
         },
       },
     },
