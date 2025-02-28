@@ -204,30 +204,29 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
+
       term_colors = true,
       transparent_background = true,
       flavour = "mocha",
-      highlight_overrides = {
-        all = function()
-          return {
-            LineNrAbove = {
-              fg = "#ded69b",
-              bold = true,
-              bg = "none",
-            },
-            LineNr = {
-              fg = "#faf5cf",
-              bg = "none",
-              bold = true,
-            },
-            LineNrBelow = {
-              fg = "#ded69b",
-              bg = "none",
-              bold = true,
-            },
-          }
-        end,
-      },
+      custom_highlights = function(colors)
+        return {
+          LineNrAbove = {
+            fg = colors.maroon,
+            bg = "none",
+            bold = true,
+          },
+          LineNr = {
+            fg = colors.yellow,
+            bg = "none",
+            bold = true,
+          },
+          LineNrBelow = {
+            fg = colors.maroon,
+            bg = "none",
+            bold = true,
+          },
+        }
+      end,
     },
   },
   {
