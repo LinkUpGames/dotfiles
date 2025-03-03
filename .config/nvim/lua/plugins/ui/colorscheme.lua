@@ -331,29 +331,29 @@ return {
       }
     end,
   },
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   opts = function()
-  --     local colors = require("gruvbox").palette
-  --
-  --     return {
-  --       overrides = {
-  --         LineNr = {
-  --           fg = colors.bright_orange,
-  --           bg = "none",
-  --         },
-  --         LineNrAbove = {
-  --           fg = colors.light_green_soft,
-  --           bg = "none",
-  --         },
-  --         LineNrBelow = {
-  --           fg = colors.light_green_soft,
-  --           bg = "none",
-  --         },
-  --       },
-  --     }
-  --   end,
-  -- },
+  {
+    "ellisonleao/gruvbox.nvim",
+    opts = function()
+      local colors = require("gruvbox").palette
+
+      return {
+        overrides = {
+          LineNr = {
+            fg = colors.bright_orange,
+            bg = "none",
+          },
+          LineNrAbove = {
+            fg = colors.light_green_soft,
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = colors.light_green_soft,
+            bg = "none",
+          },
+        },
+      }
+    end,
+  },
   {
     "LazyVim/LazyVim",
     opts = {
