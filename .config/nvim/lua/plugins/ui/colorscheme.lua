@@ -5,6 +5,7 @@ local themes = {
   "catppuccin",
   "vscode",
   "cyberdream",
+  "gruvbox",
   "fluoromachine",
 }
 
@@ -335,8 +336,10 @@ return {
     "ellisonleao/gruvbox.nvim",
     opts = function()
       local colors = require("gruvbox").palette
+      vim.o.background = "dark"
 
       return {
+        contrast = "hard",
         overrides = {
           LineNr = {
             fg = colors.bright_orange,
