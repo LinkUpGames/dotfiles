@@ -13,6 +13,7 @@ return {
     opts = {
       servers = {
         ltex = {
+          enabled = true,
           filetypes = {
             "markdown",
             "text",
