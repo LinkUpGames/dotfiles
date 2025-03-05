@@ -2,8 +2,6 @@ return {
   "folke/snacks.nvim",
 
   opts = function(_, opts)
-    opts.explorer = {}
-
     local logo = [[
  _____                                                                                 _____ 
 ( ___ )                                                                               ( ___ )
@@ -50,6 +48,19 @@ Development
     }
     opts.dashboard = vim.tbl_deep_extend("force", opts.dashboard, dashboard)
 
+    -- Explorer
+    ---@class snacks.explorer.Config
+    local explorer = {
+      enabled = true,
+      replace_netrw = true,
+    }
+
+    if opts.explorer then
+      opts.explorer = vim.tbl_deep_extend("force", opts.explorer, explorer)
+    else
+      opts.explorer = explorer
+    end
+
     -- Indent
     local indent = {
       enabled = true,
@@ -86,6 +97,9 @@ Development
         },
         explorer = {
           hidden = true,
+          jump = {
+            close = false,
+          },
           win = {
             list = {
               keys = {
