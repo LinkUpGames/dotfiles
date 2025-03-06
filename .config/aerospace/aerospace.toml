@@ -53,6 +53,15 @@ outer.bottom = 8
 outer.top = 8
 outer.right = 8
 
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = 'Picture-in-Picture'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
 
