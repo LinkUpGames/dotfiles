@@ -160,9 +160,15 @@ return {
       local companion = {
         sections = {
           lualine_a = {
-            function()
-              return "Code Companion"
-            end,
+            {
+              function()
+                return "Code Companion"
+              end,
+              separator = {
+                left = "",
+                right = "",
+              },
+            },
           },
           lualine_b = {
             function()
@@ -179,22 +185,28 @@ return {
             end,
           },
           lualine_z = {
-            function()
-              local code = require("codecompanion")
-              local chat = code.last_chat()
+            {
+              function()
+                local code = require("codecompanion")
+                local chat = code.last_chat()
 
-              if chat then
-                local status = chat.status
+                if chat then
+                  local status = chat.status
 
-                if #status > 0 then
-                  return status
+                  if #status > 0 then
+                    return status
+                  else
+                    return "No Request"
+                  end
                 else
                   return "No Request"
                 end
-              else
-                return "No Request"
-              end
-            end,
+              end,
+              separator = {
+                left = "",
+                right = "",
+              },
+            },
           },
           lualine_y = {
             get_spinner_status,

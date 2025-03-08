@@ -42,22 +42,34 @@ return {
       local oil = {
         sections = {
           lualine_a = {
-            function()
-              return " OIL"
-            end,
+            {
+              function()
+                return " OIL"
+              end,
+              separator = {
+                left = "",
+                right = "",
+              },
+            },
           },
           lualine_b = {
-            function()
-              local ok, oil = pcall(require, "oil")
+            {
+              function()
+                local ok, oil = pcall(require, "oil")
 
-              -- Load oil file
-              if ok then
-                ---@diagnostic disable-next-line: param-type-mismatch
-                return vim.fn.fnamemodify(oil.get_current_dir(), ":~")
-              else
-                return "ERROR"
-              end
-            end,
+                -- Load oil file
+                if ok then
+                  ---@diagnostic disable-next-line: param-type-mismatch
+                  return vim.fn.fnamemodify(oil.get_current_dir(), ":~")
+                else
+                  return "ERROR"
+                end
+              end,
+              separator = {
+                left = "",
+                right = "",
+              },
+            },
           },
         },
         filetypes = {
