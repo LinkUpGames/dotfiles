@@ -11,5 +11,7 @@ return {
 
     -- opts.presets.bottom_search = false
     opts.presets.lsp_doc_border = true
+
+    return opts
   end,
 }
