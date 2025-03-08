@@ -40,6 +40,18 @@ return {
       }
 
       -- Tabline
+      -- opts.options.disabled_filetypes.winbar = { "snacks_dashboard" }
+      -- opts.winbar = {
+      --   lualine_y = {
+      --     {
+      --       "filename",
+      --       separator = {
+      --         left = "",
+      --         right = "",
+      --       },
+      --     },
+      --   },
+      -- }
 
       -- Show the file name
       opts.sections.lualine_c[4] = {
