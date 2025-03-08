@@ -39,6 +39,8 @@ return {
         },
       }
 
+      -- Tabline
+
       -- Show the file name
       opts.sections.lualine_c[4] = {
         "filename",
@@ -51,6 +53,8 @@ return {
           newfile = "[]",
         },
       }
+
+      return opts
     end,
   },
 }
