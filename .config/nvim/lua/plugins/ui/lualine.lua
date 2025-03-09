@@ -5,12 +5,12 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "ColorScheme" }, {
       local lualine = require("lualine")
       local buffers = vim.fn.getbufinfo({ buflisted = 1 })
 
-      if #buffers == 1 then
+      if #buffers <= 1 then -- Hide
         lualine.hide({
           place = { "tabline" },
           unhide = false,
         })
-      else
+      else -- Show
         lualine.hide({
           place = { "tabline" },
           unhide = true,
@@ -96,11 +96,6 @@ return {
               snacks_picker_input = "󰍉 Picker",
               snacks_picker_list = " Explorer",
             },
-            cond = function()
-              local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-
-              return #buffers > 1
-            end,
           },
         },
       }
