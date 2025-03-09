@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "ColorScheme" }, {
       local buffers = vim.fn.getbufinfo({ buflisted = 1 })
 
       vim.o.showtabline = #buffers > 1 and 2 or 0
-    end, 10)
+    end, 5)
   end,
 })
 
