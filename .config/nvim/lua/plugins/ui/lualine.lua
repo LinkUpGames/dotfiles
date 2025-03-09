@@ -98,11 +98,31 @@ return {
       --   },
       -- }
       --
-      -- -- Show the file name
+      -- Show the file name
       -- local lualine_c = opts.sections.lualine_c
       -- opts.sections.lualine_c = {
       --   lualine_c[1],
       --   lualine_c[2],
+      -- }
+      --
+      -- -- Tabline
+      -- opts.tabline = {
+      --   lualine_a = {
+      --     {
+      --       "buffers",
+      --       separator = { left = "", right = "" },
+      --       right_padding = 2,
+      --       symbols = { alternate_file = "" },
+      --       filetype_names = {
+      --         snacks_picker_input = "Picker",
+      --       },
+      --       cond = function()
+      --         local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+      --
+      --         return #buffers > 1
+      --       end,
+      --     },
+      --   },
       -- }
 
       return opts
