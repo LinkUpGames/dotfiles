@@ -39,21 +39,7 @@ return {
         },
       }
 
-      -- Tabline
-      -- opts.options.disabled_filetypes.winbar = { "snacks_dashboard" }
-      -- opts.winbar = {
-      --   lualine_y = {
-      --     {
-      --       "filename",
-      --       separator = {
-      --         left = "",
-      --         right = "",
-      --       },
-      --     },
-      --   },
-      -- }
-
-      -- Show the file name
+      -- Filename Section
       opts.sections.lualine_c[4] = {
         "filename",
         file_status = true,
@@ -65,6 +51,59 @@ return {
           newfile = "[]",
         },
       }
+
+      -- Winbar
+      -- opts.options.disabled_filetypes.winbar = { "snacks_dashboard" }
+      -- opts.winbar = {
+      --   lualine_c = {
+      --     {
+      --       "filetype",
+      --       icon_only = true,
+      --       padding = { left = 1, right = 0 },
+      --       separator = {
+      --         left = "",
+      --         right = "",
+      --       },
+      --       cond = function()
+      --         local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+      --
+      --         return #buffers == 1
+      --       end,
+      --     },
+      --     {
+      --       "filename",
+      --       separator = {
+      --         left = "",
+      --         right = "",
+      --       },
+      --       cond = function()
+      --         local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+      --
+      --         return #buffers == 1
+      --       end,
+      --     },
+      --   },
+      -- }
+      --
+      -- opts.inactve_winbar = {
+      --   lualine_c = {
+      --     { "filetype", icon_only = true, padding = { left = 1, right = 0 } },
+      --     {
+      --       "filename",
+      --       separator = {
+      --         left = "",
+      --         right = "",
+      --       },
+      --     },
+      --   },
+      -- }
+      --
+      -- -- Show the file name
+      -- local lualine_c = opts.sections.lualine_c
+      -- opts.sections.lualine_c = {
+      --   lualine_c[1],
+      --   lualine_c[2],
+      -- }
 
       return opts
     end,
