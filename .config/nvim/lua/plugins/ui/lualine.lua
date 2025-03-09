@@ -1,3 +1,14 @@
+-- Show the tabline when an buffer is added, deleted
+vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "ColorScheme" }, {
+  callback = function()
+    vim.defer_fn(function()
+      local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+      vim.o.showtabline = #buffers > 1 and 2 or 0
+    end, 10)
+  end,
+})
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -39,7 +50,12 @@ return {
         },
       }
 
-      -- Filename Section
+      -- Filename Section -> Show only if there is one buffer opened
+      opts.sections.lualine_c[3].cond = function()
+        local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+        return #buffers == 1
+      end
       opts.sections.lualine_c[4] = {
         "filename",
         file_status = true,
@@ -50,80 +66,33 @@ return {
           unnamed = "[No Name]",
           newfile = "[]",
         },
+        cond = function()
+          local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+          return #buffers == 1
+        end,
       }
 
-      -- Winbar
-      -- opts.options.disabled_filetypes.winbar = { "snacks_dashboard" }
-      -- opts.winbar = {
-      --   lualine_c = {
-      --     {
-      --       "filetype",
-      --       icon_only = true,
-      --       padding = { left = 1, right = 0 },
-      --       separator = {
-      --         left = "",
-      --         right = "",
-      --       },
-      --       cond = function()
-      --         local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-      --
-      --         return #buffers == 1
-      --       end,
-      --     },
-      --     {
-      --       "filename",
-      --       separator = {
-      --         left = "",
-      --         right = "",
-      --       },
-      --       cond = function()
-      --         local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-      --
-      --         return #buffers == 1
-      --       end,
-      --     },
-      --   },
-      -- }
-      --
-      -- opts.inactve_winbar = {
-      --   lualine_c = {
-      --     { "filetype", icon_only = true, padding = { left = 1, right = 0 } },
-      --     {
-      --       "filename",
-      --       separator = {
-      --         left = "",
-      --         right = "",
-      --       },
-      --     },
-      --   },
-      -- }
-      --
-      -- Show the file name
-      -- local lualine_c = opts.sections.lualine_c
-      -- opts.sections.lualine_c = {
-      --   lualine_c[1],
-      --   lualine_c[2],
-      -- }
-      --
-      -- -- Tabline
-      -- opts.tabline = {
-      --   lualine_a = {
-      --     {
-      --       "buffers",
-      --       separator = { left = "", right = "" },
-      --       right_padding = 2,
-      --       symbols = { alternate_file = "" },
-      --       filetype_names = {
-      --         snacks_picker_input = "Picker",
-      --       },
-      --       cond = function()
-      --         local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-      --
-      --         return #buffers > 1
-      --       end,
-      --     },
-      --   },
-      -- }
+      -- Tabline
+      opts.tabline = {
+        lualine_a = {
+          {
+            "buffers",
+            separator = { left = "", right = "" },
+            right_padding = 2,
+            symbols = { alternate_file = "" },
+            filetype_names = {
+              snacks_picker_input = "󰍉 Picker",
+              snacks_picker_list = " Explorer",
+            },
+            cond = function()
+              local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+              return #buffers > 1
+            end,
+          },
+        },
+      }
 
       return opts
     end,

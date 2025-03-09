@@ -177,7 +177,7 @@ return {
       },
       on_highlights = function(hl, colors)
         -- local col = require("tokyonight.colors.moon")
-        -- col.blue0
+        -- col.magenta
 
         hl.LineNrAbove = {
           fg = colors.blue1,
@@ -186,7 +186,7 @@ return {
         }
 
         hl.LineNr = {
-          fg = colors.blue2,
+          fg = colors.magenta,
           bg = "none",
           bold = true,
         }
