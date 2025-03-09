@@ -2,9 +2,20 @@
 vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "ColorScheme" }, {
   callback = function()
     vim.defer_fn(function()
+      local lualine = require("lualine")
       local buffers = vim.fn.getbufinfo({ buflisted = 1 })
 
-      vim.o.showtabline = #buffers > 1 and 2 or 0
+      if #buffers == 1 then
+        lualine.hide({
+          place = { "tabline" },
+          unhide = false,
+        })
+      else
+        lualine.hide({
+          place = { "tabline" },
+          unhide = true,
+        })
+      end
     end, 5)
   end,
 })
