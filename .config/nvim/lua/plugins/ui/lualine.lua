@@ -1,16 +1,19 @@
 -- Show the tabline when an buffer is added, deleted
-vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "VimEnter" }, {
+vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "VimEnter", "ColorScheme", "TabNew", "TabClosed" }, {
   callback = function()
     vim.defer_fn(function()
       local lualine = require("lualine")
       local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+      local tabs = vim.api.nvim_list_tabpages()
 
-      if #buffers <= 1 then -- Hide
+      if #buffers <= 1 and #tabs <= 1 then -- Hide
+        vim.o.showtabline = 1
         lualine.hide({
           place = { "tabline" },
           unhide = false,
         })
       else -- Show
+        vim.o.showtabline = 2
         lualine.hide({
           place = { "tabline" },
           unhide = true,
@@ -80,7 +83,7 @@ return {
         cond = function()
           local buffers = vim.fn.getbufinfo({ buflisted = 1 })
 
-          return #buffers == 1
+          return #buffers <= 1
         end,
       }
 
@@ -96,6 +99,17 @@ return {
               snacks_picker_input = "󰍉 Picker",
               snacks_picker_list = " Explorer",
             },
+          },
+        },
+        lualine_z = {
+          {
+            "tabs",
+            separator = { left = "", right = "" },
+            cond = function()
+              local tabs = vim.api.nvim_list_tabpages()
+
+              return #tabs >= 2
+            end,
           },
         },
       }
