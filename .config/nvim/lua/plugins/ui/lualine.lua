@@ -98,6 +98,7 @@ return {
             filetype_names = {
               snacks_picker_input = "󰍉 Picker",
               snacks_picker_list = " Explorer",
+              codecompanion = "󱚣 AI Chat",
             },
           },
         },
