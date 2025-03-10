@@ -95,6 +95,7 @@ return {
             separator = { left = "", right = "" },
             right_padding = 2,
             symbols = { alternate_file = "" },
+            max_length = vim.o.columns * (9 / 10),
             filetype_names = {
               snacks_picker_input = "󰍉 Picker",
               snacks_picker_list = " Explorer",
