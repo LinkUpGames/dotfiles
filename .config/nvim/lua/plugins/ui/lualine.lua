@@ -1,5 +1,5 @@
 -- Show the tabline when an buffer is added, deleted
-vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "ColorScheme" }, {
+vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "VimEnter" }, {
   callback = function()
     vim.defer_fn(function()
       local lualine = require("lualine")
