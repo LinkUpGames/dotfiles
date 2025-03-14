@@ -336,7 +336,7 @@ return {
     "ellisonleao/gruvbox.nvim",
     opts = function()
       local colors = require("gruvbox").palette
-      vim.o.background = "dark"
+      -- vim.o.background = "dark"
 
       return {
         contrast = "hard",
