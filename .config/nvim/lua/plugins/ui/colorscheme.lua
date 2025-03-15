@@ -5,8 +5,8 @@ local themes = {
   "catppuccin",
   "vscode",
   "cyberdream",
-  "gruvbox",
   "fluoromachine",
+  "bamboo-multiplex",
 }
 
 ---Save the colorscheme and date to a save file
@@ -333,30 +333,59 @@ return {
     end,
   },
   {
-    "ellisonleao/gruvbox.nvim",
+    "ribru17/bamboo.nvim",
     opts = function()
-      local colors = require("gruvbox").palette
-      -- vim.o.background = "dark"
+      local pallete = require("bamboo.palette").vulgaris
 
       return {
-        contrast = "hard",
-        overrides = {
+        style = "multiplex",
+        code_style = {
+          variables = {
+            bold = true,
+          },
+        },
+        highlights = {
           LineNr = {
-            fg = colors.bright_orange,
+            fg = pallete.orange,
             bg = "none",
           },
           LineNrAbove = {
-            fg = colors.light_green_soft,
+            fg = pallete.coral,
             bg = "none",
           },
           LineNrBelow = {
-            fg = colors.light_green_soft,
+            fg = pallete.coral,
             bg = "none",
           },
         },
       }
     end,
   },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   opts = function()
+  --     local colors = require("gruvbox").palette
+  --     -- vim.o.background = "dark"
+  --
+  --     return {
+  --       contrast = "hard",
+  --       overrides = {
+  --         LineNr = {
+  --           fg = colors.bright_orange,
+  --           bg = "none",
+  --         },
+  --         LineNrAbove = {
+  --           fg = colors.light_green_soft,
+  --           bg = "none",
+  --         },
+  --         LineNrBelow = {
+  --           fg = colors.light_green_soft,
+  --           bg = "none",
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
   {
     "LazyVim/LazyVim",
     opts = {
