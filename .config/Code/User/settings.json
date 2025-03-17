@@ -42,7 +42,7 @@
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
     },
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
     "editor.wordWrap": "wordWrapColumn",
     "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
     "editor.stickyScroll.enabled": false,
