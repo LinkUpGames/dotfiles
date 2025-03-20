@@ -3,6 +3,13 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    completion = {
+      documentation = {
+        window = {
+          border = "rounded",
+        },
+      },
+    },
     sources = {
       min_keyword_length = function(ctx)
         return vim.bo.filetype == "markdown" and 3 or 0
