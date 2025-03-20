@@ -57,7 +57,7 @@ return {
             name = "code",
             schema = {
               model = {
-                default = "gemma3:4b",
+                default = "gemma3:1b",
               },
             },
           })
