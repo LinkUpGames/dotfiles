@@ -16,3 +16,5 @@ window-theme = system
 
 clipboard-read = allow
 clipboard-write = allow
+
+term=xterm-256color
