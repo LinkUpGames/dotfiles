@@ -1,54 +1,69 @@
 {
-    "workbench.colorTheme": "Vim Dark Hard",
-    "editor.cursorBlinking": "smooth",
-    "editor.cursorSmoothCaretAnimation": "on",
-    "workbench.list.smoothScrolling": true,
-    "editor.smoothScrolling": true,
-    "terminal.integrated.smoothScrolling": true,
-    "files.simpleDialog.enable": true,
-    "editor.fontFamily": "'JetbrainsMono Nerd Font Mono' , 'monospace', monospace",
-    "terminal.integrated.fontLigatures": true,
-    "editor.fontLigatures": true,
-    "keyboard.dispatch": "keyCode",
-
-    "vim.easymotion": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.leader": "<space>",
-
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j", "j"],
-            "after": ["<Esc>"],
-        },
-        {
-            "before": ["<C-j>"],
-            "after": ["<CR>"],
-        },
-        {
-            "before": ["<C-l>"],
-            "after": ["<del>"]
-        }
-    ],
-
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["t"],
-            "after": ["<leader>", "<leader>", "s"]
-        }
-    ],
-
-    "extensions.experimental.affinity": {
-        "vscodevim.vim": 1
+  "workbench.colorTheme": "Vim Dark Hard",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "workbench.list.smoothScrolling": true,
+  "editor.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+  "files.simpleDialog.enable": true,
+  "editor.fontFamily": "'JetbrainsMono Nerd Font Mono' , 'monospace', monospace",
+  "terminal.integrated.fontLigatures": true,
+  "editor.fontLigatures": true,
+  "keyboard.dispatch": "keyCode",
+  "vim.easymotion": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ],
     },
-    "editor.fontSize": 18,
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-    "editor.stickyScroll.enabled": false,
-    "vim.smartRelativeLine": true,
-    "workbench.activityBar.location": "hidden",
-    "editor.minimap.enabled": false,
-    "chat.commandCenter.enabled": false,
-    "terminal.integrated.sendKeybindingsToShell": true
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "<CR>"
+      ],
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "<del>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "t"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "s"
+      ]
+    }
+  ],
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "editor.fontSize": 18,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.stickyScroll.enabled": false,
+  "vim.smartRelativeLine": true,
+  "workbench.activityBar.location": "hidden",
+  "editor.minimap.enabled": false,
+  "chat.commandCenter.enabled": false,
+  "terminal.integrated.sendKeybindingsToShell": true
 }
