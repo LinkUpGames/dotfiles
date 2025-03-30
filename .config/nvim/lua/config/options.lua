@@ -37,10 +37,3 @@ vim.g.clipboard = {
     ["-"] = paste,
   },
 }
-
--- Update the virtual lines for diagnostics
-vim.diagnostic.config({
-  virtual_lines = {
-    current_line = true,
-  },
-})
