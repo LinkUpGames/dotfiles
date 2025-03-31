@@ -18,7 +18,7 @@ table.insert(workspaces, {
 
 return {
   {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = false,
     dependencies = {
@@ -28,21 +28,25 @@ return {
       workspaces = workspaces,
     },
     cond = function() -- Only run in an obsidian based vault
-      local obsidian_dir = vim.fn.finddir(".obsidian", vim.fn.getcwd())
+      local obsidian = vim.fs.find({ ".obsidian" }, { upward = true })[1]
 
-      return obsidian_dir ~= ""
+      if obsidian then
+        vim.o.conceallevel = 1
+      end
+
+      return obsidian
     end,
     keys = {
       {
         "<leader>op",
-        "<cmd>ObsidianPasteImg<cr>",
+        "<cmd>Obsidian paste_img<cr>",
         mode = { "n" },
         ft = "markdown",
         desc = "Paste the clipboard image to the markdown file",
       },
       {
         "<leader>os",
-        "<cmd>ObsidianSearch<cr>",
+        "<cmd>Obsidian search<cr>",
         mode = { "n" },
         ft = "markdown",
         desc = "Search for a specific file in Obsidian Vault",

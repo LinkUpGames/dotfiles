@@ -4,6 +4,7 @@
 
 vim.o.termguicolors = true
 vim.o.clipboard = "unnamedplus"
+vim.o.background = "dark"
 
 local old_guicursor = vim.o.guicursor
 
@@ -15,6 +16,7 @@ vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
 vim.o.cursorline = false
 
+-- Lazy vim options
 vim.g.lazyvim_picker = "snacks"
 
 -- Copy/Paste
@@ -37,3 +39,13 @@ vim.g.clipboard = {
     ["-"] = paste,
   },
 }
+
+-- Neovide
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMono Nerd Font Mono"
+
+  vim.g.neovide_window_blurred = true
+  vim.g.neovide_transparency = 0.5
+  vim.g.neovide_show_border = true
+  vim.g.neovide_normal_opacity = 0.8
+end

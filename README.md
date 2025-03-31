@@ -15,32 +15,22 @@
 * bat
 * find
 * stow
-* Hack Nerd Font
+* JetBrains Nerd Font
 * csvlens
+* rofi
 
 ## App Downloads
 
 * wezterm
 * kitty
 * alacritty
+* obsidian
+* ghostty
 
 ## Mac Setup
 
 * homebrew
 * terminal-notifier
 * skhd
-* yabai
+* aerospace
 * Janky Borders
-* sesh
-
-## Hyprland setup
-
-* dunst
-* hyprpaper
-* rofi
-* thunar
-* Fonts
-* waybar
-* grim
-* slurp
-* nwg-look

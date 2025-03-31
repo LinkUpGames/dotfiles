@@ -1,32 +1,41 @@
-local processing = false
+-- Lualine Component
+---Check if the currently opened buffer is a codecompanion buffer
+---@param bufnr integer The buffer id
+---@return boolean bool if the current buffer is a codecompanion one
+local is_codecompanion = function(bufnr)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
 
-local spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-local spinner_index = 1
+  if not vim.api.nvim_buf_is_valid(bufnr) then
+    return false
+  end
 
-local function update_processing_status(status)
-  processing = status
+  -- Check the filetype
+  local filetype = "codecompanion"
+  local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+
+  if ft == filetype then
+    return true
+  end
+
+  return false
 end
 
-vim.api.nvim_create_autocmd({ "User" }, {
-  pattern = "CodeCompanionRequest*",
-  group = vim.api.nvim_create_augroup("CodeCompanionHooks", {}),
-  callback = function(request)
-    if request.match == "CodeCompanionRequestStarted" then
-      update_processing_status(true)
-    elseif request.match == "CodeCompanionRequestFinished" then
-      update_processing_status(false)
-    end
-  end,
-})
+---Get the current status of the codecompanion response
+---@return string status The status of the current code companion buffer
+local ai_status = function()
+  local current = vim.api.nvim_get_current_buf()
+  local codecompanion = is_codecompanion(current)
 
-local function get_spinner_status()
-  if processing then
-    spinner_index = (spinner_index % #spinner_symbols) + 1
+  if codecompanion then
+    ---@type boolean
+    local modifiable = vim.api.nvim_get_option_value("modifiable", { buf = current })
 
-    return spinner_symbols[spinner_index]
-  else
-    return "complete"
+    local status = (not modifiable and "󰟶 Thinking...") or " Ask me anything"
+
+    return status
   end
+
+  return ""
 end
 
 return {
@@ -57,7 +66,7 @@ return {
             name = "code",
             schema = {
               model = {
-                default = "gemma3:1b",
+                default = "qwen2.5-coder:7b",
               },
             },
           })
@@ -142,17 +151,18 @@ return {
       -- },
     },
   },
-  { -- Add blink code completion
+  -- Add blink code completion
+  {
     "Saghen/blink.cmp",
-    opts = function(_, opts)
-      -- Add codecompanion as a source
-      vim.list_extend(opts.sources, {
+    opts = {
+      sources = {
         per_filetype = {
           codecompanion = { "codecompanion" },
         },
-      })
-    end,
+      },
+    },
   },
+  -- Lualine
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
@@ -209,7 +219,7 @@ return {
             },
           },
           lualine_y = {
-            get_spinner_status,
+            ai_status,
           },
         },
         filetypes = {
@@ -222,14 +232,16 @@ return {
       return opts
     end,
   },
+  -- Which Key
   {
     "folke/which-key.nvim",
     opts = {
       spec = {
-        { "<leader>a", group = "AI Chat", icon = "󰆽" },
+        { "<leader>a", group = "AI Chat", icon = "󰚩" },
       },
     },
   },
+  -- Markview
   {
     "OXY2DEV/markview.nvim",
     ft = function(_, ft)

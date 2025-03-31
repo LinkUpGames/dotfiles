@@ -1,0 +1,1 @@
+plug "Aloxaf/fzf-tab"

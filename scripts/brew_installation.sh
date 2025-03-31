@@ -10,8 +10,10 @@ brew install --cask wezterm
 brew install ollama
 
 # Make zsh default
-brew install zsh
-chsh - $(which zsh)
+if ! which zsh; then
+  brew install zsh # Only install if it's not already installed in the system
+fi
+chsh -s $(which zsh)
 
 # Zap Plugin Manager
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
@@ -48,6 +50,9 @@ brew install bat
 # Lazy docker
 brew install lazydocker
 
+# Eza
+brew install eza
+
 # Stow
 brew install stow
 
@@ -61,6 +66,9 @@ brew install koekeishiya/formulae/skhd
 # Spicetify
 brew install spicetify-cli
 
+# Devpods
+brew install --cask devpod
+
 # Yabai
 brew install koekeishiya/formulae/yabai
 
@@ -70,7 +78,7 @@ yabai --start-service
 
 # Janky Borders
 brew tap FelixKratz/formulae
-brew insall borders
+brew install borders
 
 ## Now link all the dependencies install
 cd $HOME

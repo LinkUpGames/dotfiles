@@ -57,12 +57,11 @@
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
   },
-  "editor.fontSize": 18,
+  "editor.fontSize": 16,
   "editor.wordWrap": "wordWrapColumn",
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.stickyScroll.enabled": false,
   "vim.smartRelativeLine": true,
-  "workbench.activityBar.location": "hidden",
   "editor.minimap.enabled": false,
   "chat.commandCenter.enabled": false,
   "terminal.integrated.sendKeybindingsToShell": true

@@ -72,8 +72,11 @@ echo $password | sudo dnf install yazi
 # csvlens
 cargo install csvlens
 
-# Spicetify
-curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+# Devpods
+curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && echo $password | sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
+
+# Spicetify (must have installed spotify first)
+echo "curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh"
 
 ## Now link all the dependencies install
 cd $HOME
@@ -84,4 +87,4 @@ cd dotfiles
 
 stow .
 
-echo "Installation Complete! - Restart the shell in order for everything to take effect"
+echo "Installation Complete! - Append "profile.zsh" to your shell and restart the shell in order for everything to take effect"

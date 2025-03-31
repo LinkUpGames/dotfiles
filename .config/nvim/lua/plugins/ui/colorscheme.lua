@@ -1,131 +1,3 @@
--- Themes that we can use
-local themes = {
-  "eldritch",
-  "tokyonight",
-  "catppuccin",
-  "vscode",
-  "cyberdream",
-  "fluoromachine",
-  "bamboo-multiplex",
-}
-
----Save the colorscheme and date to a save file
----@param colorscheme string The colorscheme to save
----@param date string The date saved as yyyy-mm-dd
-local save_file = function(colorscheme, date)
-  local file = io.open(vim.fn.stdpath("data") .. "/colorscheme", "w+")
-
-  if file then
-    file:write(colorscheme, "\n")
-    file:write(date, "\n")
-    file:close()
-  end
-end
-
----Checks the current file and returns the date and colorscheme saved
----@return table The table contains the colorscheme and date
-local check_file = function()
-  local table = {
-    colorscheme = "",
-    date = "",
-  }
-
-  local file = io.open(vim.fn.stdpath("data") .. "/colorscheme", "r")
-  if file then
-    local colorscheme, date = file:read("*l"), file:read("*l")
-
-    table.colorscheme = colorscheme
-    table.date = date
-  end
-
-  return table
-end
-
----Return the date as a table with the year, month and day
----@param date_string any
-local parse_date = function(date_string)
-  -- Split the date string by hyphens
-  local year, month, day = date_string:match("(%d+)-(%d+)-(%d+)")
-
-  -- Convert the parts to integers
-  year = tonumber(year)
-  month = tonumber(month)
-  day = tonumber(day)
-
-  -- Return the year, month, and day
-  return { year = year, month = month, day = day }
-end
-
----Compares a previous and current date and checks if the current date is more than a day away
----@param current any
----@param previous any
-local next_day = function(current, previous)
-  local current_date = parse_date(current)
-  local previous_date = parse_date(previous)
-
-  if current_date.year > previous_date.year then -- Different Years
-    return true
-  elseif current_date.month > previous_date.month then -- Different months
-    return true
-  else
-    if current_date.day > previous_date.day then
-      return true
-    end
-  end
-
-  return false
-end
-
----Returns a random colorscheme from the themes table
----@return string The colorscheme
-local random_theme = function()
-  local i = math.random(os.time()) % #themes
-  i = i == 0 and #themes or i
-
-  return themes[i]
-end
-
----Get a colorschema from the table that does not match the one provided
----@param colorscheme string The colorscheme
-local get_truly_random = function(colorscheme)
-  local newcolorscheme
-  repeat
-    newcolorscheme = random_theme()
-  until colorscheme ~= newcolorscheme
-
-  return newcolorscheme
-end
-
----Get the theme that is in the saved file and check if it's the next day
----@return string colorschem The colorscheme
-local get_theme = function()
-  local colorscheme
-  local date = os.date("%Y-%m-%d")
-
-  -- Check the saved file
-  local data = check_file()
-
-  if data.date ~= nil and data.date ~= "" then -- Save file exists
-    local savedcolorscheme = data.colorscheme
-    -- Check if it's the next day and get new theme
-    if next_day(date, data.date) then
-      colorscheme = get_truly_random(savedcolorscheme)
-
-      save_file(colorscheme, tostring(date))
-    else
-      colorscheme = savedcolorscheme
-    end
-  else -- Create a saved file
-    colorscheme = random_theme()
-    save_file(colorscheme, tostring(date))
-  end
-
-  return colorscheme
-end
-
--- Get the current theme for the day
-local theme = get_theme()
-
 return {
   {
     "eldritch-theme/eldritch.nvim",
@@ -258,7 +130,7 @@ return {
           },
           NormalFloat = { fg = "none", bg = "none" },
           FlashBackdrop = { fg = c.vscGray },
-          FlashLabel = { bg = "#fd0178" },
+          FlashLabel = { fg = c.vscLightGreen, bg = c.vscCursorDarkDark },
         },
       }
     end,
@@ -298,7 +170,7 @@ return {
           FlashBackdrop = {
             fg = colors.fg,
           },
-          FlashLabel = { bg = colors.purple, fg = colors.bgdark },
+          FlashLabel = { bg = colors.purple, fg = "#FFFFFF" },
         },
       }
     end,
@@ -328,58 +200,36 @@ return {
             fg = colors.default.orange,
             bg = "none",
           },
-        },
-      }
-    end,
-  },
-  {
-    "ribru17/bamboo.nvim",
-    opts = function()
-      local pallete = require("bamboo.palette").vulgaris
-
-      return {
-        style = "multiplex",
-        code_style = {
-          variables = {
-            bold = true,
-          },
-        },
-        highlights = {
-          LineNr = {
-            fg = pallete.orange,
-            bg = "none",
-          },
-          LineNrAbove = {
-            fg = pallete.coral,
-            bg = "none",
-          },
-          LineNrBelow = {
-            fg = pallete.coral,
-            bg = "none",
+          FlashBackdrop = {
+            fg = colors.default.grey,
           },
         },
       }
     end,
   },
   -- {
-  --   "ellisonleao/gruvbox.nvim",
+  --   "ribru17/bamboo.nvim",
   --   opts = function()
-  --     local colors = require("gruvbox").palette
-  --     -- vim.o.background = "dark"
+  --     local pallete = require("bamboo.palette").vulgaris
   --
   --     return {
-  --       contrast = "hard",
-  --       overrides = {
+  --       style = "multiplex",
+  --       code_style = {
+  --         variables = {
+  --           bold = true,
+  --         },
+  --       },
+  --       highlights = {
   --         LineNr = {
-  --           fg = colors.bright_orange,
+  --           fg = pallete.orange,
   --           bg = "none",
   --         },
   --         LineNrAbove = {
-  --           fg = colors.light_green_soft,
+  --           fg = pallete.coral,
   --           bg = "none",
   --         },
   --         LineNrBelow = {
-  --           fg = colors.light_green_soft,
+  --           fg = pallete.coral,
   --           bg = "none",
   --         },
   --       },
@@ -387,9 +237,54 @@ return {
   --   end,
   -- },
   {
-    "LazyVim/LazyVim",
+    "ellisonleao/gruvbox.nvim",
+    opts = function()
+      local colors = require("gruvbox").palette
+      -- vim.o.background = "dark"
+
+      return {
+        contrast = "hard",
+        overrides = {
+          LineNr = {
+            fg = colors.bright_orange,
+            bg = "none",
+          },
+          LineNrAbove = {
+            fg = colors.light_green_soft,
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = colors.light_green_soft,
+            bg = "none",
+          },
+          FlashLabel = {
+            bg = colors.faded_blue,
+            fg = colors.light1,
+          },
+          FlashBackdrop = {
+            fg = colors.faded_green,
+          },
+        },
+      }
+    end,
+  },
+  {
+    "LinkUpGames/jumble.nvim",
     opts = {
-      colorscheme = theme,
+      hours = 0,
+      minutes = 30,
+      days = 0,
+      live_change = true,
+      themes = {
+        "eldritch",
+        "tokyonight",
+        "catppuccin",
+        "vscode",
+        "cyberdream",
+        "fluoromachine",
+        "gruvbox",
+        -- "bamboo-multiplex",
+      },
     },
   },
 }

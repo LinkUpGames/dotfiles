@@ -1,7 +1,9 @@
 font-family = "JetBrainsMono Nerd Font Mono"
 font-style = "Medium"
-font-size = 14
+font-size = 13
 adjust-cell-height = 4
+
+cursor-invert-fg-bg
 
 theme = "tokyonight"
 
@@ -17,4 +19,7 @@ window-theme = system
 clipboard-read = allow
 clipboard-write = allow
 
-term=xterm-256color
+term = xterm-256color
+
+# custom-shader=./shaders/crt.glsl
+# custom-shader=./shaders/tft.glsl

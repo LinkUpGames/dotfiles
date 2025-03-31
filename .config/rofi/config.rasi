@@ -9,4 +9,4 @@ configuration {
   show-icons: true;
 }
 
-@theme "./themes/tokyonight_big.rasi"
+@theme "./themes/rounded.rasi"
