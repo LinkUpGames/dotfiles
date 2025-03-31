@@ -57,7 +57,7 @@ return {
             name = "code",
             schema = {
               model = {
-                default = "gemma3:1b",
+                default = "qwen2.5-coder:3b",
               },
             },
           })
