@@ -7,11 +7,10 @@ return {
     if vim.fn.has("nvim-0.11") == 1 then
       opts.diagnostics.virtual_lines = {
         current_line = true,
+        prefix = "●",
       }
 
       opts.diagnostics.virtual_text = false
-    else
-      opts.diagnostics.virtual_text = true
     end
   end,
 }
