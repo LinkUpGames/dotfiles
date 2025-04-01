@@ -9,7 +9,6 @@ keymap.set("n", "-", "<C-x>", opts)
 
 -- Better Leave
 keymap.set("i", "jk", "<Esc>", opts) -- exit insert mode
-keymap.set("i", "kj", "<Esc>", opts) -- exit insert mode
 
 -- Select All
 keymap.set("n", "<C-a>", "gg<S-v>G", opts)
