@@ -4,7 +4,7 @@ return {
     opts.inlay_hints.enabled = true
 
     -- NOTE: This is to support virtual lines
-    if vim.fn.has("nvim1.11") == 1 then
+    if vim.fn.has("nvim-0.11") == 1 then
       opts.diagnostics.virtual_lines = {
         current_line = false,
         prefix = "●",
