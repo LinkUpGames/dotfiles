@@ -15,9 +15,11 @@ return {
     event = "BufEnter",
     build = "make",
     enabled = function()
-      local sys = jit.os
+      return false
 
-      return sys ~= "Windows"
+      -- local sys = jit.os
+      --
+      -- return sys ~= "Windows"
     end,
     opts = {
       watermark = "Code Snippet",
