@@ -387,6 +387,10 @@ return {
   --   end,
   -- },
   {
+    "LinkUpGames/jumble.nvim",
+    opts = {},
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = theme,
