@@ -22,7 +22,7 @@ return {
       },
       formatters = {
         gobo = {
-          command = "C:\\Users\\mjcev\\.local\\bin\\gobo\\gobo.exe",
+          command = "C:\\Users\\mjcev\\.local\\bin\\gobo.exe",
           args = { "$FILENAME" },
           stdin = false,
         },
