@@ -7,6 +7,7 @@ function godot {
 }
 
 New-Alias -Name vim -Value nvim
+New-Alias -Name v -Value nvim
 New-Alias -Name TileManagerStart -Value Start-Komorebic
 New-Alias -Name TileManagerStop -Value Stop-Komorebic
 oh-my-posh init pwsh --config "C:\Users\mjcev\AppData\Local\Programs\oh-my-posh\themes\powerlevel10k_classic.omp.json" | Invoke-Expression
