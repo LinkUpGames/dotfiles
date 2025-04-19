@@ -4,6 +4,15 @@ vim.filetype.add({
   },
 })
 
+-- {
+--     "stevearc/conform.nvim",
+--     opts = {
+--       formatters_by_ft = {
+--         gml = { "prettier" },
+--       },
+--     },
+--   },
+
 return {
   {
     "stevearc/conform.nvim",
