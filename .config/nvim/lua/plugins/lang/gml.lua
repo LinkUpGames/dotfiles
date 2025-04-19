@@ -64,7 +64,7 @@ return {
                 settings = {},
 
                 init_options = {
-                  runtimeDirectory = "C:\\ProgramData\\GameMakerStudio2\\Cache\\runtimes\\runtime-2024.8.0.216",
+                  runtimeDirectory = "C:\\ProgramData\\GameMakerStudio2\\Cache\\runtimes\\runtime-2024.13.1.242",
                   runtimeVersion = "2024.8.0.216",
                   platforms = { "windows" },
                   languagePacks = {
