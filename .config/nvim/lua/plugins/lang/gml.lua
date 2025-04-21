@@ -21,11 +21,21 @@ return {
         gml = { "gobo" },
       },
       formatters = {
-        gobo = {
-          command = "C:\\Users\\mjcev\\.local\\bin\\gobo.exe",
-          args = { "$FILENAME" },
-          stdin = false,
-        },
+        gobo = function()
+          local sys = jit.os
+
+          local command = os.getenv("HOME") .. "/.local/bin/gobo"
+
+          if sys == "Windows" then
+            command = "C:\\Users\\mjcev\\.local\\bin\\gobo.exe"
+          end
+
+          return {
+            command = command,
+            args = { "$FILENAME" },
+            stdin = false,
+          }
+        end,
       },
     },
   },
@@ -37,6 +47,8 @@ return {
       },
       setup = {
         gml = function(_, opts)
+          local sys = jit.os
+
           local lspconfig = require("lspconfig")
           local configs = require("lspconfig.configs")
           local util = require("lspconfig.util")
@@ -45,10 +57,26 @@ return {
             ".gitignore",
           }
 
+          -- System Commands
+          local cmd = {
+            os.getenv("HOME") .. "/AppImage/GameMaker/data/opt/GameMaker-Beta/x86_64/GameMakerLanguageServer",
+            "--stdio",
+          }
+          local runtime = os.getenv("HOME")
+            .. "/.local/share/GameMakerStudio2-Beta/Cache/runtimes/runtime-2024.1300.0.790"
+          local language =
+            { os.getenv("HOME") .. "/AppImage/GameMaker/data/opt/GameMaker-Beta/x86_64/Plugins/english/english.csv" }
+
+          if sys == "Windows" then
+            cmd = { "C:\\Program Files\\GameMaker Studio 2\\GameMakerLanguageServer.exe", "--stdio" }
+            runtime = "C:\\ProgramData\\GameMakerStudio2\\Cache\\runtimes\\runtime-2024.13.1.242"
+            language = { "C:\\Program Files\\GameMaker Studio 2\\Plugins\\english\\english.csv" }
+          end
+
           if not configs.gml then
             configs.gml = {
               default_config = {
-                cmd = { "C:\\Program Files\\GameMaker Studio 2\\GameMakerLanguageServer.exe", "--stdio" },
+                cmd = cmd,
 
                 autostart = true,
 
@@ -64,12 +92,10 @@ return {
                 settings = {},
 
                 init_options = {
-                  runtimeDirectory = "C:\\ProgramData\\GameMakerStudio2\\Cache\\runtimes\\runtime-2024.13.1.242",
+                  runtimeDirectory = runtime,
                   runtimeVersion = "2024.8.0.216",
-                  platforms = { "windows" },
-                  languagePacks = {
-                    "C:\\Program Files\\GameMaker Studio 2\\Plugins\\english\\english.csv",
-                  },
+                  platforms = { "windows", "ubuntu" },
+                  languagePacks = language,
                   language = "english",
                 },
 
@@ -90,10 +116,5 @@ return {
   {
     "JafarDakhan/vim-gml",
     ft = "gml",
-    enabled = function()
-      local sys = jit.os
-
-      return sys == "Windows"
-    end,
   },
 }
