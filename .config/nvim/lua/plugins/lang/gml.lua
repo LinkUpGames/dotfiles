@@ -59,13 +59,15 @@ return {
 
           -- System Commands
           local cmd = {
-            os.getenv("HOME") .. "/AppImage/GameMaker/data/opt/GameMaker-Beta/x86_64/GameMakerLanguageServer",
+            (os.getenv("HOME") or "") .. "/AppImage/GameMaker/data/opt/GameMaker-Beta/x86_64/GameMakerLanguageServer",
             "--stdio",
           }
-          local runtime = os.getenv("HOME")
+          local runtime = (os.getenv("HOME") or "")
             .. "/.local/share/GameMakerStudio2-Beta/Cache/runtimes/runtime-2024.1300.0.790"
-          local language =
-            { os.getenv("HOME") .. "/AppImage/GameMaker/data/opt/GameMaker-Beta/x86_64/Plugins/english/english.csv" }
+          local language = {
+            (os.getenv("HOME") or "")
+              .. "/AppImage/GameMaker/data/opt/GameMaker-Beta/x86_64/Plugins/english/english.csv",
+          }
 
           if sys == "Windows" then
             cmd = { "C:\\Program Files\\GameMaker Studio 2\\GameMakerLanguageServer.exe", "--stdio" }
