@@ -15,7 +15,7 @@
 * bat
 * find
 * stow
-* Hack Nerd Font
+* JetBrains Nerd Font
 * csvlens
 
 ## App Downloads
