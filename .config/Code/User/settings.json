@@ -62,7 +62,6 @@
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.stickyScroll.enabled": false,
   "vim.smartRelativeLine": true,
-  "workbench.activityBar.location": "hidden",
   "editor.minimap.enabled": false,
   "chat.commandCenter.enabled": false,
   "terminal.integrated.sendKeybindingsToShell": true
