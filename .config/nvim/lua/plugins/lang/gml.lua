@@ -62,8 +62,13 @@ return {
             (os.getenv("HOME") or "") .. "/AppImage/GameMaker/data/opt/GameMaker-Beta/x86_64/GameMakerLanguageServer",
             "--stdio",
           }
+
+          local runtime_version = "runtime-2024.1400.0.802" -- Get the right runtime to get the latest features
+
           local runtime = (os.getenv("HOME") or "")
-            .. "/.local/share/GameMakerStudio2-Beta/Cache/runtimes/runtime-2024.1300.0.790"
+            .. "/.local/share/GameMakerStudio2-Beta/Cache/runtimes/"
+            .. runtime_version
+
           local language = {
             (os.getenv("HOME") or "")
               .. "/AppImage/GameMaker/data/opt/GameMaker-Beta/x86_64/Plugins/english/english.csv",
@@ -71,7 +76,7 @@ return {
 
           if sys == "Windows" then
             cmd = { "C:\\Program Files\\GameMaker Studio 2\\GameMakerLanguageServer.exe", "--stdio" }
-            runtime = "C:\\ProgramData\\GameMakerStudio2\\Cache\\runtimes\\runtime-2024.13.1.242"
+            runtime = "C:\\ProgramData\\GameMakerStudio2\\Cache\\runtimes\\" .. runtime_version
             language = { "C:\\Program Files\\GameMaker Studio 2\\Plugins\\english\\english.csv" }
           end
 
