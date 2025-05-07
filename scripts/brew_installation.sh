@@ -61,6 +61,9 @@ brew install koekeishiya/formulae/skhd
 # Spicetify
 brew install spicetify-cli
 
+# Devpods
+brew install --cask devpod
+
 # Yabai
 brew install koekeishiya/formulae/yabai
 
