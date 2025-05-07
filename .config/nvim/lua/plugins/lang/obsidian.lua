@@ -18,7 +18,7 @@ table.insert(workspaces, {
 
 return {
   {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = false,
     dependencies = {
@@ -35,14 +35,14 @@ return {
     keys = {
       {
         "<leader>op",
-        "<cmd>ObsidianPasteImg<cr>",
+        "<cmd>Obsidian paste_img<cr>",
         mode = { "n" },
         ft = "markdown",
         desc = "Paste the clipboard image to the markdown file",
       },
       {
         "<leader>os",
-        "<cmd>ObsidianSearch<cr>",
+        "<cmd>Obsidian search<cr>",
         mode = { "n" },
         ft = "markdown",
         desc = "Search for a specific file in Obsidian Vault",
