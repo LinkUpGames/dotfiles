@@ -28,9 +28,13 @@ return {
       workspaces = workspaces,
     },
     cond = function() -- Only run in an obsidian based vault
-      local obsidian_dir = vim.fn.finddir(".obsidian", vim.fn.getcwd())
+      local obsidian = vim.fs.find({ ".obsidian" }, { upward = true })[1]
 
-      return obsidian_dir ~= ""
+      if obsidian then
+        vim.o.conceallevel = 1
+      end
+
+      return obsidian
     end,
     keys = {
       {
