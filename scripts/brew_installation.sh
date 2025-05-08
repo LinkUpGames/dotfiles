@@ -11,7 +11,7 @@ brew install ollama
 
 # Make zsh default
 brew install zsh
-chsh - $(which zsh)
+chsh -s $(which zsh)
 
 # Zap Plugin Manager
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
@@ -73,7 +73,7 @@ yabai --start-service
 
 # Janky Borders
 brew tap FelixKratz/formulae
-brew insall borders
+brew install borders
 
 ## Now link all the dependencies install
 cd $HOME
