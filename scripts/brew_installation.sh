@@ -10,7 +10,9 @@ brew install --cask wezterm
 brew install ollama
 
 # Make zsh default
-brew install zsh
+if ! which zsh; then
+  brew install zsh # Only install if it's not already installed in the system
+fi
 chsh -s $(which zsh)
 
 # Zap Plugin Manager
