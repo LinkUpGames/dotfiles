@@ -48,6 +48,9 @@ brew install bat
 # Lazy docker
 brew install lazydocker
 
+# Eza
+brew install eza
+
 # Stow
 brew install stow
 
