@@ -1,0 +1,113 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """
+[](#a3aed2)\
+$os\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+($git_branch\
+$git_status\
+[](fg:#394260 bg:#212736))\
+( $nodejs\
+$rust\
+$golang\
+$php\
+$c\
+[](fg:#212736 bg:#1d2230))\
+$time\
+[ ](fg:#1d2230)\
+\n$character"""
+
+palette = 'theme'
+
+[os]
+disabled = false
+style = "bg:os_bg fg:os_fg"
+format = '[ $symbol ]($style)'
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[directory]
+style = "bg:dir_bg fg:dir_fg"
+format = "[ $path ]($style)"
+truncation_length = 5
+truncation_symbol = "󰘍/"
+home_symbol = "~"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"~" = ""
+
+[git_branch]
+symbol = ""
+style = "bg:git_bg"
+format = '[[ $symbol $branch](fg:git_fg bg:git_bg)]($style)'
+
+[git_status]
+style = "bg:git_bg"
+format = '[[($all_status$ahead_behind )](fg:git_fg bg:git_bg)]($style)'
+ahead = " ⇡${count}"
+behind = " ⇣${count}"
+modified = " !${count}"
+untracked = " ?${count}"
+
+[nodejs]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:time_bg"
+format = '[[  $time ](fg:time_fg bg:time_bg)]($style)'
+
+[palettes.theme]
+os_fg = "#000000"
+os_bg = "#a3aed2"
+dir_fg = "#e3e5e5"
+dir_bg = "#769ff0"
+git_fg = "#769ff0"
+git_bg = "#394260"
+time_fg = "#a0a9cb"
+time_bg = "#1d2230"
