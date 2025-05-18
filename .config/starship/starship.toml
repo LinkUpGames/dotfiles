@@ -75,6 +75,8 @@ ahead = " ⇡${count}"
 behind = " ⇣${count}"
 modified = " !${count}"
 untracked = " ?${count}"
+staged = " +${count}"
+stashed = " \\$${count}"
 
 [nodejs]
 symbol = ""
