@@ -4,14 +4,14 @@
 add_newline = false
 
 format = """
-[](#a3aed2)\
+[](section_1_bg)\
 $os\
-[](bg:#769ff0 fg:#a3aed2)\
+[](bg:section_2_bg fg:section_1_bg)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
+[](fg:dir_bg bg:git_bg)\
 ($git_branch\
 $git_status\
-[](fg:#394260 bg:#212736))\
+[](fg:git_bg bg:#212736))\
 ( $nodejs\
 $rust\
 $golang\
@@ -22,11 +22,13 @@ $time\
 [ ](fg:#1d2230)\
 \n$character"""
 
+right_format = """$time"""
+
 palette = 'theme'
 
 [os]
 disabled = false
-style = "bg:os_bg fg:os_fg"
+style = "bg:section_1_bg fg:section_1_fg"
 format = '[ $symbol ]($style)'
 [os.symbols]
 Windows = ""
@@ -105,6 +107,12 @@ style = "bg:time_bg"
 format = '[[  $time ](fg:time_fg bg:time_bg)]($style)'
 
 [palettes.theme]
+bg = "#1f2335"
+fg = "#a9b1d6"
+section_1_fg = "#1f2335"
+section_1_bg = "#a9b1d6"
+section_2_fg = "#a9b1d6"
+section_2_bg = "#7aa2f7"
 os_fg = "#000000"
 os_bg = "#a3aed2"
 dir_fg = "#e3e5e5"
