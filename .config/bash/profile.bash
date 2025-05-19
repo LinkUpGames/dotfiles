@@ -12,9 +12,12 @@ export NVM_DIR="$HOME/.nvm"
 . "$HOME/.cargo/env"
 
 # Source files
-for file in $HOME/.config/bash/*; do
-  source $file
-done
+if [ -d $HOME/.config/bash ]; then
+  for file in $HOME/.config/bash/*; do
+    source $file
+  done
+fi
+unset file
 
 # Starship prompt
 eval "$(starship init bash)"
