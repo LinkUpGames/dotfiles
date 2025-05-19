@@ -1,12 +1,3 @@
-/*
- * ROFI color theme
- *
- * Based on Something Found in the Internet
- *
- * User: Contributors
- * Copyright: *!
- */
-
 configuration {
   font: "JetBrainsMono Nerd Font Medium 12";
 
