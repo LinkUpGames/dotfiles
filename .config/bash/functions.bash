@@ -1,11 +1,10 @@
+# Yazi
 function yy() {
-  local temp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 
-  yazi "$@" --cwd-file="$temp"
-
-  if cwd="$(command cat -- "temp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    builtin cd -- "$cwd"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
   fi
-
-  rm -f -- "$temp"
+  rm -f -- "$tmp"
 }

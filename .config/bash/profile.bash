@@ -1,3 +1,5 @@
+# Entry Point
+
 # Set vi mode
 set -o vi
 set editing-mode vi
@@ -9,12 +11,16 @@ export EDITOR=nvim
 export NVM_DIR="$HOME/.nvm"
 
 # Define Cargo
-. "$HOME/.cargo/env"
+if [ -d $HOME/.cargo ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # Source files
 if [ -d $HOME/.config/bash ]; then
   for file in $HOME/.config/bash/*; do
-    source $file
+    if [[ "$file" != "${BASH_SOURCE[0]}" ]]; then
+      source $file
+    fi
   done
 fi
 unset file
