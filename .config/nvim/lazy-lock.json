@@ -49,7 +49,7 @@
   "venv-selector.nvim": { "branch": "regexp", "commit": "e82594274bf7b54387f9a2abe65f74909ac66e97" },
   "vim-gml": { "branch": "main", "commit": "382f7aecf6da88c077f34df2f863e750b4d0fdd3" },
   "vim-tmux-navigator": { "branch": "master", "commit": "64803fdd19a36211eba5e39f86c4cbceae8e1d06" },
-  "visual-whitespace.nvim": { "branch": "main", "commit": "5539f68299827e67b308c79324716c4e43f37450" },
+  "visual-whitespace.nvim": { "branch": "main", "commit": "adffb699f3a873b5d532720a540be27e13a10d4e" },
   "vscode.nvim": { "branch": "main", "commit": "57cec1509bfb57dfc3c4d5ba5e8db9a5b5e42be2" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
