@@ -2,4 +2,7 @@ fish/
 .tmux/
 .config/spicetify
 .config/ncspot
+.zshrc
+.zprofile
+
 __IGNORE__*
