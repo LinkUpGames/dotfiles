@@ -130,7 +130,7 @@ return {
           },
           NormalFloat = { fg = "none", bg = "none" },
           FlashBackdrop = { fg = c.vscGray },
-          FlashLabel = { bg = "#fd0178" },
+          FlashLabel = { fg = c.vscLightGreen, bg = c.vscCursorDarkDark },
         },
       }
     end,
@@ -170,7 +170,7 @@ return {
           FlashBackdrop = {
             fg = colors.fg,
           },
-          FlashLabel = { bg = colors.purple, fg = colors.bgdark },
+          FlashLabel = { bg = colors.purple, fg = "#FFFFFF" },
         },
       }
     end,
@@ -200,64 +200,74 @@ return {
             fg = colors.default.orange,
             bg = "none",
           },
-        },
-      }
-    end,
-  },
-  {
-    "ribru17/bamboo.nvim",
-    opts = function()
-      local pallete = require("bamboo.palette").vulgaris
-
-      return {
-        style = "multiplex",
-        code_style = {
-          variables = {
-            bold = true,
-          },
-        },
-        highlights = {
-          LineNr = {
-            fg = pallete.orange,
-            bg = "none",
-          },
-          LineNrAbove = {
-            fg = pallete.coral,
-            bg = "none",
-          },
-          LineNrBelow = {
-            fg = pallete.coral,
-            bg = "none",
+          FlashBackdrop = {
+            fg = colors.default.grey,
           },
         },
       }
     end,
   },
   -- {
-  --   "ellisonleao/gruvbox.nvim",
+  --   "ribru17/bamboo.nvim",
   --   opts = function()
-  --     local colors = require("gruvbox").palette
-  --     -- vim.o.background = "dark"
+  --     local pallete = require("bamboo.palette").vulgaris
   --
   --     return {
-  --       contrast = "hard",
-  --       overrides = {
+  --       style = "multiplex",
+  --       code_style = {
+  --         variables = {
+  --           bold = true,
+  --         },
+  --       },
+  --       highlights = {
   --         LineNr = {
-  --           fg = colors.bright_orange,
+  --           fg = pallete.orange,
   --           bg = "none",
   --         },
   --         LineNrAbove = {
-  --           fg = colors.light_green_soft,
+  --           fg = pallete.coral,
   --           bg = "none",
   --         },
   --         LineNrBelow = {
-  --           fg = colors.light_green_soft,
+  --           fg = pallete.coral,
   --           bg = "none",
   --         },
   --       },
   --     }
   --   end,
   -- },
+  {
+    "ellisonleao/gruvbox.nvim",
+    opts = function()
+      local colors = require("gruvbox").palette
+      -- vim.o.background = "dark"
+
+      return {
+        contrast = "hard",
+        overrides = {
+          LineNr = {
+            fg = colors.bright_orange,
+            bg = "none",
+          },
+          LineNrAbove = {
+            fg = colors.light_green_soft,
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = colors.light_green_soft,
+            bg = "none",
+          },
+          FlashLabel = {
+            bg = colors.faded_blue,
+            fg = colors.light1,
+          },
+          FlashBackdrop = {
+            fg = colors.faded_green,
+          },
+        },
+      }
+    end,
+  },
   {
     "LinkUpGames/jumble.nvim",
     opts = {
@@ -268,7 +278,8 @@ return {
         "vscode",
         "cyberdream",
         "fluoromachine",
-        "bamboo-multiplex",
+        "gruvbox",
+        -- "bamboo-multiplex",
       },
     },
   },
