@@ -1,4 +1,5 @@
 return {
+  -- Conform
   {
     "stevearc/conform.nvim",
     opts = {
@@ -8,6 +9,7 @@ return {
       },
     },
   },
+  -- Lspconfig
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -46,6 +48,18 @@ return {
       },
     },
   },
+  -- Blink
+  {
+    "Saghen/blink.cmp",
+    opts = {
+      sources = {
+        per_filetype = {
+          markdown = { "snippets", "path", "lsp" },
+        },
+      },
+    },
+  },
+  -- Markview
   {
     "OXY2DEV/markview.nvim",
     lazy = true,

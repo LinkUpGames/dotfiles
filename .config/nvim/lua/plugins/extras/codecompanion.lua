@@ -154,14 +154,13 @@ return {
   -- Add blink code completion
   {
     "Saghen/blink.cmp",
-    opts = function(_, opts)
-      -- Add codecompanion as a source
-      vim.list_extend(opts.sources, {
+    opts = {
+      sources = {
         per_filetype = {
           codecompanion = { "codecompanion" },
         },
-      })
-    end,
+      },
+    },
   },
   -- Lualine
   {
@@ -242,6 +241,7 @@ return {
       },
     },
   },
+  -- Markview
   {
     "OXY2DEV/markview.nvim",
     ft = function(_, ft)
