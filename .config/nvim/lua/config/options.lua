@@ -4,6 +4,7 @@
 
 vim.o.termguicolors = true
 vim.o.clipboard = "unnamedplus"
+vim.o.background = "dark"
 
 local old_guicursor = vim.o.guicursor
 
@@ -15,6 +16,7 @@ vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
 vim.o.cursorline = false
 
+-- Lazy vim options
 vim.g.lazyvim_picker = "snacks"
 
 -- Copy/Paste
