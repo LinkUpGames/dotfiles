@@ -60,7 +60,7 @@ return {
                 -- Load oil file
                 if ok then
                   ---@diagnostic disable-next-line: param-type-mismatch
-                  return vim.fn.fnamemodify(oil.get_current_dir(), ":~")
+                  return " " .. vim.fn.fnamemodify(oil.get_current_dir(), ":~")
                 else
                   return "ERROR"
                 end
