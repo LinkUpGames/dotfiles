@@ -271,6 +271,8 @@ return {
   {
     "LinkUpGames/jumble.nvim",
     opts = {
+      hours = 2,
+      days = 0,
       themes = {
         "eldritch",
         "tokyonight",
