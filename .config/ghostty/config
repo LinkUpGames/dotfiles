@@ -3,6 +3,8 @@ font-style = "Medium"
 font-size = 13
 adjust-cell-height = 4
 
+cursor-invert-fg-bg
+
 theme = "tokyonight"
 
 background-opacity = 0.70
