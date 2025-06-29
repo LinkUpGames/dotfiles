@@ -19,5 +19,5 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec3 color = texture(iChannel0, uv).rgb;
 
     // mix the sampled color with the scanline intensity
-    fragColor = vec4(mix(color, vec3(0.0), apply), 1.0);
+    fragColor = vec4(mix(color, vec3(0.0), apply), 0.04);
 }
