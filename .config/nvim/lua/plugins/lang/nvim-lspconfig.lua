@@ -15,6 +15,14 @@ return {
       max = vim.diagnostic.severity.WARN,
     }
 
+    -- Color of line
+    opts.diagnostics.signs.numhl = {
+      [vim.diagnostic.severity.WARN] = "WarningMsg",
+      [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+      [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+      [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+    }
+
     return opts
   end,
 }
