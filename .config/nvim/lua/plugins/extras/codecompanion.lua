@@ -66,7 +66,7 @@ return {
             name = "code",
             schema = {
               model = {
-                default = "qwen2.5-coder:7b",
+                default = "mistral:latest",
               },
             },
           })
