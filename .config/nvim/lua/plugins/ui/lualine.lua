@@ -125,6 +125,7 @@ return {
             right_padding = 2,
             symbols = { alternate_file = "" },
             max_length = vim.o.columns * (9 / 10),
+            use_mode_colors = true,
             filetype_names = {
               snacks_picker_input = "󰍉 Picker",
               snacks_picker_list = " Explorer",
