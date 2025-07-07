@@ -67,6 +67,7 @@ return {
               ["<a-s>"] = false,
               ["s"] = false,
               ["t"] = { "flash", mode = { "n" } },
+              ["T"] = false,
             },
           },
         },
