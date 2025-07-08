@@ -69,6 +69,9 @@ brew install spicetify-cli
 # Devpods
 brew install --cask devpod
 
+# Television
+brew install television
+
 # Yabai
 brew install koekeishiya/formulae/yabai
 

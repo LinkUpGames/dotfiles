@@ -18,6 +18,7 @@
 * JetBrains Nerd Font
 * csvlens
 * rofi
+* television fuzzy finder
 
 ## App Downloads
 
