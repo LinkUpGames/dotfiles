@@ -8,3 +8,13 @@ function yy() {
   fi
   rm -f -- "$tmp"
 }
+
+# Television
+function cdf() {
+  local dir=$(tv dirs)
+
+  # Only go to output if the result is greater than 0
+  if [[ -n "$dir" ]]; then
+    cd "$dir"
+  fi
+}
