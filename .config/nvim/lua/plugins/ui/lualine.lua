@@ -1,5 +1,25 @@
---
 local group = vim.api.nvim_create_augroup("lualine-settings", { clear = true })
+
+---Update the parameters for toggle_buffer
+---@param lualine table
+local function toggle_buffer(lualine)
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+  local tabs = vim.api.nvim_list_tabpages()
+
+  if #buffers <= 1 and #tabs <= 1 then -- Hide
+    vim.o.showtabline = 1
+    lualine.hide({
+      place = { "tabline" },
+      unhide = false,
+    })
+  else -- Show
+    vim.o.showtabline = 2
+    lualine.hide({
+      place = { "tabline" },
+      unhide = true,
+    })
+  end
+end
 
 -- Show the tabline when an buffer is added, deleted
 vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "VimEnter", "ColorScheme", "TabNew", "TabClosed" }, {
@@ -9,22 +29,7 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "VimEnter", "ColorScheme", 
       local has_lualine, lualine = pcall(require, "lualine")
 
       if has_lualine then
-        local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-        local tabs = vim.api.nvim_list_tabpages()
-
-        if #buffers <= 1 and #tabs <= 1 then -- Hide
-          vim.o.showtabline = 1
-          lualine.hide({
-            place = { "tabline" },
-            unhide = false,
-          })
-        else -- Show
-          vim.o.showtabline = 2
-          lualine.hide({
-            place = { "tabline" },
-            unhide = true,
-          })
-        end
+        toggle_buffer(lualine)
       end
     end, 5)
   end,
@@ -48,6 +53,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
       end
 
       lualine.setup(opts)
+      toggle_buffer(lualine)
     end
   end,
 })
