@@ -66,7 +66,7 @@ return {
             name = "code",
             schema = {
               model = {
-                default = "mistral:latest",
+                default = "gemma3n:e4b",
               },
             },
           })

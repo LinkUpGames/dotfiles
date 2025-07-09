@@ -6,6 +6,7 @@ return {
     opts = {
       palette = "default",
       transparent = true,
+      hide_inactive_statusline = false,
       styles = {
         floats = "transparent",
         sidebars = "transparent",

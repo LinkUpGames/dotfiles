@@ -64,10 +64,10 @@ Development
 
       -- Indent
       local indent = {
-        enabled = true,
         indent = {
           only_scope = false,
           enabled = true,
+          hl = { "SnacksIndent1", "SnacksIndent2", "SnacksIndent3" },
         },
         scope = {
           enabled = true,
@@ -75,9 +75,6 @@ Development
         chunk = { enabled = true, only_current = true },
       }
       opts.indent = vim.tbl_deep_extend("force", opts.indent, indent)
-
-      -- Scope
-      opts.scope.enabled = true
 
       -- Picker
       local picker = {
