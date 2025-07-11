@@ -23,13 +23,11 @@ function cdd() {
 # Open a file in a directory
 function cdf() {
   local file=$(tv)
-  local dir=$(dirname $file)
+  # local dir=$(dirname $file)
 
-  echo $dir
+  # echo $dir
 
-  if [[ -n "$dir" ]]; then
-    cd "$dir"
-
+  if [[ -n "$file" ]]; then
     nvim $file
   fi
 
