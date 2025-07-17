@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "ollama/gemma3n:e4b",
+  "model": "ollama/qwen2.5-coder:7b",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -8,7 +8,7 @@
         "baseURL": "http://localhost:11434/v1"
       },
       "models": {
-        "gemma3n:e4b": {}
+        "qwen2.5-coder:7b": {}
       }
     }
   }
