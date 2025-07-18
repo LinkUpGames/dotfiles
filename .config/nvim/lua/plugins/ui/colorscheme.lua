@@ -237,37 +237,41 @@ return {
   --     }
   --   end,
   -- },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   opts = function()
+  --     local colors = require("gruvbox").palette
+  --     -- vim.o.background = "dark"
+  --
+  --     return {
+  --       contrast = "hard",
+  --       overrides = {
+  --         LineNr = {
+  --           fg = colors.bright_orange,
+  --           bg = "none",
+  --         },
+  --         LineNrAbove = {
+  --           fg = colors.light_green_soft,
+  --           bg = "none",
+  --         },
+  --         LineNrBelow = {
+  --           fg = colors.light_green_soft,
+  --           bg = "none",
+  --         },
+  --         FlashLabel = {
+  --           bg = colors.faded_blue,
+  --           fg = colors.light1,
+  --         },
+  --         FlashBackdrop = {
+  --           fg = colors.faded_green,
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
   {
-    "ellisonleao/gruvbox.nvim",
-    opts = function()
-      local colors = require("gruvbox").palette
-      -- vim.o.background = "dark"
-
-      return {
-        contrast = "hard",
-        overrides = {
-          LineNr = {
-            fg = colors.bright_orange,
-            bg = "none",
-          },
-          LineNrAbove = {
-            fg = colors.light_green_soft,
-            bg = "none",
-          },
-          LineNrBelow = {
-            fg = colors.light_green_soft,
-            bg = "none",
-          },
-          FlashLabel = {
-            bg = colors.faded_blue,
-            fg = colors.light1,
-          },
-          FlashBackdrop = {
-            fg = colors.faded_green,
-          },
-        },
-      }
-    end,
+    "nyoom-engineering/oxocarbon.nvim",
+    config = function() end,
   },
   {
     "LinkUpGames/jumble.nvim",
@@ -283,7 +287,8 @@ return {
         "vscode",
         "cyberdream",
         "fluoromachine",
-        "gruvbox",
+        -- "gruvbox",
+        "oxocarbon",
         -- "bamboo-multiplex",
       },
     },
