@@ -208,35 +208,35 @@ return {
       }
     end,
   },
-  -- {
-  --   "ribru17/bamboo.nvim",
-  --   opts = function()
-  --     local pallete = require("bamboo.palette").vulgaris
-  --
-  --     return {
-  --       style = "multiplex",
-  --       code_style = {
-  --         variables = {
-  --           bold = true,
-  --         },
-  --       },
-  --       highlights = {
-  --         LineNr = {
-  --           fg = pallete.orange,
-  --           bg = "none",
-  --         },
-  --         LineNrAbove = {
-  --           fg = pallete.coral,
-  --           bg = "none",
-  --         },
-  --         LineNrBelow = {
-  --           fg = pallete.coral,
-  --           bg = "none",
-  --         },
-  --       },
-  --     }
-  --   end,
-  -- },
+  {
+    "ribru17/bamboo.nvim",
+    opts = function()
+      local pallete = require("bamboo.palette").vulgaris
+
+      return {
+        style = "multiplex",
+        code_style = {
+          variables = {
+            bold = true,
+          },
+        },
+        highlights = {
+          LineNr = {
+            fg = pallete.orange,
+            bg = "none",
+          },
+          LineNrAbove = {
+            fg = pallete.coral,
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = pallete.coral,
+            bg = "none",
+          },
+        },
+      }
+    end,
+  },
   -- {
   --   "ellisonleao/gruvbox.nvim",
   --   opts = function()
@@ -269,10 +269,10 @@ return {
   --     }
   --   end,
   -- },
-  {
-    "nyoom-engineering/oxocarbon.nvim",
-    config = function() end,
-  },
+  -- {
+  --   "nyoom-engineering/oxocarbon.nvim",
+  --   config = function() end,
+  -- },
   {
     "LinkUpGames/jumble.nvim",
     opts = {
@@ -288,8 +288,8 @@ return {
         "cyberdream",
         "fluoromachine",
         -- "gruvbox",
-        "oxocarbon",
-        -- "bamboo-multiplex",
+        -- "oxocarbon",
+        "bamboo-multiplex",
       },
     },
   },
