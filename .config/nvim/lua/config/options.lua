@@ -45,7 +45,7 @@ if vim.g.neovide then
   vim.o.guifont = "JetBrainsMono Nerd Font Mono"
 
   vim.g.neovide_window_blurred = true
-  vim.g.neovide_transparency = 0.5
+  vim.g.neovide_opacity = 0.5
   vim.g.neovide_show_border = true
   vim.g.neovide_normal_opacity = 0.8
 end
