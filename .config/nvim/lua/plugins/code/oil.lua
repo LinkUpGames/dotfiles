@@ -15,6 +15,16 @@ return {
         ["-"] = { "actions.parent", mode = { "n" } },
         ["_"] = { "actions.open_cwd", mode = { "n" } },
         ["<CR>"] = { "actions.select", mode = { "n" } },
+        ["+"] = {
+          "actions.preview",
+          mode = { "n" },
+        },
+        ["K"] = { "actions.preview_scroll_up", mode = { "n" } },
+        ["J"] = { "actions.preview_scroll_down", mode = { "n" } },
+        ["<C-b>"] = { "actions.preview_scroll_up", mode = { "n" } },
+        ["<C-f>"] = { "actions.preview_scroll_down", mode = { "n" } },
+        -- Remove this so that it doesn't activate
+        ["?"] = "",
       },
       view_options = {
         show_hidden = true,
@@ -64,6 +74,17 @@ return {
                 else
                   return "ERROR"
                 end
+              end,
+              separator = {
+                left = "",
+                right = "",
+              },
+            },
+          },
+          lualine_z = {
+            {
+              function()
+                return " " .. os.date("%I:%M %p")
               end,
               separator = {
                 left = "",
