@@ -78,10 +78,13 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
-
       term_colors = true,
       transparent_background = true,
       flavour = "mocha",
+      float = {
+        transparent = true,
+      },
+      auto_integrations = true,
       custom_highlights = function(colors)
         return {
           LineNrAbove = {
