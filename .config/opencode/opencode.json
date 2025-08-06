@@ -10,8 +10,8 @@
       "models": {
         "qwen:agentic": {
           "name": "Qwen Agentic",
-          "tool_call": true,
-          "reasoning": true
+          "tool_call": false,
+          "reasoning": false
         }
       }
     }
