@@ -279,8 +279,8 @@ return {
   {
     "LinkUpGames/jumble.nvim",
     opts = {
-      hours = 0,
-      minutes = 30,
+      hours = 1,
+      minutes = 0,
       days = 0,
       live_change = true,
       themes = {
