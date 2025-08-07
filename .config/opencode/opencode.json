@@ -13,7 +13,7 @@
           "tool_call": false,
           "reasoning": false
         },
-        "openai": {
+        "gpt-oss:latest": {
           "name": "Open AI",
           "tool_call": true,
           "reasoning": true
