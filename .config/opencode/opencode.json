@@ -12,6 +12,11 @@
           "name": "Qwen Agentic",
           "tool_call": false,
           "reasoning": false
+        },
+        "openai": {
+          "name": "Open AI",
+          "tool_call": true,
+          "reasoning": true
         }
       }
     }

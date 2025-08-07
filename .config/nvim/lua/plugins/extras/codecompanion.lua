@@ -71,6 +71,16 @@ return {
             },
           })
         end,
+        openai = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            name = "open ai",
+            schema = {
+              model = {
+                default = "gpt-oss:latest",
+              },
+            },
+          })
+        end,
         gemini = function()
           return require("codecompanion.adapters").extend("gemini", {
             schema = {
