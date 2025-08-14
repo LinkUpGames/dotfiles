@@ -211,67 +211,67 @@ return {
       }
     end,
   },
-  {
-    "ribru17/bamboo.nvim",
-    opts = function()
-      local pallete = require("bamboo.palette").vulgaris
-
-      return {
-        style = "multiplex",
-        code_style = {
-          variables = {
-            bold = true,
-          },
-        },
-        highlights = {
-          LineNr = {
-            fg = pallete.orange,
-            bg = "none",
-          },
-          LineNrAbove = {
-            fg = pallete.coral,
-            bg = "none",
-          },
-          LineNrBelow = {
-            fg = pallete.coral,
-            bg = "none",
-          },
-        },
-      }
-    end,
-  },
   -- {
-  --   "ellisonleao/gruvbox.nvim",
+  --   "ribru17/bamboo.nvim",
   --   opts = function()
-  --     local colors = require("gruvbox").palette
-  --     -- vim.o.background = "dark"
+  --     local pallete = require("bamboo.palette").vulgaris
   --
   --     return {
-  --       contrast = "hard",
-  --       overrides = {
+  --       style = "multiplex",
+  --       code_style = {
+  --         variables = {
+  --           bold = true,
+  --         },
+  --       },
+  --       highlights = {
   --         LineNr = {
-  --           fg = colors.bright_orange,
+  --           fg = pallete.orange,
   --           bg = "none",
   --         },
   --         LineNrAbove = {
-  --           fg = colors.light_green_soft,
+  --           fg = pallete.coral,
   --           bg = "none",
   --         },
   --         LineNrBelow = {
-  --           fg = colors.light_green_soft,
+  --           fg = pallete.coral,
   --           bg = "none",
-  --         },
-  --         FlashLabel = {
-  --           bg = colors.faded_blue,
-  --           fg = colors.light1,
-  --         },
-  --         FlashBackdrop = {
-  --           fg = colors.faded_green,
   --         },
   --       },
   --     }
   --   end,
   -- },
+  {
+    "ellisonleao/gruvbox.nvim",
+    opts = function()
+      local colors = require("gruvbox").palette
+      -- vim.o.background = "dark"
+
+      return {
+        contrast = "hard",
+        overrides = {
+          LineNr = {
+            fg = colors.bright_orange,
+            bg = "none",
+          },
+          LineNrAbove = {
+            fg = colors.light_green_soft,
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = colors.light_green_soft,
+            bg = "none",
+          },
+          FlashLabel = {
+            bg = colors.faded_blue,
+            fg = colors.light1,
+          },
+          FlashBackdrop = {
+            fg = colors.faded_green,
+          },
+        },
+      }
+    end,
+  },
   -- {
   --   "nyoom-engineering/oxocarbon.nvim",
   --   config = function() end,
