@@ -1,14 +1,14 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        gdscript = {
-          cmd = { "ncat", "127.0.0.1", "6005" },
-        },
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       gdscript = {
+  --         cmd = { "ncat", "127.0.0.1", "6005" },
+  --       },
+  --     },
+  --   },
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -17,11 +17,9 @@ return {
       })
     end,
   },
-
   {
     "stevearc/conform.nvim",
     opts = {
-      -- Define your formatters
       formatters_by_ft = {
         gdscript = { "gdformat" },
       },
