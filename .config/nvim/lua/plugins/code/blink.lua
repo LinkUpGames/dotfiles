@@ -12,6 +12,15 @@ return {
           border = "rounded",
         },
       },
+      ghost_text = {
+        enabled = true,
+      },
+      list = {
+        selection = {
+          preselect = true, -- I want to know how this goes with the goes text
+          auto_insert = false,
+        },
+      },
     },
     sources = {
       min_keyword_length = function(ctx)
