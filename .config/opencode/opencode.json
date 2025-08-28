@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "google/gemini-2.5-pro",
+  "model": "google/gemini-2.5flash",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -13,12 +13,10 @@
           "tool_call": false,
           "reasoning": false
         },
-        "gpt-oss:latest": {
-          "name": "Open AI",
-          "tool_call": true,
-          "reasoning": true
-        }
       }
     }
+  },
+  "keybinds": {
+    "leader": "ctrl+s"
   }
 }
