@@ -35,6 +35,27 @@ return {
       ---@type ([string, string])[]
       local res = {}
 
+      ---Create a symbol
+      ---@param icon string
+      ---@param text? string
+      local create_symbol = function(icon, text)
+        if #res > 0 then
+          table.insert(res, { " ", "NonText" })
+        end
+
+        local round_start = { "", "SymbolUsageRounding" }
+        local round_end = { "", "SymbolUsageRounding" }
+
+        table.insert(res, round_start)
+        table.insert(res, { icon, "SymbolUsageRef" })
+
+        if text ~= nil then
+          table.insert(res, { text, "SymbolUsageContent" })
+        end
+
+        table.insert(res, round_end)
+      end
+
       local round_start = { "", "SymbolUsageRounding" }
       local round_end = { "", "SymbolUsageRounding" }
 
@@ -43,49 +64,21 @@ return {
 
       -- References
       if symbol.references then
-        local usage = symbol.references <= 1 and "usage" or "usages"
-        local num = symbol.references == 0 and "no" or symbol.references
-
-        table.insert(res, round_start)
-        table.insert(res, { " ", "SymbolUsageRef" })
-        table.insert(res, { ("%s %s"):format(num, usage), "SymbolUsageContent" })
-        table.insert(res, round_end)
+        create_symbol(" ", tostring(symbol.references))
       end
 
       -- Definition
       if symbol.definition then
-        -- Check if we are the first
-        if #res > 0 then
-          table.insert(res, { " ", "NonText" })
-        end
-
-        table.insert(res, round_start)
-        table.insert(res, { "󰳽", "SymbolUsageDef" })
-        table.insert(res, { symbol.definition .. " defs", "SymbolUsageContent" })
-        table.insert(res, round_end)
+        create_symbol("󰳽", tostring(symbol.definition))
       end
 
       -- Implementation
       if symbol.implementation then
-        if #res > 0 then
-          table.insert(res, { " ", "NonText" })
-        end
-
-        table.insert(res, round_start)
-        table.insert(res, { "󰡱", "SymbolUsageImpl" })
-        table.insert(res, { symbol.implementation .. " impls", "SymbolUsageImpl" })
-        table.insert(res, round_end)
+        create_symbol("󰡱", tostring(symbol.implementation))
       end
 
       if stacked_functions_content ~= "" then
-        if #res > 0 then
-          table.insert(res, { " ", "NonText" })
-        end
-
-        table.insert(res, round_start)
-        table.insert(res, { "", "SymbolUsageImpl" })
-        table.insert(res, { stacked_functions_content, "SymbolUsageContent" })
-        table.insert(res, round_end)
+        create_symbol("", stacked_functions_content)
       end
 
       return res
