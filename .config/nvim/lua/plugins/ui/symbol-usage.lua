@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
 })
 
 return {
-  "Wansmer/symbol-usage.nvim",
+  "LinkUpGames/symbol-usage.nvim",
   events = "LspAttach",
   opts = function()
     ---Format symbol to display nicely
@@ -56,9 +56,6 @@ return {
         table.insert(res, round_end)
       end
 
-      local round_start = { "", "SymbolUsageRounding" }
-      local round_end = { "", "SymbolUsageRounding" }
-
       -- Indicator that shows if there are any other symbols in the same line
       local stacked_functions_content = symbol.stacked_count > 0 and ("+%s"):format(symbol.stacked_count) or ""
 
@@ -86,6 +83,11 @@ return {
 
     return {
       text_format = text_format,
+      definition = { enabled = true },
+      implementation = {
+        enabled = true,
+      },
+      overflow = "scroll",
     }
   end,
 }
