@@ -65,17 +65,17 @@ return {
       end
 
       -- Definition
-      if symbol.definition then
-        create_symbol("󰳽", tostring(symbol.definition))
+      if symbol.definition ~= nil and symbol.definition > 1 then
+        create_symbol("󰳽 ", tostring(symbol.definition))
       end
 
       -- Implementation
       if symbol.implementation then
-        create_symbol("󰡱", tostring(symbol.implementation))
+        create_symbol("󰡱 ", tostring(symbol.implementation))
       end
 
       if stacked_functions_content ~= "" then
-        create_symbol("", stacked_functions_content)
+        create_symbol(" ", stacked_functions_content)
       end
 
       return res
@@ -84,10 +84,8 @@ return {
     return {
       text_format = text_format,
       definition = { enabled = true },
-      implementation = {
-        enabled = true,
-      },
       overflow = "scroll",
+      request_pending_text = { { "", "SymbolUsageContent" } },
     }
   end,
 }
