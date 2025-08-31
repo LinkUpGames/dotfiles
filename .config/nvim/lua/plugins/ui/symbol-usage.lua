@@ -85,7 +85,11 @@ return {
       text_format = text_format,
       definition = { enabled = true },
       overflow = "scroll",
-      request_pending_text = { { "", "SymbolUsageContent" } },
+      request_pending_text = {
+        { "", "SymbolUsageRounding" },
+        { "", "SymbolUsageContent" },
+        { "", "SymbolUsageRounding" },
+      },
     }
   end,
 }
