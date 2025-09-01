@@ -1,20 +1,18 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+-- Map leader
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
+-- Term gui colors
 vim.o.termguicolors = true
 vim.o.clipboard = "unnamedplus"
 vim.o.background = "dark"
 
+-- Blinking Cursor
 local old_guicursor = vim.o.guicursor
-
-vim.g.mapleader = " "
 vim.o.guicursor = old_guicursor .. ",n-v-c:block-blinkon700-blinkoff400,i-ci-ve:ver25-blinkon700-blinkoff400"
 
 -- Setup The column
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-
-vim.o.cursorline = false
 
 -- Copy/Paste
 local paste = function()
@@ -24,6 +22,7 @@ local paste = function()
   }
 end
 
+-- Clipboard update
 vim.g.clipboard = {
   name = "OSC 52",
   copy = {
@@ -46,3 +45,43 @@ if vim.g.neovide then
   vim.g.neovide_show_border = true
   vim.g.neovide_normal_opacity = 0.8
 end
+
+-- General settings
+local opt = vim.opt
+opt.autowrite = true
+opt.cursorline = false
+opt.jumpoptions = "view"
+opt.number = true
+opt.relativenumber = true
+opt.ruler = false
+opt.scrolloff = 4
+opt.linebreak = true
+opt.foldlevel = 99
+opt.list = true
+opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
+opt.signcolumn = "yes"
+opt.smartcase = true
+opt.smartindent = true
+opt.spelllang = { "en" }
+opt.splitbelow = true -- Put new windows below current
+opt.splitkeep = "screen"
+opt.splitright = true -- Put new windows right of current
+-- opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+opt.tabstop = 2 -- Number of spaces tabs count for
+opt.termguicolors = true -- True color support
+opt.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200 -- Save swap file and trigger CursorHold
+opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
+opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.winminwidth = 5 -- Minimum window width
+opt.wrap = false -- Disable line wrap
+opt.smoothscroll = true
