@@ -17,3 +17,4 @@ keymap.set("n", "<C-a>", "gg<S-v>G", opts)
 keymap.set("n", "<Tab>", "<Tab>", opts) -- Remap tab to itself
 keymap.set("i", "<C-BS>", "<C-W>", opts) -- Delete words with backspace
 keymap.set("i", "<C-l>", "<Del>", opts) -- Forward delete character
+

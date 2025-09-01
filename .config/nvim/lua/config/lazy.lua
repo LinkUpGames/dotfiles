@@ -5,34 +5,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   -- stylua: ignore
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
-vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- Language Imports
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.clangd" },
-    { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.java" },
-    -- { import = "lazyvim.plugins.extras.lang.omnisharp" },
-    -- { import = "lazyvim.plugins.extras.lang.markdown" },
-    -- { import = "lazyvim.plugins.extras.lang.json" },
-
-    -- Coding UI
-
-    -- import/override with your plugins
-
     -- Import Custom Plugin Settings
     { import = "plugins" },
-    { import = "plugins.lang" },
-    { import = "plugins.ui" },
-    { import = "plugins.code" },
-    { import = "plugins.misc" },
-    { import = "plugins.extras" },
-    { import = "plugins.temp" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

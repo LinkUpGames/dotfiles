@@ -16,9 +16,6 @@ vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
 vim.o.cursorline = false
 
--- Lazy vim options
-vim.g.lazyvim_picker = "snacks"
-
 -- Copy/Paste
 local paste = function()
   return {
