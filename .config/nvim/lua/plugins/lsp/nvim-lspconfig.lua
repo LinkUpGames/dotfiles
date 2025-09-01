@@ -105,9 +105,25 @@ return {
           mode = mode or "n"
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
-      end,
-    })
 
-    -- Diagnostics signs
+        -- Rename the variable under the cursor
+        map("cr", vim.lsp.buf.rename, "[R]e[n]ame")
+
+        -- Execute a code action
+        map("cA", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+
+        -- Go to references
+        map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+
+        -- Go to type definitions
+        map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+
+        -- Diagnostics Signs
+        if type(opts.diagnostics.signs) ~= "boolean" then
+        end
+      end,
+
+      -- Get blink capabilities
+    })
   end,
 }
