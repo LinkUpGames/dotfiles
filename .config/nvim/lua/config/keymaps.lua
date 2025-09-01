@@ -28,6 +28,9 @@ map("n", "-", "<C-x>", opts)
 -- Better Leave
 map("i", "jk", "<Esc>", opts) -- exit insert mode
 
+-- Quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+
 -- Select All
 map("n", "<C-a>", "gg<S-v>G", opts)
 
