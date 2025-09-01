@@ -77,6 +77,7 @@ opt.splitright = true -- Put new windows right of current
 opt.tabstop = 2 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
+opt.timeout = false -- Indefinite chord time
 opt.undofile = true
 opt.undolevels = 10000
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
