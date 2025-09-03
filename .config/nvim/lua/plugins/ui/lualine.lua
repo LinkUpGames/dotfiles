@@ -68,10 +68,15 @@ return {
 
     -- Icons
     local icons = {
-      something = "󰘭",
       separators = {
         filled = { right = "", left = "" },
         outline = { right = "", left = "" },
+      },
+      diagnostics = {
+        error = " ",
+        warn = " ",
+        info = " ",
+        hint = " ",
       },
     }
 
@@ -89,7 +94,18 @@ return {
       sections = {
         lualine_a = { { "mode", icon = "" } },
         lualine_b = { "branch" },
-        lualine_c = { root_dir_component(), { "diagnostics" } },
+        lualine_c = {
+          root_dir_component(),
+          {
+            "diagnostics",
+            symbols = {
+              error = icons.diagnostics.error,
+              warn = icons.diagnostics.error,
+              info = icons.diagnostics.info,
+              hint = icons.diagnostics.hint,
+            },
+          },
+        },
       },
     }
 
