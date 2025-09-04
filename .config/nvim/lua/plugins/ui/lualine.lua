@@ -78,6 +78,11 @@ return {
         info = " ",
         hint = " ",
       },
+      git = {
+        added = " ",
+        modified = " ",
+        removed = " ",
+      },
     }
 
     -- Update lualine
@@ -105,10 +110,88 @@ return {
               hint = icons.diagnostics.hint,
             },
           },
+          {
+            "filetype",
+            icon_only = true,
+            separator = "",
+            padding = {
+              left = 1,
+              right = 0,
+            },
+            cond = function()
+              local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+              return #buffers == 1
+            end,
+          },
+          {
+            "filename",
+            file_status = true,
+            path = 0,
+            symbols = {
+              modified = "[]",
+              readonly = "[󰌾]",
+              unnamed = "[No Name]",
+              newfile = "[]",
+            },
+            cond = function()
+              local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+              return #buffers <= 1
+            end,
+          },
+        },
+        lualine_x = {
+          Snacks.profiler.status(),
+          {
+            require("lazy.status").updates,
+            cond = require("lazy.status").has_updates,
+            color = function()
+              return {
+                fg = Snacks.util.color("Special"),
+              }
+            end,
+          },
+          {
+            "diff",
+            symbols = {
+              added = icons.git.added,
+              modified = icons.git.modified,
+              removed = icons.git.removed,
+            },
+            source = function()
+              local gitsigns = vim.b.gitsigns_status_dict
+
+              -- Check for diff and changes
+              if gitsigns then
+                return {
+                  added = gitsigns.added,
+                  modified = gitsigns.changed,
+                  removed = gitsigns.removed,
+                }
+              end
+            end,
+          },
+        },
+        lualine_y = {
+          { "location", padding = {
+            left = 0,
+            right = 1,
+          } },
+        },
+        lualine_z = {
+
+          function()
+            return " " .. os.date("%I:%M %p")
+          end,
         },
       },
+      extensions = { "neo-tree", "lazy", "fzf" },
     }
 
     return opts
   end,
+  opts_extend = {
+    "extensions",
+  },
 }

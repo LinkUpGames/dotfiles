@@ -1,11 +1,13 @@
+local opt = vim.opt
+
 -- Map leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Term gui colors
-vim.o.termguicolors = true
-vim.o.clipboard = "unnamedplus"
-vim.o.background = "dark"
+opt.termguicolors = true
+opt.clipboard = "unnamedplus"
+opt.background = "dark"
 
 -- Blinking Cursor
 local old_guicursor = vim.o.guicursor
@@ -47,9 +49,14 @@ if vim.g.neovide then
 end
 
 -- General settings
-local opt = vim.opt
-opt.autowrite = true
-opt.cursorline = false
+
+opt.autowrite = true -- Enable auto write
+opt.cursorline = false -- No cursor line
+opt.expandtab = true -- Use spaces instead of tabs
+
+opt.ignorecase = true
+opt.laststatus = 3
+
 opt.jumpoptions = "view"
 opt.number = true
 opt.relativenumber = true
@@ -66,6 +73,7 @@ opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
+opt.showmode = false -- replaced by status line
 opt.signcolumn = "yes"
 opt.smartcase = true
 opt.smartindent = true
@@ -73,7 +81,7 @@ opt.spelllang = { "en" }
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
--- opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 opt.tabstop = 2 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
