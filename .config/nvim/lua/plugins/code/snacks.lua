@@ -17,7 +17,9 @@ Marcos Cevallos
 Development
    ]]
 
+    ---@type snacks.Config
     return {
+      animate = {},
       dashboard = {
         enabled = true,
         pane_gap = 1,
