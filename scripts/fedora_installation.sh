@@ -87,4 +87,8 @@ cd dotfiles
 
 stow .
 
-echo "Installation Complete! - Append "profile.zsh" to your shell and restart the shell in order for everything to take effect"
+echo "Installation Complete! - Append "profile.zsh" to your shell and restart the shell in order for everything to take effect like this:
+if [ -f "$HOME/profile.zsh" ]; then
+  source "$HOME/profile.zsh"
+fi
+"
