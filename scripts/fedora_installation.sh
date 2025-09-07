@@ -46,6 +46,9 @@ echo $password | sudo dnf install eza -y
 echo $password | sudo dnf copr enable atim/lazygit -y
 echo $password | sudo dnf install lazygit -y
 
+# Duf
+echo $password | sudo dnf install duf -y
+
 # bat
 echo $password | sudo dnf install bat -y
 
