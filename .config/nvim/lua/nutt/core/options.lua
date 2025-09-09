@@ -18,7 +18,7 @@ opt.shiftround = true
 opt.wrap = false
 opt.undofile = true
 opt.tabstop = 2
-opt.timeoutlen = 300
+opt.timeoutlen = 500
 opt.smoothscroll = true
 opt.autoindent = true
 
