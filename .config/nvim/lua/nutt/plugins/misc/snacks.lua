@@ -65,6 +65,7 @@ Development
 			scroll = {
 				enabled = true,
 			},
+
 			picker = {
 				layout = {
 					preset = function()
