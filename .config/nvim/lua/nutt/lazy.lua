@@ -21,6 +21,7 @@ require("lazy").setup({
 		-- import your plugins
 		{ import = "nutt.plugins" },
 		{ import = "nutt.plugins.ui" },
+		{ import = "nutt.plugins.code" },
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
