@@ -125,6 +125,42 @@ Development
 				mode = { "n" },
 				desc = "Open the file explorer",
 			},
+			-- Picker
+			{
+				"<leader>,",
+				function()
+					require("snacks").picker.buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<leader>/",
+				function()
+					require("snacks").picker.grep()
+				end,
+				desc = "Grep (Root Dir)",
+			},
+			{
+				"<leader>:",
+				function()
+					require("snacks").picker.command_history()
+				end,
+				desc = "Command History",
+			},
+			{
+				"<leader><space>",
+				function()
+					require("snacks").picker.files()
+				end,
+				desc = "Find Files (Root Dir)",
+			},
+			{
+				"<leader>n",
+				function()
+					require("snacks").picker.notifications()
+				end,
+				desc = "Notification History",
+			},
 		},
 	},
 }
