@@ -100,3 +100,6 @@ end, { expr = true, desc = "Escape and Clear hlsearch" })
 -- Increment/Decrement Numbers
 map("n", "<leader>+", "<C-a>", { desc = "Increment Number" })
 map("n", "<leader>+", "<C-x>", { desc = "Decrement Number" })
+
+-- Lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Open Lazy 󰒲" })
