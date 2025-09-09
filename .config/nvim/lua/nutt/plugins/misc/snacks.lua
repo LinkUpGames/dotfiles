@@ -115,5 +115,16 @@ Development
 				},
 			},
 		},
+		keys = {
+			{
+				"<leader>E",
+				function()
+					local snacks = require("snacks")
+					snacks.picker.explorer()
+				end,
+				mode = { "n" },
+				desc = "Open the file explorer",
+			},
+		},
 	},
 }
