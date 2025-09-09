@@ -1,5 +1,7 @@
 return {
 	{
+		lazy = false,
+		priority = 1000,
 		"folke/snacks.nvim",
 		---@type snacks.Config
 		opts = {
