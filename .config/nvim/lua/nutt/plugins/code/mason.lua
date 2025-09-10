@@ -1,8 +1,5 @@
 return {
 	"mason-org/mason.nvim",
-	dependencies = {
-		"mason-org/mason-lspconfig.nvim",
-	},
 	cmd = "Mason",
 	build = ":MasonUpdate",
 	keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -13,28 +10,38 @@ return {
 			"shfmt",
 		},
 	},
+	---@param opts MasonSettings | {ensure_installed: string[]}
 	config = function(_, opts)
-		require("mason").setup(opts)
+		local status, mason, mr
 
-		local mr = require("mason-registry")
+		-- Check Mason
+		status, mason = pcall(require, "mason")
 
-		mr:on("package:install:success", function()
-			vim.defer_fn(function()
-				-- trigger FileType event to possibly load this newly installed LSP server
-				require("lazy.core.handler.event").trigger({
-					event = "FileType",
-					buf = vim.api.nvim_get_current_buf(),
-				})
-			end, 100)
-		end)
+		if status then
+			mason.setup(opts)
+		end
 
-		mr.refresh(function()
-			for _, tool in ipairs(opts.ensure_installed) do
-				local p = mr.get_package(tool)
-				if not p:is_installed() then
-					p:install()
+		-- Check mason Registry
+		status, mr = pcall(require, "mason-registry")
+		if status then
+			mr:on("package:install:success", function()
+				vim.defer_fn(function()
+					-- trigger FileType event to possibly load this newly installed LSP server
+					require("lazy.core.handler.event").trigger({
+						event = "FileType",
+						buf = vim.api.nvim_get_current_buf(),
+					})
+				end, 100)
+			end)
+
+			mr.refresh(function()
+				for _, tool in ipairs(opts.ensure_installed) do
+					local p = mr.get_package(tool)
+					if not p:is_installed() then
+						p:install()
+					end
 				end
-			end
-		end)
+			end)
+		end
 	end,
 }
