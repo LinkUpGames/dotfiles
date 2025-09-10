@@ -1,5 +1,12 @@
 local opt = vim.opt
 
+-- Cursor
+local old_guicursor = vim.o.guicursor
+vim.o.guicursor = old_guicursor .. ",n-v-c:block-blinkon700-blinkoff400,i-ci-ve:ver25-blinkon700-blinkoff400"
+
+-- Setup The column
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+
 -- Sign Column
 opt.relativenumber = true
 opt.number = true
@@ -63,3 +70,35 @@ opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
+
+-- Copy/Paste
+local paste = function()
+	return {
+		vim.fn.split(vim.fn.getreg(""), "\n"),
+		vim.fn.getregtype(""),
+	}
+end
+
+-- Clipboard
+vim.g.clipboard = {
+	name = "OSC 52",
+	copy = {
+
+		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+		["-"] = require("vim.ui.clipboard.osc52").copy("-"),
+	},
+	paste = {
+		["+"] = paste,
+		["-"] = paste,
+	},
+}
+
+-- Neovide
+if vim.g.neovide then
+	vim.o.guifont = "JetBrainsMono Nerd Font Mono"
+
+	vim.g.neovide_window_blurred = true
+	vim.g.neovide_opacity = 0.5
+	vim.g.neovide_show_border = true
+	vim.g.neovide_normal_opacity = 0.8
+end

@@ -23,4 +23,14 @@ return {
 			lsp_doc_border = false, -- add a border to hover docs and signature help
 		},
 	},
+	keys = {
+		{ "<leader>sn", "", desc = "+noice" },
+		{
+			"<leader>snh",
+			function()
+				require("noice").cmd("history")
+			end,
+			desc = "Noice History",
+		},
+	},
 }
