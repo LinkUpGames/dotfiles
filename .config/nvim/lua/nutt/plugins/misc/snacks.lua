@@ -1,4 +1,5 @@
 return {
+	-- Snacks
 	{
 		lazy = false,
 		priority = 1000,
@@ -166,5 +167,47 @@ Development
 				desc = "Notification History",
 			},
 		},
+	},
+
+	-- Lualine
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = function(_, opts)
+			local explorer = {
+				sections = {
+					lualine_a = {
+						{
+							function()
+								return " Explorer"
+							end,
+							separator = {
+								left = "",
+								right = "",
+							},
+						},
+					},
+					lualine_b = { "branch" },
+					lualine_z = {
+						{
+							function()
+								return " " .. os.date("%I:%M %p")
+							end,
+							separator = {
+								left = "",
+								right = "",
+							},
+						},
+					},
+				},
+				filetypes = {
+					"snacks_picker_list",
+				},
+			}
+
+			opts.extensions = opts.extensions or {}
+			table.insert(opts.extensions, explorer)
+
+			return opts
+		end,
 	},
 }
