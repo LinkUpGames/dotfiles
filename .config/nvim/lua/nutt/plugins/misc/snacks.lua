@@ -67,7 +67,9 @@ Development
 			scroll = {
 				enabled = true,
 			},
-
+			notifier = {
+				enabled = true,
+			},
 			picker = {
 				layout = {
 					preset = function()
