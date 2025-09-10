@@ -9,6 +9,56 @@ return {
 	opts = function()
 		---@class Settings
 		local settings = {
+			--- Diagnostic Options
+			---@type vim.diagnostic.Opts
+			diagnostics = {
+				underline = true,
+				severity_sort = true,
+				virtual_lines = {
+					current_line = false,
+					prefix = "●",
+					severity = {
+						min = vim.diagnostic.severity.ERROR,
+					},
+				},
+				virtual_text = {
+					max = vim.diagnostic.severity.WARN,
+					spacing = 4,
+					source = "if_many",
+					prefix = "●",
+				},
+				signs = {
+					numhl = {
+						[vim.diagnostic.severity.WARN] = "WarningMsg",
+						[vim.diagnostic.severity.ERROR] = "ErrorMsg",
+						[vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+						[vim.diagnostic.severity.HINT] = "DiagnosticHint",
+					},
+					text = {
+						[vim.diagnostic.severity.WARN] = " ",
+						[vim.diagnostic.severity.ERROR] = " ",
+						[vim.diagnostic.severity.INFO] = " ",
+						[vim.diagnostic.severity.HINT] = " ",
+					},
+				},
+			},
+
+			-- Inlay Hints
+			inlay_hints = {
+				enabled = true,
+				exclude = { "vue" },
+			},
+
+			-- Codelens
+			codelens = {
+				enabled = false,
+			},
+
+			-- Format
+			format = {
+				formatting_options = nil,
+				timeout_ms = nil,
+			},
 
 			-- Global capabilities
 			capabilities = {
