@@ -36,6 +36,9 @@ echo $password | sudo dnf install neovim -y
 # fzf
 echo $password | sudo dnf install fzf -y
 
+# restec
+echo $password | sudo dnf install restic -y
+
 # fd-find
 echo $password | sudo dnf install fd-find -y
 
