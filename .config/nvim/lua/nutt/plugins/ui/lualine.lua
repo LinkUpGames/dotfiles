@@ -172,6 +172,34 @@ return {
 					},
 				},
 			},
+			tabline = {
+				lualine_a = {
+					{
+						"buffers",
+						separator = { left = "", right = "" },
+						right_padding = 2,
+						symbols = { alternate_file = "" },
+						max_length = vim.o.columns * (9 / 10),
+						use_mode_colors = true,
+						filetype_names = {
+							snacks_picker_input = "󰍉 Picker",
+							snacks_picker_list = " Explorer",
+							codecompanion = "󱚣 AI Chat",
+						},
+					},
+				},
+				lualine_z = {
+					{
+						"tabs",
+						separator = { left = "", right = "" },
+						cond = function()
+							local tabs = vim.api.nvim_list_tabpages()
+
+							return #tabs >= 2
+						end,
+					},
+				},
+			},
 			extensions = { "neo-tree", "lazy", "fzf" },
 		}
 
