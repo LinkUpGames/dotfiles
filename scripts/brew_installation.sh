@@ -38,6 +38,9 @@ brew install csvlens
 # fd-find
 brew install fd
 
+# Restic
+brew install restic
+
 # nvm
 brew install nvm
 
