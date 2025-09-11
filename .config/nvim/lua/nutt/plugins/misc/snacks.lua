@@ -208,7 +208,7 @@ Development
 			opts.extensions = opts.extensions or {}
 			table.insert(opts.extensions, explorer)
 
-			-- vim.print("Snacks: " .. vim.inspect(opts.extensions))
+			vim.print("Snacks: " .. vim.inspect(opts.extensions))
 
 			return opts
 		end,

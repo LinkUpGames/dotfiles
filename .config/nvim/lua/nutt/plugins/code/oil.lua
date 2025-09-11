@@ -1,4 +1,5 @@
 return {
+	-- Oil
 	{ -- cmd = "Oil",
 		lazy = false,
 		"stevearc/oil.nvim",
@@ -44,5 +45,66 @@ return {
 				desc = "Open current directory",
 			},
 		},
+	},
+
+	-- Lualine
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = function(_, opts)
+			-- Add the oil extension
+			local oil = {
+				sections = {
+					lualine_a = {
+						{
+							function()
+								return " OIL"
+							end,
+							separator = {
+								left = "",
+								right = "",
+							},
+						},
+					},
+					lualine_b = {
+						{
+							function()
+								local ok, oil = pcall(require, "oil")
+
+								-- Load oil file
+								if ok then
+									---@diagnostic disable-next-line: param-type-mismatch
+									return " " .. vim.fn.fnamemodify(oil.get_current_dir(), ":~")
+								else
+									return "ERROR"
+								end
+							end,
+							separator = {
+								left = "",
+								right = "",
+							},
+						},
+					},
+					lualine_z = {
+						{
+							function()
+								return " " .. os.date("%I:%M %p")
+							end,
+							separator = {
+								left = "",
+								right = "",
+							},
+						},
+					},
+				},
+				filetypes = {
+					"oil",
+				},
+			}
+
+			opts.extensions = opts.extensions or {}
+			table.insert(opts.extensions, oil)
+
+			return opts
+		end,
 	},
 }

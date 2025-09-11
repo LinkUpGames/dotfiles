@@ -171,11 +171,11 @@ return {
 					},
 				},
 			},
-			extensions = { "neo-tree", "lazy", "fzf" },
+			-- extensions = { "neo-tree", "lazy", "fzf" },
 		}
 
 		-- Add the extensions over
-		vim.list_extend(res, opts.extensions or {})
+		-- vim.list_extend(res, opts.extensions or {})
 
 		return res
 	end,
