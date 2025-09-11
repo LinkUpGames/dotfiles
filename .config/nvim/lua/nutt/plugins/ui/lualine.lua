@@ -71,11 +71,11 @@ return {
 			vim.o.laststatus = 0
 		end
 	end,
-	opts = function()
+	opts = function(_, opts)
 		local lualine_require = require("lualine_require")
 		lualine_require.require = require
 
-		local opts = {
+		local res = {
 			options = {
 				component_separators = {
 					left = "",
@@ -91,10 +91,92 @@ return {
 					},
 				},
 			},
+			sections = {
+				lualine_a = {
+					{
+						"mode",
+						icon = "󱇪",
+						separator = {
+							left = "",
+							right = "",
+						},
+					},
+				},
+				lualine_b = {
+					"branch",
+				},
+				lualine_c = {
+					{
+						function()
+							return "󱉭 " .. "Todo"
+						end,
+						color = function()
+							local status, snacks = pcall(require, "snacks")
+							local color = "Comment"
+
+							if status then
+								color = snacks.util.color("Special")
+							end
+
+							return { fg = color }
+						end,
+					},
+					{
+						"diagnostics",
+						symbols = {
+							error = " ",
+							warn = " ",
+							hint = " ",
+							info = " ",
+						},
+					},
+					{
+						"filetype",
+						separator = "",
+						icon_only = true,
+						padding = {
+							left = 1,
+							right = 0,
+						},
+						cond = function()
+							local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+							return #buffers == 1
+						end,
+					},
+					{
+						"filename",
+						file_status = true,
+						path = 0,
+						symbols = {
+							modified = "[]",
+							readonly = "[󰌾]",
+							unnamed = "[No Name]",
+							newfile = "[]",
+						},
+						cond = function()
+							local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+							return #buffers <= 1
+						end,
+					},
+				},
+				lualine_y = {
+					{
+						"location",
+						padding = {
+							left = 0,
+							right = 1,
+						},
+					},
+				},
+			},
 			extensions = { "neo-tree", "lazy", "fzf" },
 		}
 
-		return opts
+		-- Add the extensions over
+		vim.list_extend(res, opts.extensions or {})
+
+		return res
 	end,
-	opts_extend = { "extensions" },
 }

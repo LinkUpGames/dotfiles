@@ -23,6 +23,13 @@ return {
 			lsp_doc_border = false, -- add a border to hover docs and signature help
 		},
 	},
+	config = function(_, opts)
+		if vim.o.filetype == "lazy" then
+			vim.cmd([[messages clear]])
+		end
+
+		require("noice").setup(opts)
+	end,
 	keys = {
 		{ "<leader>sn", "", desc = "+noice" },
 		{

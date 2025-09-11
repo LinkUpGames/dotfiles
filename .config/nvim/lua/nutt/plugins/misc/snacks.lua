@@ -172,6 +172,7 @@ Development
 	-- Lualine
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
 		opts = function(_, opts)
 			local explorer = {
 				sections = {
@@ -206,6 +207,8 @@ Development
 
 			opts.extensions = opts.extensions or {}
 			table.insert(opts.extensions, explorer)
+
+			-- vim.print("Snacks: " .. vim.inspect(opts.extensions))
 
 			return opts
 		end,
