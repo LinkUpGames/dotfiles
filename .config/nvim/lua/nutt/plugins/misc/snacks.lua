@@ -130,6 +130,7 @@ Development
 				mode = { "n" },
 				desc = "Open the file explorer",
 			},
+
 			-- Picker
 			{
 				"<leader>,",
@@ -165,6 +166,18 @@ Development
 					require("snacks").picker.notifications()
 				end,
 				desc = "Notification History",
+			},
+
+			-- Buffer
+			{
+				"<S-h>",
+				"<cmd>bprevious<cr>",
+				{ desc = "Prev Buffer", mode = "n" },
+			},
+			{
+				"<S-l>",
+				"<cmd>bnext<cr>",
+				{ desc = "Next Buffer", mode = "n" },
 			},
 		},
 	},
