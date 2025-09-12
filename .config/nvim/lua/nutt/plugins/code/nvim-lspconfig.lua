@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
+		"folke/snacks.nvim",
 		"Saghen/blink.cmp",
 	},
 	opts = function()
@@ -111,7 +112,47 @@ return {
 	end,
 	---@param opts Settings
 	config = function(_, opts)
-		-- Setup keymaps
+		-- Create autocmd
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+			callback = function(event)
+				-- Key maps
+				---map a key for lsp only keybinds
+				---@param keys any
+				---@param func any
+				---@param desc any
+				---@param mode any
+				local map = function(keys, func, desc, mode)
+					mode = mode or "n"
+
+					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+				end
+
+				-- Go to defintion
+				map("gd", require("snacks").picker.lsp_definitions, "[G]oto [D]efinition")
+
+				-- Go to implementation
+				map("gi", require("snacks").picker.lsp_implementations, "[G]oto [I]mplementation")
+
+				-- Go to declaration
+				map("gD", require("snacks").picker.lsp_declarations, "[G]oto [D]eclaration")
+
+				-- Go to type defintion
+				map("gt", require("snacks").picker.lsp_type_definitions, "[G]oto [T]ype Defintion")
+
+				-- Go to references
+				map("gr", require("snacks").picker.lsp_references, "[G]oto [R]eferences")
+
+				-- Get Client Capabilities
+				---Get the capabilities of the client
+				---@param client vim.lsp.Client
+				---@param method vim.lsp.protocol.Method
+				---@param bufnr integer some lsp support methods only in specific files
+				local client_supports_method = function(client, method, bufnr)
+					return client:supports_method(method, bufnr)
+				end
+			end,
+		})
 
 		local servers = opts.servers
 		local blink = require("blink.cmp")
