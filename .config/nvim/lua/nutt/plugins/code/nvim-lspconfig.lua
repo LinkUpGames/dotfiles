@@ -17,7 +17,7 @@ return {
         severity_sort = true,
         virtual_lines = {
           current_line = false,
-          prefix = "●",
+          prefix = "● ",
           severity = {
             min = vim.diagnostic.severity.ERROR,
           },
@@ -201,6 +201,7 @@ return {
             end
           end
         end
+
         vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
       end,
     })
