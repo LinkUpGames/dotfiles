@@ -62,6 +62,9 @@ Development
           only_current = true,
         },
       },
+      scope = {
+        enabled = true,
+      },
       toggle = {
         enabled = true,
       },
