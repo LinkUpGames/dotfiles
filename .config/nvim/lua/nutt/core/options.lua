@@ -81,18 +81,18 @@ local paste = function()
 end
 
 -- Clipboard
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["-"] = require("vim.ui.clipboard.osc52").copy("-"),
-  },
-  paste = {
-    ["+"] = paste,
-    ["-"] = paste,
-  },
-}
+-- vim.g.clipboard = {
+--   name = "OSC 52",
+--   copy = {
+--
+--     ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+--     ["-"] = require("vim.ui.clipboard.osc52").copy("-"),
+--   },
+--   paste = {
+--     ["+"] = paste,
+--     ["-"] = paste,
+--   },
+-- }
 
 -- Neovide
 if vim.g.neovide then
