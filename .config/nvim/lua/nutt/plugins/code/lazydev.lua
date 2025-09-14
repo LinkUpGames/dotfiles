@@ -14,7 +14,7 @@ return {
   {
     "saghen/blink.cmp",
     opts = function(_, opts)
-      local defaults = opts.sources.default or {}
+      local defaults = opts and opts.sources and opts.sources.default or {}
       table.insert(defaults, "lazydev")
 
       local source = {
