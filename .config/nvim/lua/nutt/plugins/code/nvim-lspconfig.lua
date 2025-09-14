@@ -181,29 +181,29 @@ return {
             })
           end
         end
+
+        -- Diagnostic Config
+        if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
+          opts.diagnostics.virtual_text.prefix = function(diagnostic)
+            local icons = {
+              Error = " ",
+              Warn = " ",
+              Hint = " ",
+              Info = " ",
+            }
+
+            for d, icon in pairs(icons) do
+              if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+                return icon
+              end
+
+              return "● "
+            end
+          end
+        end
+        vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
       end,
     })
-
-    -- Diagnostic Config
-    if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-      opts.diagnostics.virtual_text.prefix = function(diagnostic)
-        local icons = {
-          Error = " ",
-          Warn = " ",
-          Hint = " ",
-          Info = " ",
-        }
-
-        for d, icon in pairs(icons) do
-          if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-            return icon
-          end
-
-          return "● "
-        end
-      end
-    end
-    vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
     local servers = opts.servers
     local blink = require("blink.cmp")
