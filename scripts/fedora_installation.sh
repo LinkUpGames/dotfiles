@@ -36,6 +36,9 @@ echo $password | sudo dnf install neovim -y
 # fzf
 echo $password | sudo dnf install fzf -y
 
+# restec
+echo $password | sudo dnf install restic -y
+
 # fd-find
 echo $password | sudo dnf install fd-find -y
 
@@ -45,6 +48,9 @@ echo $password | sudo dnf install eza -y
 # lazygit
 echo $password | sudo dnf copr enable atim/lazygit -y
 echo $password | sudo dnf install lazygit -y
+
+# Duf
+echo $password | sudo dnf install duf -y
 
 # bat
 echo $password | sudo dnf install bat -y
@@ -87,4 +93,8 @@ cd dotfiles
 
 stow .
 
-echo "Installation Complete! - Append "profile.zsh" to your shell and restart the shell in order for everything to take effect"
+echo "Installation Complete! - Append "profile.zsh" to your shell and restart the shell in order for everything to take effect like this:
+if [ -f "$HOME/profile.zsh" ]; then
+  source "$HOME/profile.zsh"
+fi
+"
