@@ -61,6 +61,10 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
+	dependencies = {
+		"folke/snacks.nvim",
+		"folke/noice.nvim",
+	},
 	init = function()
 		vim.g.lualine_laststatus = vim.o.laststatus
 		if vim.fn.argc(-1) > 0 then
@@ -162,12 +166,65 @@ return {
 						end,
 					},
 				},
+				lualine_x = {
+					-- stylua: ignore
+          {
+            function() return require("noice").api.status.command.get() end,
+            cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+            color = function() return { fg = require("snacks").util.color("Statement") } end,
+          },
+					-- stylua: ignore
+					{
+					  function() return require("noice").api.status.mode.get() end,
+					  cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+					  color = function() return { fg = require("snacks").util.color("Constant") } end,
+					},
+					{
+						require("lazy.status").updates,
+						cond = require("lazy.status").has_updates,
+						color = function()
+							return {
+								fg = require("snacks").util.color("Special"),
+							}
+						end,
+					},
+					{
+						"diff",
+						symbols = {
+							added = " ",
+							modified = " ",
+							removed = " ",
+						},
+						source = function()
+							local gitsigns = vim.b.gitsigns_status_dict
+
+							if gitsigns then
+								return {
+									added = gitsigns.added,
+									modified = gitsigns.modified,
+									removed = gitsigns.removed,
+								}
+							end
+						end,
+					},
+				},
 				lualine_y = {
 					{
 						"location",
 						padding = {
 							left = 0,
 							right = 1,
+						},
+					},
+				},
+				lualine_z = {
+					{
+						function()
+							return " " .. os.date("%I:%M %p")
+						end,
+						separator = {
+							left = "",
+							right = "",
 						},
 					},
 				},
@@ -205,6 +262,8 @@ return {
 
 		-- Add the extensions over
 		vim.list_extend(res.extensions, opts.extensions or {})
+
+		vim.print(vim.inspect(res.sections.lualine_x))
 
 		return res
 	end,

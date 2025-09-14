@@ -189,6 +189,9 @@ Development
 	-- Lualine
 	{
 		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"folke/snacks.nvim",
+		},
 		event = "VeryLazy",
 		opts = function(_, opts)
 			local explorer = {
@@ -224,6 +227,12 @@ Development
 
 			opts.extensions = opts.extensions or {}
 			table.insert(opts.extensions, explorer)
+
+			-- Insert the status
+			local lualine_x = opts.sections.lualine_x or {}
+			table.insert(lualine_x, 1, require("snacks").profiler.status())
+
+			opts.sections.lualine_x = lualine_x
 
 			return opts
 		end,
