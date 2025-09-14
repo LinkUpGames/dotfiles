@@ -263,8 +263,6 @@ return {
 		-- Add the extensions over
 		vim.list_extend(res.extensions, opts.extensions or {})
 
-		vim.print(vim.inspect(res.sections.lualine_x))
-
 		return res
 	end,
 }
