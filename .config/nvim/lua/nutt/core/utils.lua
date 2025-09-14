@@ -33,20 +33,6 @@ local M = {
   },
 }
 
----@param opts? {cwd: false, subdirectory: true, parent: true, other: true, icon?: string}
-function M.root_dir(opts)
-  opts = vim.tbl_extend("force", {
-    cwd = false,
-    subdirectory = true,
-    parent = true,
-    other = true,
-    icon = M.icons.directory.folder,
-    color = function()
-      return { fg = "#FFFFFF" }
-    end,
-  }, opts or {})
-end
-
 function M.get_root()
   local buf = 0
 
@@ -57,7 +43,16 @@ function M.get_root()
   -- Define some root patterns that we might use
   local root_patterns = {
     ".git",
+    "lua",
+    "package.json",
   }
+
+  -- Check for root pattern
+  local root = vim.fs.find(root_patterns, { upward = true, path = path })[1]
+
+  if root then
+    return vim.fs.dirname(root)
+  end
 
   -- Check Lsp for root
   for _, client in pairs(vim.lsp.get_clients({ bufnr = buf })) do
@@ -68,14 +63,18 @@ function M.get_root()
     end
   end
 
-  -- Check for root pattern
-  local root = vim.fs.find(root_patterns, { upward = true, path = path })[1]
+  return vim.uv.cwd()
+end
+
+function M.root_dir()
+  local dir = ""
+  local root = M.get_root()
 
   if root then
-    return vim.fs.dirname(root)
+    dir = vim.fs.basename(root)
   end
 
-  return vim.uv.cwd()
+  return dir
 end
 
 return M

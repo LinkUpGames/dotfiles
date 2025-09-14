@@ -113,7 +113,7 @@ return {
         lualine_c = {
           {
             function()
-              return "󱉭 " .. Utils.get_root()
+              return "󱉭 " .. Utils.root_dir()
             end,
             color = function()
               local status, snacks = pcall(require, "snacks")

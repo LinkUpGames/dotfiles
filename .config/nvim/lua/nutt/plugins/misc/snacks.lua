@@ -160,7 +160,9 @@ Development
       {
         "<leader><space>",
         function()
-          require("snacks").picker.files()
+          require("snacks").picker.files({
+            cwd = Utils.get_root(),
+          })
         end,
         desc = "Find Files (Root Dir)",
       },
