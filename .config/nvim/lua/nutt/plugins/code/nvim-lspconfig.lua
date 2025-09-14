@@ -151,6 +151,36 @@ return {
         local client_supports_method = function(client, method, bufnr)
           return client:supports_method(method, bufnr)
         end
+
+        local buf = event.buf
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+        if client then
+          -- Inlay Hints
+          if opts.inlay_hints.enabled and client_supports_method(client, "textDocument/inlayHint", buf) then
+            if
+              vim.api.nvim_buf_is_valid(buf)
+              and vim.bo[buf].buftype == ""
+              and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buf].filetype)
+            then
+              vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+            end
+          end
+
+          -- Code lens
+          if
+            opts.codelens.enabled
+            and vim.lsp.codelens
+            and client_supports_method(client, "textDocument/codeLens", buf)
+          then
+            vim.lsp.codelens.refresh()
+
+            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+              buffer = buf,
+              callback = vim.lsp.codelens.refresh,
+            })
+          end
+        end
       end,
     })
 
@@ -173,7 +203,6 @@ return {
         end
       end
     end
-
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
     local servers = opts.servers
