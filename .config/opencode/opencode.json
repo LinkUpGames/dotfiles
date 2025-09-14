@@ -19,7 +19,9 @@
   },
   "keybinds": {
     "leader": "ctrl+s",
-    "messages_page_up": "ctrl+u",
-    "messages_page_down": "ctrl+d"
+    "messages_page_up": "ctrl+b",
+    "messages_page_down": "ctrl+f",
+    "messages_half_page_up": "ctrl+u",
+    "messages_half_page_down": "ctrl+d",
   },
 }
