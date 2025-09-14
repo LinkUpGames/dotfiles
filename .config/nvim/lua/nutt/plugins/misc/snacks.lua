@@ -213,6 +213,40 @@ Development
           mode = "n",
         },
       },
+
+      -- Lazy Git
+      {
+        "<leader>gg",
+        function()
+          local root = Utils.get_root()
+
+          if vim.fn.executable("lazygit") == 1 then
+            require("snacks").lazygit({
+              cwd = root,
+            })
+          else
+            vim.notify("LazyGit is not installed!")
+          end
+        end,
+        {
+          desc = "LazyGit (Root Directory)",
+          mode = "n",
+        },
+      },
+      {
+        "<leader>gG",
+        function()
+          if vim.fn.executable("lazygit") == 1 then
+            require("snacks").lazygit()
+          else
+            vim.notify("LazyGit is not installed!")
+          end
+        end,
+        {
+          desc = "LazyGit (CWD)",
+          mode = "n",
+        },
+      },
     },
   },
 
