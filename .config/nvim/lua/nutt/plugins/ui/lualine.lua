@@ -113,7 +113,7 @@ return {
         lualine_c = {
           {
             function()
-              return "󱉭 " .. require("nutt.core.utils").get_root()
+              return "󱉭 " .. Utils.get_root()
             end,
             color = function()
               local status, snacks = pcall(require, "snacks")
@@ -126,7 +126,7 @@ return {
               return { fg = color }
             end,
             cond = function()
-              return type(require("nutt.core.utils").get_root()) == "string"
+              return type(Utils.get_root()) == "string"
             end,
           },
           {
