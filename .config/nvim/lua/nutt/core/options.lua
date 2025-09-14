@@ -22,6 +22,7 @@ opt.expandtab = true -- Use spaces
 opt.jumpoptions = "view"
 opt.smartindent = true
 opt.shiftround = true
+opt.shiftwidth = 2
 opt.wrap = false
 opt.undofile = true
 opt.tabstop = 2
