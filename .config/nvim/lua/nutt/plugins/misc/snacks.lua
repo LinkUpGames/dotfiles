@@ -62,10 +62,16 @@ Development
           only_current = true,
         },
       },
+      toggle = {
+        enabled = true,
+      },
       image = {
         enabled = true,
       },
       scroll = {
+        enabled = true,
+      },
+      input = {
         enabled = true,
       },
       notifier = {
@@ -146,7 +152,9 @@ Development
       {
         "<leader>/",
         function()
-          require("snacks").picker.grep()
+          require("snacks").picker.grep({
+            cwd = Utils.get_root(),
+          })
         end,
         desc = "Grep (Root Dir)",
       },
@@ -210,6 +218,18 @@ Development
         "<cmd>:bd<cr>",
         {
           desc = "Delete Buffer and Window",
+          mode = "n",
+        },
+      },
+
+      -- Windows
+      {
+        "<leader>wm",
+        function()
+          require("snacks").zen.zoom()
+        end,
+        {
+          desc = "Zoom Window",
           mode = "n",
         },
       },
