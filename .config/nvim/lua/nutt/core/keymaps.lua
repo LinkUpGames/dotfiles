@@ -43,10 +43,10 @@ map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", {
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
 map(
-	"n",
-	"<leader>ur",
-	"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-	{ desc = "Redraw / Clear hlsearch / Diff Update" }
+  "n",
+  "<leader>ur",
+  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+  { desc = "Redraw / Clear hlsearch / Diff Update" }
 )
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -82,8 +82,8 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader>uI", function()
-	vim.treesitter.inspect_tree()
-	vim.api.nvim_input("I")
+  vim.treesitter.inspect_tree()
+  vim.api.nvim_input("I")
 end, { desc = "Inspect Tree" })
 
 -- windows
@@ -93,8 +93,8 @@ map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 -- Clear search and stop snippet on escape
 map({ "i", "n", "s" }, "<esc>", function()
-	vim.cmd("noh")
-	return "<esc>"
+  vim.cmd("noh")
+  return "<esc>"
 end, { expr = true, desc = "Escape and Clear hlsearch" })
 
 -- Increment/Decrement Numbers
@@ -103,3 +103,20 @@ map("n", "<leader>+", "<C-x>", { desc = "Decrement Number" })
 
 -- Lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Open Lazy 󰒲" })
+
+-- Diagnostics
+local diagnostic_goto = function(next, severity)
+  local count = next and 1 or -1
+
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    vim.diagnostic.jump({ count = count, severity = severity })
+  end
+end
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
