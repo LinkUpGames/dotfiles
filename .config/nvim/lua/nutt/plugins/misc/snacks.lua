@@ -151,6 +151,7 @@ Development
           require("snacks").picker.buffers()
         end,
         desc = "Buffers",
+        mode = { "n" },
       },
       {
         "<leader>/",
@@ -189,40 +190,36 @@ Development
       {
         "<S-h>",
         "<cmd>bprevious<cr>",
-        { desc = "Prev Buffer", mode = "n" },
+        desc = "Prev Buffer",
+        mode = "n",
       },
       {
         "<S-l>",
         "<cmd>bnext<cr>",
-        { desc = "Next Buffer", mode = "n" },
+        desc = "Next Buffer",
+        mode = "n",
       },
       {
         "<leader>bo",
         function()
           require("snacks").bufdelete.other()
         end,
-        {
-          desc = "Delete Other Buffers",
-          mode = "n",
-        },
+        mode = "n",
+        desc = "Delete Other Buffers",
       },
       {
         "<leader>bd",
         function()
           require("snacks").bufdelete.delete()
         end,
-        {
-          desc = "Delete Buffer",
-          mode = "n",
-        },
+        desc = "Delete Buffer",
+        mode = "n",
       },
       {
         "<leader>bD",
         "<cmd>:bd<cr>",
-        {
-          desc = "Delete Buffer and Window",
-          mode = "n",
-        },
+        desc = "Delete Buffer and Window",
+        mode = "n",
       },
 
       -- Windows
@@ -231,10 +228,8 @@ Development
         function()
           require("snacks").zen.zoom()
         end,
-        {
-          desc = "Zoom Window",
-          mode = "n",
-        },
+        desc = "Zoom Window",
+        mode = "n",
       },
 
       -- Lazy Git
@@ -251,10 +246,8 @@ Development
             vim.notify("LazyGit is not installed!")
           end
         end,
-        {
-          desc = "LazyGit (Root Directory)",
-          mode = "n",
-        },
+        desc = "LazyGit (Root Directory)",
+        mode = "n",
       },
       {
         "<leader>gG",
@@ -265,10 +258,18 @@ Development
             vim.notify("LazyGit is not installed!")
           end
         end,
-        {
-          desc = "LazyGit (CWD)",
-          mode = "n",
-        },
+        desc = "LazyGit (CWD)",
+        mode = "n",
+      },
+
+      -- Icons
+      {
+        "<leader>si",
+        function()
+          require("snacks").picker.icons()
+        end,
+        desc = "[S]earch [I]cons",
+        mode = "n",
       },
     },
   },

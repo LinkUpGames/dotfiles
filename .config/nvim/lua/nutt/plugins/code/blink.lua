@@ -6,9 +6,7 @@ return {
     "rafamadriz/friendly-snippets",
     "folke/lazydev.nvim",
   },
-  ---@module 'blink.cmp'
-  ---@param opts blink.cmp.Config
-  opts = function(_, opts)
+  opts = function()
     ---@type blink.cmp.Config
     local options = {
       appearance = {
@@ -45,7 +43,7 @@ return {
       },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
-        min_keyword_length = function(ctx)
+        min_keyword_length = function()
           return vim.bo.filetype == "markdown" and 3 or 0
         end,
       },
