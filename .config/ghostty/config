@@ -5,7 +5,7 @@ adjust-cell-height = 4
 
 cursor-invert-fg-bg
 
-theme = "tokyonight"
+theme = TokyoNight
 
 background-opacity = 0.70
 background-blur-radius = 40
