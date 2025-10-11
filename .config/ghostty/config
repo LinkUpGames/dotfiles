@@ -23,3 +23,4 @@ term = xterm-256color
 
 # custom-shader=./shaders/crt.glsl
 # custom-shader=./shaders/tft.glsl
+custom-shader=./shaders/cursor-animation.glsl
