@@ -19,6 +19,8 @@ window-theme = system
 clipboard-read = allow
 clipboard-write = allow
 
+app-notifications = no-clipboard-copy
+
 term = xterm-256color
 
 # custom-shader=./shaders/crt.glsl
