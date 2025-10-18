@@ -32,6 +32,7 @@ require("lazy").setup({
     { import = "plugins.code" },
     { import = "plugins.misc" },
     { import = "plugins.extras" },
+    { import = "plugins.system" },
     { import = "plugins.temp" },
   },
   defaults = {
