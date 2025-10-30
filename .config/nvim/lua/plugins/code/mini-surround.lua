@@ -5,6 +5,9 @@ return {
       add = "gsa",
       delete = "gsd",
       replace = "gsr",
+      find = "",
+      find_left = "",
+      highlight = "",
     },
   },
   keys = {
