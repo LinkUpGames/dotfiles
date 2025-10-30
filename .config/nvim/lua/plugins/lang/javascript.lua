@@ -51,15 +51,16 @@ return {
       },
     },
   },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {
-      --   settings = {
-      --     tsserver_file_preferences = {
-      --       includeInlayParameterNameHints = "all",
-      --     },
-      --   },
-    },
-  },
+  -- {
+  --   "pmizio/typescript-tools.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  --   opts = {
+  --     --   settings = {
+  --     --     tsserver_file_preferences = {
+  --     --       includeInlayParameterNameHints = "all",
+  --     --     },
+  --     --   },
+  --   },
+  --   enabled = false,
+  -- },
 }
