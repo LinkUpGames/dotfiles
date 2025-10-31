@@ -244,7 +244,9 @@ return {
             filetype_names = {
               snacks_picker_input = "󰍉 Picker",
               snacks_picker_list = " Explorer",
+              snacks_terminal = " Terminal",
               codecompanion = "󱚣 AI Chat",
+              sidekick_terminal = " AI CLI",
             },
           },
         },
