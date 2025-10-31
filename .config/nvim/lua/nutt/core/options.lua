@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 
 -- Cursor
 local old_guicursor = vim.o.guicursor
@@ -18,7 +19,18 @@ opt.foldmethod = "indent"
 opt.foldtext = ""
 
 -- Clipboard
-opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+opt.clipboard:append(vim.env.SSH_TTY and "" or "unnamedplus") -- Sync with system clipboard
+g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+  },
+}
 
 -- Editing
 opt.autowrite = true
