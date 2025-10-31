@@ -7,8 +7,12 @@ vim.g.maplocalleader = "\\"
 -- Better leave
 map("i", "jk", "<Esc>", { noremap = true, silent = true })
 
--- Actual Tab
+-- Tabs
 map("n", "<Tab>", "<Tab>", { noremap = true, silent = true }) -- Remap tab to itself
+map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- Delete characters in insert mode
 map("i", "<C-BS>", "<C-W>", { noremap = true, silent = true }) -- Delete words with backspace
