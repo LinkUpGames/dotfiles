@@ -271,6 +271,25 @@ Development
         desc = "[S]earch [I]cons",
         mode = "n",
       },
+
+      -- Terminal
+      {
+        "<c-/>",
+        function()
+          require("snacks").terminal.toggle(nil, {
+            toggle = true,
+            cwd = Utils.get_root(),
+          })
+        end,
+        desc = "Terminal (Root Dir)",
+        mode = "n",
+      },
+      {
+        "<c-/>",
+        "<cmd>close<cr>",
+        desc = "Close Terminal",
+        mode = "t",
+      },
     },
   },
 

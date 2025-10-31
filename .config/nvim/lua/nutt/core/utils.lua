@@ -75,6 +75,8 @@ local M = {
   },
 }
 
+---Get the current root directory for the project opened
+---@return string path Absolute path of the root directory
 function M.get_root()
   local buf = 0
 
@@ -87,6 +89,7 @@ function M.get_root()
     ".git",
     "lua",
     "package.json",
+    "Make",
   }
 
   -- Check for root pattern
@@ -105,9 +108,12 @@ function M.get_root()
     end
   end
 
-  return vim.uv.cwd()
+  return vim.uv.cwd() or ""
 end
 
+---Get the current root directory for the project opened in a nice formatted way
+---NOTE: We shouldn't use this outside of lualine, reformat when you can and remove it
+---@return string path Absolute path of the root directory
 function M.root_dir()
   local dir = ""
   local root = M.get_root()
