@@ -61,38 +61,44 @@ return {
         ]],
       },
       adapters = {
-        coder = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "code",
-            schema = {
-              model = {
-                default = "qwen:agentic",
+        http = {
+          coder = function()
+            return require("codecompanion.adapters").extend("ollama", {
+              name = "code",
+              schema = {
+                model = {
+                  default = "qwen2.5:7b",
+                },
+                num_ctx = {
+                  default = 16384,
+                },
               },
-            },
-          })
-        end,
-        openai = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "open ai",
-            schema = {
-              model = {
-                default = "gpt-oss:latest",
+            })
+          end,
+          gemini = function()
+            return require("codecompanion.adapters").extend("gemini", {
+              schema = {
+                model = {
+                  default = "gemini-2.0-flash-exp",
+                },
               },
-            },
-          })
-        end,
-        gemini = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            schema = {
-              model = {
-                default = "gemini-2.0-flash-exp",
+              env = {
+                api_key = os.getenv("GEMINI_API_KEY"),
               },
-            },
-            env = {
-              api_key = os.getenv("GEMINI_API_KEY"),
-            },
-          })
-        end,
+            })
+          end,
+        },
+        acp = {
+          opencode = function()
+            return require("codecompanion.adapters").extend("opencode", {
+              commands = {
+                default = {
+                  "opencode",
+                },
+              },
+            })
+          end,
+        },
       },
       strategies = {
         chat = {
