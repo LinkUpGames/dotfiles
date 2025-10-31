@@ -13,6 +13,10 @@ opt.number = true
 opt.ruler = false
 opt.sidescrolloff = 8
 
+-- Fold
+opt.foldmethod = "indent"
+opt.foldtext = ""
+
 -- Clipboard
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 
