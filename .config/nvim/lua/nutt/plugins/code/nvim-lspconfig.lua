@@ -23,7 +23,9 @@ return {
           },
         },
         virtual_text = {
-          max = vim.diagnostic.severity.WARN,
+          severity = {
+            max = vim.diagnostic.severity.WARN,
+          },
           spacing = 4,
           source = "if_many",
           prefix = "● ",
@@ -142,6 +144,9 @@ return {
 
         -- Go to references
         map("gr", require("snacks").picker.lsp_references, "[G]oto [R]eferences")
+
+        -- Open Code Actions
+        map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
 
         -- Get Client Capabilities
         ---Get the capabilities of the client
