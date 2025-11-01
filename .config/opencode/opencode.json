@@ -15,6 +15,5 @@
     "messages_page_down": "ctrl+f",
     "messages_half_page_up": "ctrl+u",
     "messages_half_page_down": "ctrl+d",
-    "app_exit": "<leader>q"
   },
 }
