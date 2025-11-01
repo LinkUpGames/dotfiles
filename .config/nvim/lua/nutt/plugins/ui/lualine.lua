@@ -60,7 +60,6 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 
 return {
   "nvim-lualine/lualine.nvim",
-  lazy = false,
   dependencies = {
     "folke/snacks.nvim",
     "folke/noice.nvim",
