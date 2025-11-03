@@ -46,6 +46,7 @@ return {
     "folke/which-key.nvim",
     opts = {
       spec = {
+        mode = { "n", "v" },
         { "<leader>gs", group = "Git Signs", icon = { icon = "", color = "cyan" } },
       },
     },
