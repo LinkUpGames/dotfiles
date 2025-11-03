@@ -30,7 +30,7 @@ return {
       },
       {
         "<leader>gs[",
-        "<cmd>Gitsigns nav_hunk pre<cr>",
+        "<cmd>Gitsigns nav_hunk prev<cr>",
         mode = "n",
         desc = "Previous Hunk",
       },
