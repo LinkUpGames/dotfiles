@@ -1,14 +1,18 @@
 return {
   "saghen/blink.cmp",
-  event = "InsertEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
   version = "1.*",
   dependencies = {
     "rafamadriz/friendly-snippets",
     "folke/lazydev.nvim",
   },
   opts = function()
+    ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     local options = {
+      snippets = {
+        preset = "default",
+      },
       appearance = {
         nerd_font_variant = "mono",
         kind_icons = Utils.icons.kinds,
