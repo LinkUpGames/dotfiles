@@ -1,4 +1,5 @@
 return {
+  -- Git Signs
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile", "BufWritePre" },
@@ -42,13 +43,16 @@ return {
       },
     },
   },
+
+  -- Which Key
   {
     "folke/which-key.nvim",
-    opts = {
-      spec = {
-        mode = { "n", "v" },
-        { "<leader>gs", group = "Git Signs", icon = { icon = "", color = "cyan" } },
-      },
-    },
+    opts = function()
+      local add = require("which-key").add
+
+      add({
+        { "<leader>gs", group = "Git Signs", icon = { icon = "", color = "cyan", mode = { "n", "v" } } },
+      })
+    end,
   },
 }
