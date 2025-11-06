@@ -1,3 +1,12 @@
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescriptreact" },
+  callback = function(event)
+    local buf = event.buf
+
+    pcall(vim.treesitter.start, buf)
+  end,
+})
+
 return {
   -- {
   --   "mfussenegger/nvim-lint",
