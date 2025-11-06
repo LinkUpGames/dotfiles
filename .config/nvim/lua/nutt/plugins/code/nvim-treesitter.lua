@@ -1,3 +1,16 @@
+-- vim.api.nvim_create_autocmd("FileType", {
+--   callback = function(event)
+--     local ok = pcall(vim.treesitter.start, event.buf)
+--     local ft = event.match
+--
+--     local treesitter = require("nvim-treesitter")
+--     local installed = treesitter.get_installed()
+--
+--     for i, value in ipairs(installed) do
+--     end
+--   end,
+-- })
+
 return {
   -- Tree sitter
   {
@@ -9,6 +22,27 @@ return {
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     branch = "main",
+    config = function(_, opts)
+      local treesitter = require("nvim-treesitter")
+
+      -- setup
+      treesitter.setup(opts)
+
+      -- Create autocmd
+      local installed = treesitter.get_installed()
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(event)
+          local ft, lang, buf = event.match, vim.treesitter.language.get_lang(event.match), event.buf
+          local exists = vim.tbl_contains(installed, ft)
+
+          -- Only run the treesitter if file exists
+          if exists then
+            pcall(vim.treesitter.start, buf)
+            -- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          end
+        end,
+      })
+    end,
     -- event = { "VeryLazy" },
     -- main = "nvim-treesitter.configs",
     ---@type TSConfig?
