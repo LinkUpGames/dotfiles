@@ -47,7 +47,7 @@ return {
             function()
               require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
             end,
-            desc = "Goto start of previous outer function",
+            desc = "Goto start of next outer function",
             mode = { "n", "x", "o" },
           },
           {
@@ -63,7 +63,7 @@ return {
             function()
               require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
             end,
-            desc = "Goto start of next outer function",
+            desc = "Goto start of previous outer function",
             mode = { "n", "x", "o" },
           },
           {
@@ -71,7 +71,7 @@ return {
             function()
               require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
             end,
-            desc = "Goto end of next outer function",
+            desc = "Goto end of previous outer function",
             mode = { "n", "x", "o" },
           },
 
