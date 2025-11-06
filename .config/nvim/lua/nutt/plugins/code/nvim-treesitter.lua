@@ -1,16 +1,3 @@
--- vim.api.nvim_create_autocmd("FileType", {
---   callback = function(event)
---     local ok = pcall(vim.treesitter.start, event.buf)
---     local ft = event.match
---
---     local treesitter = require("nvim-treesitter")
---     local installed = treesitter.get_installed()
---
---     for i, value in ipairs(installed) do
---     end
---   end,
--- })
-
 return {
   -- Tree sitter
   {
