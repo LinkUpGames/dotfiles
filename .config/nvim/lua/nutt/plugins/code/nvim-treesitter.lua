@@ -3,13 +3,14 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     },
     lazy = false,
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+    branch = "main",
     -- event = { "VeryLazy" },
-    main = "nvim-treesitter.configs",
+    -- main = "nvim-treesitter.configs",
     ---@type TSConfig?
     opts = {
       ensure_installed = { "bash", "html", "lua", "luadoc", "markdown", "markdown_inline" },
