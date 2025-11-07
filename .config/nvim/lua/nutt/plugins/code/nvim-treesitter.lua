@@ -160,14 +160,20 @@ return {
       treesitter.install(opts.ensure_installed)
 
       -- Create autocmd
-      local installed = treesitter.get_installed()
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(event)
-          local ft, lang, buf = event.match, vim.treesitter.language.get_lang(event.match), event.buf
-          local exists = vim.tbl_contains(installed, ft)
+          local ft = event.match
+          local lang, buf = vim.treesitter.language.get_lang(ft), event.buf
 
           -- Only run the treesitter if file exists
-          if exists then
+          if lang then
+            -- Load treesiterr
+            local ok, err = pcall(vim.treesitter.language.add, lang)
+            if not ok then
+              -- Parser not available
+              return
+            end
+
             -- Start treesitter
             if opts.highlight.enable then
               pcall(vim.treesitter.start, buf)
