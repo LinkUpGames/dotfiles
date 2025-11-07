@@ -127,14 +127,14 @@ return {
         local map = function(keys, func, desc, mode)
           mode = mode or "n"
 
-          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc, remap = true })
         end
 
         -- Go to defintion
         map("gd", require("snacks").picker.lsp_definitions, "[G]oto [D]efinition")
 
         -- Go to implementation
-        map("gi", require("snacks").picker.lsp_implementations, "[G]oto [I]mplementation")
+        map("gI", require("snacks").picker.lsp_implementations, "[G]oto [I]mplementation")
 
         -- Go to declaration
         map("gD", require("snacks").picker.lsp_declarations, "[G]oto [D]eclaration")

@@ -168,7 +168,7 @@ return {
           -- Only run the treesitter if file exists
           if lang then
             -- Load treesiterr
-            local ok, err = pcall(vim.treesitter.language.add, lang)
+            local ok = pcall(vim.treesitter.language.add, lang)
             if not ok then
               -- Parser not available
               return

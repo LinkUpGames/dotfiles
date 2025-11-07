@@ -179,11 +179,25 @@ Development
         desc = "Find Files (Root Dir)",
       },
       {
-        "<leader>n",
+        "<leader>sh",
         function()
           require("snacks").picker.notifications()
         end,
-        desc = "Notification History",
+        desc = "[S]earch Notification [H]istory",
+      },
+      {
+        "<leader>sd",
+        function()
+          require("snacks").picker.git_diff()
+        end,
+        desc = "[S]earch Git [D]iff",
+      },
+      {
+        "<leader>sb",
+        function()
+          require("snacks").picker.diagnostics_buffer()
+        end,
+        desc = "[S]earch [B]uff Diagnostics",
       },
 
       -- Buffer
