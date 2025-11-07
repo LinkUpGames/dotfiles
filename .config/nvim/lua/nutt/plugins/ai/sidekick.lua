@@ -1,5 +1,14 @@
 return {
   "folke/sidekick.nvim",
+  opts = {
+    cli = {
+      win = {
+        keys = {
+          prompt = { "<c-p>", "<nop>" },
+        },
+      },
+    },
+  },
   keys = {
     {
       "<leader>aa",
