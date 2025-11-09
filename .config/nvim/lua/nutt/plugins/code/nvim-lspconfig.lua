@@ -15,21 +15,21 @@ return {
       diagnostics = {
         underline = true,
         severity_sort = true,
-        virtual_lines = {
-          current_line = false,
-          prefix = "● ",
-          severity = {
-            min = vim.diagnostic.severity.ERROR,
-          },
-        },
-        virtual_text = {
-          severity = {
-            max = vim.diagnostic.severity.WARN,
-          },
-          spacing = 4,
-          source = "if_many",
-          prefix = "● ",
-        },
+        -- virtual_lines = {
+        --   current_line = false,
+        --   prefix = "● ",
+        --   severity = {
+        --     min = vim.diagnostic.severity.ERROR,
+        --   },
+        -- },
+        -- virtual_text = {
+        --   severity = {
+        --     max = vim.diagnostic.severity.WARN,
+        --   },
+        --   spacing = 4,
+        --   source = "if_many",
+        --   prefix = "● ",
+        -- },
         signs = {
           numhl = {
             [vim.diagnostic.severity.WARN] = "WarningMsg",
