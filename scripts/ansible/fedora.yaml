@@ -1,0 +1,28 @@
+---
+- name: Setup Fedora Computer
+  hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+    - name: Update All Core Systems First
+      ansible.builtin.dnf5:
+        name: "*"
+        state: latest
+
+    - name: Install Core Dependencies Through Package Manager
+      ansible.builtin.dnf5:
+        name: 
+          - git
+          - neovim
+          - zsh
+          - tmux
+          - bat
+          - fzf
+          - ripgrep
+          - python
+          - python3-devel
+        state: latest
+
+    - name: Install Dependencies Through Binary Files
+
