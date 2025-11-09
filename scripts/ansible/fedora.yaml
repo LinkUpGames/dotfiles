@@ -25,4 +25,29 @@
         state: latest
 
     - name: Install Dependencies Through Binary Files
+      block:
+        - name: Ensure Python requests is available
+          ansible.builtin.dnf5:
+            name: python3-requests
+            state: latest
+
+        - name: Download binary tools using custom script
+          ansible.builtin.script: scripts/binary-github.py {{ item.repo }} {{ item.filename }} {{ item.keywords }} {{ item.type }}
+          args:
+            chdir: "{{ playbook_dir }}"
+          loop:
+            - repo: "sharkdp/bat"
+              filename: "bat.tar.gz"
+              keywords: "x86_64,linux"
+              type: "tar"
+            - repo: "sharkdp/fd"
+              filename: "fd.tar.gz"
+              keywords: "x86_64,linux"
+              type: "tar"
+            - repo: "junegunn/fzf"
+              filename: "fzf.tar.gz"
+              keywords: "linux,amd64"
+              type: "tar"
+          register: binary_download
+          changed_when: binary_download.rc == 0
 
