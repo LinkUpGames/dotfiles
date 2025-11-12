@@ -51,3 +51,13 @@
           register: binary_download
           changed_when: binary_download.rc == 0
 
+    - name: Modify System Attributes
+      block:
+        - name: Modify shell
+          ansible.builtin.user:
+            name: dev
+            shell: /bin/zsh
+            password: "{{ vault_user_password }}"
+            state: present
+        - name: Install Zap Plugin Manager
+          
