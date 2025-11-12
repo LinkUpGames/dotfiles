@@ -165,6 +165,19 @@ return {
           local ft = event.match
           local lang, buf = vim.treesitter.language.get_lang(ft), event.buf
 
+          -- Check if the language is installed
+          local installed = vim.treesitter.language.add(lang or "")
+          if not installed then
+            local languages = treesitter.get_available()
+
+            local available = vim.tbl_contains(languages, lang)
+
+            if available then
+              vim.notify_once("Installing treesitter parser for " .. lang, vim.log.levels.INFO)
+              treesitter.install({ lang }):wait(30 * 1000)
+            end
+          end
+
           -- Only run the treesitter if file exists
           if lang then
             -- Load treesiterr
