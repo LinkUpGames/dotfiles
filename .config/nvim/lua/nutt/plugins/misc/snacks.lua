@@ -199,6 +199,20 @@ Development
         end,
         desc = "[S]earch [B]uff Diagnostics",
       },
+      {
+        "<leader>sl",
+        function()
+          require("snacks").picker.git_log()
+        end,
+        desc = "[S]earch [L]og Files",
+      },
+      {
+        "<leader>sL",
+        function()
+          require("snacks").picker.git_log_file()
+        end,
+        desc = "[S]earch [L]og Current File",
+      },
 
       -- Buffer
       {
