@@ -1,0 +1,48 @@
+---
+- name: Setup Fedora Workstation Environment
+  hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+  home_dir: "{{ lookup('env', 'HOME') }}"
+  user_name: "{{ lookup('env', 'USER') }}"
+
+  tasks:
+
+  - name: Ensure all packages are up to date
+    ansible.builtin.dnf5:
+        name: "*"
+        state: latest
+        update_cache: yes
+      
+  - name: Enable COPR Repos
+    block:
+      - name: Enable COPR for lazygit
+        ansible.builtin.command: dnf copr enable dejan/lazygit
+        args:
+          creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:dejan:lazygit.repo
+      
+      - name: Enable COPR for yazi
+        ansible.builtin.command: dnf copr enable lihaohong/yazi
+        args:
+          creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:lihaohong:yazi.repo
+
+  - name: Install core packages
+    ansible.builtin.dnf5:
+        name:
+          - zsh
+          - tmux
+          - neovim
+          - fzf
+          - restic
+          - fd-find
+          - eza
+          - lazygit
+          - duf
+          - bat
+          - stow
+          - yazi
+        state: present
+      
+

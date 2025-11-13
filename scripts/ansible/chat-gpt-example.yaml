@@ -1,0 +1,143 @@
+---
+- name: Setup Fedora Workstation Environment
+  hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    home_dir: "{{ lookup('env', 'HOME') }}"
+    user_name: "{{ lookup('env', 'USER') }}"
+
+  tasks:
+
+    - name: Ensure all packages are up to date
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: yes
+
+    # -------------------------------------------------------
+    #  COPR Repositories
+    # -------------------------------------------------------
+    - name: Enable COPR for wezterm-nightly
+      ansible.builtin.command: dnf copr enable wezfurlong/wezterm-nightly -y
+      args:
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:wezfurlong:wezterm-nightly.repo
+
+    - name: Enable COPR for lazygit
+      ansible.builtin.command: dnf copr enable atim/lazygit -y
+      args:
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:atim:lazygit.repo
+
+    - name: Enable COPR for yazi
+      ansible.builtin.command: dnf copr enable varlad/yazi -y
+      args:
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:varlad:yazi.repo
+
+    # -------------------------------------------------------
+    #  DNF Package Installs
+    # -------------------------------------------------------
+    - name: Install core packages
+      ansible.builtin.dnf:
+        name:
+          - wezterm
+          - zsh
+          - tmux
+          - neovim
+          - fzf
+          - restic
+          - fd-find
+          - eza
+          - lazygit
+          - duf
+          - bat
+          - stow
+        state: present
+
+    # -------------------------------------------------------
+    #  Curl/Script-Based Installations
+    # -------------------------------------------------------
+    - name: Install Ollama
+      ansible.builtin.shell: |
+        curl -fsSL https://ollama.com/install.sh | sh
+      args:
+        creates: /usr/local/bin/ollama
+
+    - name: Install Lazydocker
+      ansible.builtin.shell: |
+        curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+      args:
+        creates: /usr/local/bin/lazydocker
+
+    - name: Install NVM
+      ansible.builtin.shell: |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+      args:
+        creates: "{{ home_dir }}/.nvm"
+
+    - name: Install Rust toolchain (for Yazi & CSVLens)
+      ansible.builtin.shell: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
+      args:
+        creates: "{{ home_dir }}/.cargo"
+
+    - name: Source Cargo environment and update Rust
+      ansible.builtin.shell: |
+        . {{ home_dir }}/.cargo/env && rustup update
+      args:
+        executable: /bin/bash
+
+    - name: Install CSVLens via cargo
+      ansible.builtin.shell: |
+        . {{ home_dir }}/.cargo/env && cargo install csvlens
+      args:
+        creates: "{{ home_dir }}/.cargo/bin/csvlens"
+        executable: /bin/bash
+
+    - name: Install DevPod CLI
+      ansible.builtin.shell: |
+        curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64"
+        install -c -m 0755 devpod /usr/local/bin/devpod
+        rm -f devpod
+      args:
+        creates: /usr/local/bin/devpod
+
+    - name: Print Spicetify installation reminder
+      ansible.builtin.debug:
+        msg: "Run: curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh  (after installing Spotify)"
+
+    # -------------------------------------------------------
+    #  Zsh & Dotfiles Setup
+    # -------------------------------------------------------
+    - name: Change user shell to zsh
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        shell: /bin/zsh
+
+    - name: Install Zap plugin manager
+      ansible.builtin.shell: |
+        zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+      args:
+        executable: /bin/bash
+        creates: "{{ home_dir }}/.local/share/zap"
+
+    - name: Remove any old .zshrc
+      ansible.builtin.file:
+        path: "{{ home_dir }}/.zshrc"
+        state: absent
+
+    - name: Stow dotfiles
+      ansible.builtin.shell: |
+        cd {{ home_dir }}/dotfiles && stow .
+      args:
+        chdir: "{{ home_dir }}/dotfiles"
+      when: ansible.builtin.stat(path="{{ home_dir }}/dotfiles").stat.exists
+
+    - name: Display completion message
+      ansible.builtin.debug:
+        msg: |
+          Installation Complete! To activate your shell profile, append the following to your ~/.zshrc:
+          if [ -f "$HOME/profile.zsh" ]; then
+            source "$HOME/profile.zsh"
+          fi
+
