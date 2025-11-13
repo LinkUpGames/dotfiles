@@ -15,6 +15,9 @@ return {
       diagnostics = {
         underline = true,
         severity_sort = true,
+        float = {
+          border = "rounded",
+        },
         -- virtual_lines = {
         --   current_line = false,
         --   prefix = "● ",

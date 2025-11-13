@@ -4,6 +4,8 @@ return {
     event = { "BufReadPre", "BufNewFile", "BufWritePre" },
     opts = {
       enable = true,
+      max_lines = 5,
+      multiline_threshold = 5,
     },
     keys = {
       {
