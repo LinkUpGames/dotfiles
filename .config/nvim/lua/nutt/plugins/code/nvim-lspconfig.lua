@@ -8,7 +8,7 @@ return {
     "Saghen/blink.cmp",
   },
   opts = function()
-    ---@class Settings
+    ---@class LspConfingOpts
     local settings = {
       --- Diagnostic Options
       ---@type vim.diagnostic.Opts
@@ -115,7 +115,7 @@ return {
 
     return settings
   end,
-  ---@param opts Settings
+  ---@param opts LspConfingOpts
   config = function(_, opts)
     -- Create autocmd
     vim.api.nvim_create_autocmd("LspAttach", {
