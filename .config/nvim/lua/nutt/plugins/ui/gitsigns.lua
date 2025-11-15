@@ -38,7 +38,18 @@ return {
       {
         "<leader>gsr",
         "<cmd>Gitsigns reset_hunk<cr>",
-        mode = { "n", "v" },
+        mode = { "n" },
+        desc = "Reset Hunk",
+      },
+      {
+        "<leader>gsr",
+        function()
+          require("gitsigns").reset_hunk({
+            vim.fn.line("."),
+            vim.fn.line("v"),
+          })
+        end,
+        mode = { "v" },
         desc = "Reset Hunk",
       },
     },

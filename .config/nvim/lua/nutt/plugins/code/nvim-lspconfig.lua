@@ -8,7 +8,7 @@ return {
     "Saghen/blink.cmp",
   },
   opts = function()
-    ---@class Settings
+    ---@class LspConfigOpts
     local settings = {
       --- Diagnostic Options
       ---@type vim.diagnostic.Opts
@@ -76,11 +76,15 @@ return {
         },
       },
 
-      ---@type lspconfig.options
+      ---@class LspServerConfig: vim.lsp.Config
+      ---@field enabled? boolean
+      ---@field mason? boolean
+
+      ---@type table<string, LspServerConfig>
       servers = {
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
-          -- --@type LazykeysSpec[]
+          -- ---@type LazyKeysSpec[]
           -- keys = {}
           settings = {
             Lua = {
@@ -109,13 +113,13 @@ return {
         },
       },
 
-      ---@type table<string, fun(server:string, opts: _.lspconfig.options): boolean?>
+      ---@type table<string, fun(server:string, opts: vim.lsp.Config): boolean?>
       setup = {},
     }
 
     return settings
   end,
-  ---@param opts Settings
+  ---@param opts LspConfigOpts
   config = function(_, opts)
     -- Create autocmd
     vim.api.nvim_create_autocmd("LspAttach", {
