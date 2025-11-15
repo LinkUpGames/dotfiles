@@ -76,7 +76,7 @@ return {
         },
       },
 
-      ---@type lspconfig.options
+      ---@type vim.lsp.Config
       servers = {
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
@@ -109,7 +109,7 @@ return {
         },
       },
 
-      ---@type table<string, fun(server:string, opts: _.lspconfig.options): boolean?>
+      ---@type table<string, fun(server:string, opts: vim.lsp.Config): boolean?>
       setup = {},
     }
 
