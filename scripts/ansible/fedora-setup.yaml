@@ -9,27 +9,26 @@
   user_name: "{{ lookup('env', 'USER') }}"
 
   tasks:
-
-  - name: Ensure all packages are up to date
-    ansible.builtin.dnf5:
+    - name: Ensure all packages are up to date
+      ansible.builtin.dnf5:
         name: "*"
         state: latest
         update_cache: yes
-      
-  - name: Enable COPR Repos
-    block:
-      - name: Enable COPR for lazygit
-        ansible.builtin.command: dnf copr enable dejan/lazygit
-        args:
-          creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:dejan:lazygit.repo
-      
-      - name: Enable COPR for yazi
-        ansible.builtin.command: dnf copr enable lihaohong/yazi
-        args:
-          creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:lihaohong:yazi.repo
 
-  - name: Install core packages
-    ansible.builtin.dnf5:
+    - name: Enable COPR Repos
+      block:
+        - name: Enable COPR for lazygit
+          ansible.builtin.command: dnf copr enable dejan/lazygit
+          args:
+            creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:dejan:lazygit.repo
+
+        - name: Enable COPR for yazi
+          ansible.builtin.command: dnf copr enable lihaohong/yazi
+          args:
+            creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:lihaohong:yazi.repo
+
+    - name: Install core packages
+      ansible.builtin.dnf5:
         name:
           - zsh
           - tmux
@@ -44,5 +43,26 @@
           - stow
           - yazi
         state: present
-      
 
+    - name: Setup ZSH and the default shell
+      block:
+        - name: Change user shell to zsh
+          ansible.builtin.user:
+            name: "{{ user_name }}"
+            shell: /usr/bin/zsh
+
+        - name: Install ZAP Plugin Manager
+          ansible.builtin.shell: |
+            zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+          args:
+            executable: usr/bin/zsh
+            creates: "{{ home_dir }}/.local/share/zap"
+
+        - name: Remove old .zshrc files
+          ansible.builtin.file:
+            path: "{{ home_dir }}./zshrc"
+            state: absent
+
+    - name: Curl/Script Based Installation
+      block:
+        - name: Install Ollama

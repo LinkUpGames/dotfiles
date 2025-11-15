@@ -9,7 +9,6 @@
     user_name: "{{ lookup('env', 'USER') }}"
 
   tasks:
-
     - name: Ensure all packages are up to date
       ansible.builtin.dnf:
         name: "*"
@@ -140,4 +139,3 @@
           if [ -f "$HOME/profile.zsh" ]; then
             source "$HOME/profile.zsh"
           fi
-
