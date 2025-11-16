@@ -80,6 +80,7 @@
             state: absent
 
     - name: Curl/Script Based Installation
+      become: true
       block:
         - name: Install Ollama
           ansible.builtin.shell: |
@@ -110,6 +111,7 @@
     - name: Tmux Plugin Manager
       block:
         - name: Install TPM
+          become_user: "{{ user_name }}"
           ansible.builtin.git:
             repo: https://github.com/tmux-plugins/tmp
             dest: "{{ home_dir }}/.tmux/plugins/tpm"
@@ -117,7 +119,7 @@
     - name: Link and Post Installation
       block:
         - name: Stow Files
-          become_user: " {{ home_dir }}"
+          become_user: "{{ user_name }}"
           ansible.builtin.shell: |
             cd {{ home_dir }}/dotfiles && stow .
           args:
@@ -125,7 +127,7 @@
           when: ansible.builtin.stat(path="{{ home_dir }}/dotfiles").stat.exists
 
         - name: Add profile.zsh to shell
-          become_user: " {{ home_dir }}"
+          become_user: "{{ user_name }}"
           ansible.builtin.shell: |
             if [ -f "$HOME/profile.zsh" ]; then
               echo 'profile.zsh' >> .zshrc
