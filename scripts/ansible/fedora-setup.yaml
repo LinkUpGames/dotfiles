@@ -5,8 +5,8 @@
   become: yes
 
   vars:
-    home_dir: "{{ lookup('env', 'HOME') }}"
-    user_name: "{{ lookup('env', 'USER') }}"
+    user_name: "anonymous"
+    home_dir: "/home/{{ user_name }}"
 
   tasks:
     - name: Ensure all packages are up to date
@@ -15,17 +15,32 @@
         state: latest
         update_cache: yes
 
+    - name: Install ansible plugins
+      become: yes
+      ansible.builtin.package:
+        name: dnf-plugins-core
+        state: present
+
+    - name: Setup User
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        state: present
+
     - name: Enable COPR Repos
       block:
-        - name: Enable COPR for lazygit
-          ansible.builtin.command: dnf copr enable dejan/lazygit
-          args:
-            creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:dejan:lazygit.repo
+        - name: Enable COPR
+          community.general.copr:
+            state: enabled
+            name: dejan/lazygit
 
         - name: Enable COPR for yazi
-          ansible.builtin.command: dnf copr enable lihaohong/yazi
-          args:
-            creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:lihaohong:yazi.repo
+          community.general.copr:
+            state: enabled
+            name: lihaohong/yazi
+
+        - name: Update Package Cache
+          ansible.builtin.dnf5:
+            update_cache: yes
 
     - name: Install core packages
       ansible.builtin.dnf5:
@@ -51,6 +66,7 @@
             shell: /usr/bin/zsh
 
         - name: Install ZAP Plugin Manager
+          become_user: "{{ user_name }}"
           ansible.builtin.shell: |
             zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
           args:
@@ -58,6 +74,7 @@
             creates: "{{ home_dir }}/.local/share/zap"
 
         - name: Remove old .zshrc files
+          become_user: "{{ user_name }}"
           ansible.builtin.file:
             path: "{{ home_dir }}./zshrc"
             state: absent
@@ -97,21 +114,25 @@
             repo: https://github.com/tmux-plugins/tmp
             dest: "{{ home_dir }}/.tmux/plugins/tpm"
 
-    - name: Stow Files
-      ansible.builtin.shell: |
-        cd {{ home_dir }}/dotfiles && stow .
-      args:
-        chdir: "{{ home_dir }}/dotfiles"
-      when: ansible.builtin.stat(path="{{ home_dir }}/dotfiles").stat.exists
+    - name: Link and Post Installation
+      block:
+        - name: Stow Files
+          become_user: " {{ home_dir }}"
+          ansible.builtin.shell: |
+            cd {{ home_dir }}/dotfiles && stow .
+          args:
+            chdir: "{{ home_dir }}/dotfiles"
+          when: ansible.builtin.stat(path="{{ home_dir }}/dotfiles").stat.exists
 
-    - name: Add profile.zsh to shell
-      ansible.builtin.shell: |
-        if [ -f "$HOME/profile.zsh" ]; then
-          echo 'profile.zsh' >> .zshrc
-          source "$HOME/profile.zsh"
-        fi
+        - name: Add profile.zsh to shell
+          become_user: " {{ home_dir }}"
+          ansible.builtin.shell: |
+            if [ -f "$HOME/profile.zsh" ]; then
+              echo 'profile.zsh' >> .zshrc
+              source "$HOME/profile.zsh"
+            fi
 
-    - name: Display Complete
-      ansible.builtin.debug:
-        msg: |
-          Installation Complete!
+        - name: Display Complete
+          ansible.builtin.debug:
+            msg: |
+              Installation Complete!
