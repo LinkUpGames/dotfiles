@@ -95,24 +95,18 @@
         - name: Install Ollama
           ansible.builtin.shell: |
             curl -fsSL https://ollama.com/install.sh | sh
-          args:
-            creates: /usr/local/bin/ollama
 
         - name: Install LazyDocker
           ansible.builtin.shell: |
             cd /tmp && curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
           environment:
             DIR: /usr/local/bin
-          args:
-            creates: /usr/local/bin/lazydocker
 
         - name: Install eza
           ansible.builtin.shell: |
             cd /tmp && curl -L https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz | tar xz
             chmod +x eza
             mv eza /usr/local/bin/eza
-          args:
-            creates: /usr/local/bin/eza
 
         - name: Install Opencode
           environment:
