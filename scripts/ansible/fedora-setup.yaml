@@ -9,6 +9,15 @@
     home_dir: "/home/{{ user_name }}"
 
   tasks:
+    - name: Create Ansible remote_tmp directory
+      become_user: "{{ user_name }}"
+      ansible.builtin.file:
+        path: "{{ home_dir }}/.ansible/tmp"
+        state: directory
+        mode: "0755"
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+
     - name: Ensure all packages are up to date
       ansible.builtin.dnf5:
         name: "*"
@@ -56,6 +65,7 @@
           - bat
           - stow
           - yazi
+          - unzip
         state: present
 
     - name: Setup ZSH and the default shell
@@ -70,7 +80,7 @@
           ansible.builtin.shell: |
             zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
           args:
-            executable: usr/bin/zsh
+            executable: /usr/bin/zsh
             creates: "{{ home_dir }}/.local/share/zap"
 
         - name: Remove old .zshrc files
@@ -90,7 +100,7 @@
 
         - name: Install LazyDocker
           ansible.builtin.shell: |
-            curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+            cd /tmp && curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
           environment:
             DIR: /usr/local/bin
           args:
@@ -98,41 +108,59 @@
 
         - name: Install eza
           ansible.builtin.shell: |
-            curl -L https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz | tar xz
+            cd /tmp && curl -L https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz | tar xz
             chmod +x eza
             mv eza /usr/local/bin/eza
           args:
             creates: /usr/local/bin/eza
 
+        - name: Install Opencode
+          environment:
+            INSTALL_DIR: /usr/local/bin
+          ansible.builtin.shell: |
+            cd /tmp && curl -fsSL https://opencode.ai/install | bash
+
         - name: Install Spicetify Reminder!
           ansible.builtin.debug:
             msg: "Run: wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz"
+
+        - name: Install TV Fuzzy Find
+          ansible.builtin.shell: cd /tmp && curl -fsSL https://alexpasmantier.github.io/television/install.sh | bash
 
     - name: Tmux Plugin Manager
       block:
         - name: Install TPM
           become_user: "{{ user_name }}"
           ansible.builtin.git:
-            repo: https://github.com/tmux-plugins/tmp
+            repo: https://github.com/tmux-plugins/tpm
             dest: "{{ home_dir }}/.tmux/plugins/tpm"
 
     - name: Link and Post Installation
       block:
+        - name: Download dotfiles repo if we have not
+          ansible.builtin.git:
+            repo: https://github.com/linkupgames/dotfiles
+            dest: "{{ home_dir }}/dotfiles"
+
+        - name: Check if dotfiles directory exists
+          ansible.builtin.stat:
+            path: "{{ home_dir }}/dotfiles"
+          register: dotfiles_exists
+
         - name: Stow Files
           become_user: "{{ user_name }}"
           ansible.builtin.shell: |
             cd {{ home_dir }}/dotfiles && stow .
           args:
             chdir: "{{ home_dir }}/dotfiles"
-          when: ansible.builtin.stat(path="{{ home_dir }}/dotfiles").stat.exists
+          when: dotfiles_exists.stat.exists
 
         - name: Add profile.zsh to shell
           become_user: "{{ user_name }}"
-          ansible.builtin.shell: |
-            if [ -f "$HOME/profile.zsh" ]; then
-              echo 'profile.zsh' >> .zshrc
-              source "$HOME/profile.zsh"
-            fi
+          ansible.builtin.lineinfile:
+            path: "{{ home_dir }}/.zshrc"
+            line: 'source "$HOME/profile.zsh"'
+            create: yes
 
         - name: Display Complete
           ansible.builtin.debug:
