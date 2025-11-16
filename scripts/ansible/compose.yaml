@@ -1,0 +1,9 @@
+services:
+  ansible:
+    build: .
+    container_name: ansible
+    tty: true
+    command: tail -f /dev/null
+    working_dir: /app
+    volumes:
+      - .:/app:ro

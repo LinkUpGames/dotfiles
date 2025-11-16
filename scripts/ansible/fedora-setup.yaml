@@ -5,8 +5,8 @@
   become: yes
 
   vars:
-  home_dir: "{{ lookup('env', 'HOME') }}"
-  user_name: "{{ lookup('env', 'USER') }}"
+    home_dir: "{{ lookup('env', 'HOME') }}"
+    user_name: "{{ lookup('env', 'USER') }}"
 
   tasks:
     - name: Ensure all packages are up to date
@@ -36,7 +36,6 @@
           - fzf
           - restic
           - fd-find
-          - eza
           - lazygit
           - duf
           - bat
@@ -78,3 +77,41 @@
             DIR: /usr/local/bin
           args:
             creates: /usr/local/bin/lazydocker
+
+        - name: Install eza
+          ansible.builtin.shell: |
+            curl -L https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz | tar xz
+            chmod +x eza
+            mv eza /usr/local/bin/eza
+          args:
+            creates: /usr/local/bin/eza
+
+        - name: Install Spicetify Reminder!
+          ansible.builtin.debug:
+            msg: "Run: wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz"
+
+    - name: Tmux Plugin Manager
+      block:
+        - name: Install TPM
+          ansible.builtin.git:
+            repo: https://github.com/tmux-plugins/tmp
+            dest: "{{ home_dir }}/.tmux/plugins/tpm"
+
+    - name: Stow Files
+      ansible.builtin.shell: |
+        cd {{ home_dir }}/dotfiles && stow .
+      args:
+        chdir: "{{ home_dir }}/dotfiles"
+      when: ansible.builtin.stat(path="{{ home_dir }}/dotfiles").stat.exists
+
+    - name: Add profile.zsh to shell
+      ansible.builtin.shell: |
+        if [ -f "$HOME/profile.zsh" ]; then
+          echo 'profile.zsh' >> .zshrc
+          source "$HOME/profile.zsh"
+        fi
+
+    - name: Display Complete
+      ansible.builtin.debug:
+        msg: |
+          Installation Complete!
