@@ -1,4 +1,11 @@
+# Local: ansible-playbook -i inventory.yaml fedora-setup.yaml --limit localhost
+# IP export TARGET_IP_ADDRESS=0.0.0.0  ansible-playbook -i inventory.yaml fedora-setup.yaml --limit remote_host
 all:
   hosts:
     localhost:
       ansible_connection: local
+      ansible_host: 127.0.0.1
+    remote_host:
+      ansible_host: "{{ lookup('env', 'TARGET_IP_ADDRESS') }}"
+      ansible_user: root
+      ansible_ssh_private_key_file: ~/.ssh/id_rsa

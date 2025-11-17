@@ -1,7 +1,6 @@
 ---
 - name: Setup Fedora Workstation Environment
-  hosts: localhost
-  connection: local
+  hosts: all
   become: yes
 
   vars:
