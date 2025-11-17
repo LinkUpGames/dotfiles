@@ -7,16 +7,22 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
     },
-    format_on_save = {
-      timeout_ms = 400,
+    format_after_save = {
+      timeout_ms = 3000,
       lsp_format = "fallback",
+      async = true,
     },
   },
   keys = {
     {
       "<leader>cF",
       function()
-        require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
+        require("conform").format({
+          formatters = { "injected" },
+          timeout_ms = 3000,
+          async = true,
+          lsp_format = "fallback",
+        })
       end,
       desc = "[F]ormat Buffer",
     },
