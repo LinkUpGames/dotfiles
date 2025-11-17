@@ -4,7 +4,7 @@
   become: yes
 
   vars:
-    user_name: "anonymous"
+    user_name: "{{ lookup('env', 'USER_NAME') }}"
     home_dir: "/home/{{ user_name }}"
 
   tasks:
