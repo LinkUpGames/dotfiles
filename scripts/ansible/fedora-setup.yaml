@@ -67,6 +67,8 @@
           - stow
           - yazi
           - unzip
+          - ansible
+          - python3-passlib
         state: present
 
     - name: Setup ZSH and the default shell
@@ -110,8 +112,7 @@
             mv eza /usr/local/bin/eza
 
         - name: Install Opencode
-          environment:
-            INSTALL_DIR: /usr/local/bin
+          become_user: "{{ user_name }}"
           ansible.builtin.shell: |
             cd /tmp && curl -fsSL https://opencode.ai/install | bash
 
@@ -120,7 +121,8 @@
             msg: "Run: wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz"
 
         - name: Install TV Fuzzy Find
-          ansible.builtin.shell: cd /tmp && curl -fsSL https://alexpasmantier.github.io/television/install.sh | bash
+          ansible.builtin.shell: |
+            cd /tmp && curl -fsSL https://alexpasmantier.github.io/television/install.sh | bash
 
     - name: Tmux Plugin Manager
       block:
@@ -133,8 +135,8 @@
     - name: Link and Post Installation
       block:
         - name: Download dotfiles repo if we have not
+          become_user: "{{ user_name }}"
           ansible.builtin.git:
-            become_user: "{{ user_name }}"
             repo: https://github.com/linkupgames/dotfiles
             dest: "{{ home_dir }}/dotfiles"
 
