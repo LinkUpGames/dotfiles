@@ -5,12 +5,14 @@
 
   vars:
     user_name: "{{ lookup('env', 'USER_NAME') }}"
+    user_password: "{{ lookup('env', 'PASSWORD') | password_hash('sha512') }}"
     home_dir: "/home/{{ user_name }}"
 
   tasks:
     - name: Setup User
       ansible.builtin.user:
         name: "{{ user_name }}"
+        password: "{{ user_password }}"
         state: present
 
     - name: Create Ansible remote_tmp directory
