@@ -132,6 +132,7 @@
       block:
         - name: Download dotfiles repo if we have not
           ansible.builtin.git:
+            become_user: "{{ user_name }}"
             repo: https://github.com/linkupgames/dotfiles
             dest: "{{ home_dir }}/dotfiles"
 
