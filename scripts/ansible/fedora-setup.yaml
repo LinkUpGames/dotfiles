@@ -8,6 +8,11 @@
     home_dir: "/home/{{ user_name }}"
 
   tasks:
+    - name: Setup User
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        state: present
+
     - name: Create Ansible remote_tmp directory
       become_user: "{{ user_name }}"
       ansible.builtin.file:
@@ -27,11 +32,6 @@
       become: yes
       ansible.builtin.package:
         name: dnf-plugins-core
-        state: present
-
-    - name: Setup User
-      ansible.builtin.user:
-        name: "{{ user_name }}"
         state: present
 
     - name: Enable COPR Repos
