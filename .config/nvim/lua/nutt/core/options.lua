@@ -77,7 +77,6 @@ opt.jumpoptions = "view"
 
 -- Status Column
 opt.splitright = true -- Put new windows right of current
--- opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 opt.laststatus = 3
 opt.showmode = false
 

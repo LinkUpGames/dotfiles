@@ -80,6 +80,18 @@ Development
       notifier = {
         enabled = true,
       },
+      bigfile = {
+        enabled = true,
+      },
+      quickfile = {
+        exclude = { "latex" },
+      },
+      words = {
+        enabled = true,
+      },
+      statuscolumn = {
+        enabled = true,
+      },
       picker = {
         layout = {
           preset = function()
@@ -129,10 +141,6 @@ Development
         },
       },
     },
-    -- Make sure that the status column has the correct padding
-    init = function()
-      vim.opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
-    end,
     keys = {
       {
         "<leader>E",
