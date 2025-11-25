@@ -67,7 +67,7 @@ return {
               name = "code",
               schema = {
                 model = {
-                  default = "qwen2.5:7b",
+                  default = "qwen2.5-coder:7b",
                 },
                 num_ctx = {
                   default = 16384,
