@@ -278,6 +278,7 @@ return {
   -- },
   {
     "LinkUpGames/jumble.nvim",
+    branch = "code-refactor",
     lazy = false,
     priority = 1000,
     opts = {
