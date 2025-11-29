@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "matrix",
+  "theme": "system",
   "keybinds": {
     "leader": "ctrl+o",
     "messages_page_up": "ctrl+b",
