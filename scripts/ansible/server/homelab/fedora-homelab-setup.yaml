@@ -1,0 +1,25 @@
+---
+- name: Setup Homelab services
+  hosts: all
+
+  vars:
+    user_name: "{{ lookup('env', 'USER_NAME') }}"
+    home_dir: "/home/{{ user_name }}"
+
+  tasks:
+    - name: Containers
+      become_user: "{{ user_name }}"
+      block:
+        - name: Immich
+          block:
+            - name: Create docker container files
+              ansible.builtin.file:
+                path: "{{ home_dir }}/homelab"
+                state: directory
+                mode: "0755"
+
+            - name: Copy Immich Docker Compose File
+              ansible.builtin.copy:
+                src: ./compose/immich.yaml
+                dest: "{{ home_dir }}/services/immich/compose.yaml"
+                owner: "{{ user_name }}"

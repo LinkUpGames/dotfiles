@@ -1,0 +1,89 @@
+---
+- name: Setup Fedora Server
+  hosts: all
+  become: yes
+
+  vars:
+    user_name: "{{ lookup('env', 'USER_NAME') }}"
+    home_dir: "/home/{{ user_name }}"
+
+  tasks:
+    - name: Create Ansible remote_temp directory
+      become_user: "{{ user_name }}"
+      ansible.builtin.file:
+        path: "{{ home_dir }}/.ansible/tmp"
+        state: directory
+        mode: "0755"
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+
+    - name: Ensure all packages are up to date
+      ansible.builtin.dnf5:
+        name: "*"
+        state: latest
+        update_cache: yes
+
+    - name: Install ansible plugins
+      become: yes
+      ansible.builtin.package:
+        name: dnf-plugins-core
+        state: present
+
+    - name: Install Docker
+      block:
+        - name: Remove Old Versions
+          ansible.builtin.dnf5:
+            state: removed
+            update_cache: yes
+            name:
+              - docker
+              - docker-client
+              - docker-client-latest
+              - docker-common
+              - docker-latest
+              - docker-latest-logrotate
+              - docker-selinux
+              - docker-engine-selinux
+              - docker-engine
+
+        - name: Add Docker Repository
+          ansible.builtin.yum_repository:
+            name: docker-ce
+            file: docker-ce
+            description: Docker CE Repo
+            baseurl:
+              - https://download.docker.com/linux/fedora/docker-ce.repo
+            enabled: yes
+            gpgcheck: yes
+
+        - name: Add Docker Packages
+          ansible.builtin.dnf5:
+            state: present
+            name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+              - docker-buildx-plugin
+              - docker-compose-plugin
+
+        - name: Enable and start docker service
+          ansible.builtin.systemd:
+            name: docker.service
+            enabled: yes
+            state: started
+
+        - name: Enable and start the containerd service
+          ansible.builtin.systemd:
+            name: containerd.service
+            enabled: yes
+            state: started
+
+        - name: Add docker group
+          ansible.builtin.group:
+            name: docker
+            state: present
+
+        - name: Add user to Docker group
+          ansible.builtin.user:
+            name: "{{ user_name }}"
+            group: docker

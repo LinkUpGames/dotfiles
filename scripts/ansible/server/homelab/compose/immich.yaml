@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json
+
+services:
+  immich-ts:
+    image: tailscale/tailscale:latest
+    container_name: immich-ts
+    hostname: photos
+    environment:
+      - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_SERVE_CONFIG=/config/config.json
+      - TS_USERSPACE=true
+    volumes:
+      - ./config.json:/config/config.json
+      - ./storage/appdata/ts-state:/var/lib/tailscale
+    restart: unless-stopped
+
+  immich-server:
+    container_name: immich-server
+    image: ghcr.io/immich-app/immich-server:release
+    # extends:
+    #   file: hwaccel.transcoding.yml
+    #   service: cpu # set to one of [nvenc, quicksync, rkmpp, vaapi, vaapi-wsl] for accelerated transcoding
+    volumes:
+      - ./storage/data/photos/upload:/usr/src/app/upload
+      - /etc/localtime:/etc/localtime:ro
+    network_mode: service:immich-ts
+    # ports:
+    #   - '2283:2283'
+    environment:
+      DB_HOSTNAME: immich-database
+      DB_PASSWORD: tailscale123
+      DB_USERNAME: dev
+      DB_DATABASE_NAME: immich
+      REDIS_HOSTNAME: immich-redis
+    depends_on:
+      - immich-redis
+      - immich-database
+    restart: unless-stopped
+    healthcheck:
+      disable: false
+
+  immich-redis:
+    container_name: immich-redis
+    image: docker.io/valkey/valkey:8-bookworm@sha256:ff21bc0f8194dc9c105b769aeabf9585fea6a8ed649c0781caeac5cb3c247884
+    healthcheck:
+      test: redis-cli ping || exit 1
+    restart: unless-stopped
+
+  immich-database:
+    container_name: immich-postgres
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0@sha256:fa4f6e0971f454cd95fec5a9aaed2ed93d8f46725cc6bc61e0698e97dba96da1
+    environment:
+      POSTGRES_PASSWORD: tailscale123
+      POSTGRES_USER: dev
+      POSTGRES_DB: immich
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+      # Uncomment the DB_STORAGE_TYPE: 'HDD' var if your database isn't stored on SSDs
+      # DB_STORAGE_TYPE: 'HDD'
+    volumes:
+      - ./storage/appdata/database:/var/lib/postgresql/data
+    restart: unless-stopped
