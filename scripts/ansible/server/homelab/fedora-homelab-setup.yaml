@@ -9,12 +9,19 @@
   tasks:
     - name: Containers
       become_user: "{{ user_name }}"
+
       block:
+        - name: Create Services folder
+          ansible.builtin.file:
+            path: "{{ home_dir }}/services"
+            state: directory
+            mode: "0755"
+
         - name: Immich
           block:
             - name: Create docker container files
               ansible.builtin.file:
-                path: "{{ home_dir }}/homelab"
+                path: "{{ home_dir }}/services/immich"
                 state: directory
                 mode: "0755"
 
@@ -22,4 +29,18 @@
               ansible.builtin.copy:
                 src: ./compose/immich.yaml
                 dest: "{{ home_dir }}/services/immich/compose.yaml"
+                owner: "{{ user_name }}"
+
+        - name: Glance
+          block:
+            - name: Create docker container file
+              ansible.builtin.file:
+                path: "{{ home_dir }}/services/glance"
+                state: directory
+                mode: "0755"
+
+            - name: Create Glance container file
+              ansible.builtin.copy:
+                src: ./compose/immich.yaml
+                dest: "{{ home_dir }}/services/glance/compose.yaml"
                 owner: "{{ user_name }}"
