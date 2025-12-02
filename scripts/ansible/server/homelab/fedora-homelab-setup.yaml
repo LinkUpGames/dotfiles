@@ -27,9 +27,14 @@
 
             - name: Copy Immich Docker Compose File
               ansible.builtin.copy:
-                src: ./compose/immich.yaml
+                src: ./compose/immich/compose.yaml
                 dest: "{{ home_dir }}/services/immich/compose.yaml"
                 owner: "{{ user_name }}"
+
+            - name: Copy Tailscale file
+              ansible.builtin.copy:
+                src: ./compose/immich/tailscale.json
+                dest: "{{ home_dir }}/services/immich/tailscale.json"
 
         - name: Glance
           block:
@@ -39,8 +44,28 @@
                 state: directory
                 mode: "0755"
 
-            - name: Create Glance container file
+            - name: Copy Glance compose file
               ansible.builtin.copy:
-                src: ./compose/immich.yaml
+                src: ./compose/glance/compose.yaml
                 dest: "{{ home_dir }}/services/glance/compose.yaml"
                 owner: "{{ user_name }}"
+
+            - name: Copy Tailscale file
+              ansible.builtin.copy:
+                src: ./compose/glance/tailscale.json
+                dest: "{{ home_dir }}/services/glance/tailscale.json"
+                owner: "{{ user_name }}"
+
+        - name: Forgejo
+          block:
+            - name: Copy Forgejo Docker compose file
+              ansible.builtin.copy:
+                src: ./compose/forgejo/compose.yaml
+                dest: "{{ home_dir }}/services/forgejo/compose.yaml"
+                owner: "{{ user_name }}"
+
+            - name: Copy Tailscale file
+              ansible.builtin.copy:
+                src: ./compose/forgejo/tailscale.json
+                dest: "{{ home_dir }}/services/forgejo/tailscale.json"
+                owner: " {{ user_name }}"

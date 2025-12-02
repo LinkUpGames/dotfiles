@@ -1,0 +1,28 @@
+services:
+  forgejo-ts:
+    image: tailscale/tailscale:latest
+    container_name: forgejo-ts
+    hostname: git
+    restart: unless-stopped
+    volumes:
+      - ./data/tailscale:/var/lib/tailscale
+      - ./tailscale.json:/config/tailscale.json:ro
+    environment:
+      TS_AUTHKEY: ${TS_AUTHKEY}
+      TS_SERVE_CONFIG: /config/tailscale.json
+      TS_STATE_DIR: /var/lib/tailscale
+
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:11
+    container_name: forgejo
+    network_mode: service:forgejo-ts
+    restart: unless-stopped
+    environment:
+      USER_UID: 1000
+      USER_GUID: 1000
+      FORGEJO__server__ROOT_URL: https://${FORGEJO_HOSTNAME}
+      FORGEJO__server__SSH_DOMAIN: ${FORGEJO_HOSTNAME}
+    volumes:
+      - ./data/forgejo:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro

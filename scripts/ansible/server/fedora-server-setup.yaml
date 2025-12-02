@@ -87,3 +87,7 @@
           ansible.builtin.user:
             name: "{{ user_name }}"
             group: docker
+
+    - name: Install Tailscale
+      ansible.builtin.shell:
+        cmd: curl -fsSL https://tailscale.com/install.sh | sh

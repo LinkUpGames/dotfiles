@@ -1,0 +1,30 @@
+services:
+  glance-ts:
+    hostname: home
+    container_name: glance-ts
+    image: tailscale/tailscale:latest
+    volumes:
+      - ./tailscale.json:/config/config.json
+      - ./data/tailscale:/var/lib/tailscale
+    restart: unless-stopped
+    privileged: true
+    cap_add:
+      - net_admin
+      - sys_module
+    environment:
+      - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_USERSPACE=true
+      - TS_SERVE_CONFIG=/config/config.json
+
+  glance:
+    container_name: glance
+    image: glanceapp/glance
+    restart: unless-stopped
+    network_mode: service:glance-ts
+    volumes:
+      - ./config/templates:/app/config
+      - ./config/assets:/app/assets
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    env_file: .env
