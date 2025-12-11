@@ -118,11 +118,17 @@
 
         - name: Install Spicetify Reminder!
           ansible.builtin.debug:
-            msg: "Run: wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz"
+            msg: "Run: curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh"
 
         - name: Install TV Fuzzy Find
           ansible.builtin.shell: |
             cd /tmp && curl -fsSL https://alexpasmantier.github.io/television/install.sh | bash
+
+        - name: Install CSV Lens
+          ansible.builtin.shell: |
+            cd /tmp && curl -fsSL https://github.com/YS-L/csvlens/releases/download/v0.14.0/csvlens-x86_64-unknown-linux-gnu.tar.xz | tar -xJ --strip-components=1
+            chmod +x csvlens
+            mv csvlens /usr/local/bin/csvlens
 
     - name: Tmux Plugin Manager
       block:
