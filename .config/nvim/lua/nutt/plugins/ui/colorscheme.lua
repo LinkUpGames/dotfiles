@@ -211,6 +211,31 @@ return {
       }
     end,
   },
+  {
+    "navarasu/onedark.nvim",
+    config = function()
+      local pallete = require("onedark.palette").deep
+      require("onedark").setup({
+        style = "deep",
+        transparent_background = true,
+        transparent = true,
+        highlights = {
+          LineNr = {
+            fg = pallete.blue,
+            bg = "none",
+          },
+          LineNrAbove = {
+            fg = pallete.grey,
+            bg = "none",
+          },
+          LineNrBelow = {
+            fg = pallete.grey,
+            bg = "none",
+          },
+        },
+      })
+    end,
+  },
   -- {
   --   "ribru17/bamboo.nvim",
   --   opts = function()
@@ -240,38 +265,38 @@ return {
   --     }
   --   end,
   -- },
-  {
-    "ellisonleao/gruvbox.nvim",
-    opts = function()
-      local colors = require("gruvbox").palette
-      -- vim.o.background = "dark"
-
-      return {
-        contrast = "hard",
-        overrides = {
-          LineNr = {
-            fg = colors.bright_orange,
-            bg = "none",
-          },
-          LineNrAbove = {
-            fg = colors.light_green_soft,
-            bg = "none",
-          },
-          LineNrBelow = {
-            fg = colors.light_green_soft,
-            bg = "none",
-          },
-          FlashLabel = {
-            bg = colors.faded_blue,
-            fg = colors.light1,
-          },
-          FlashBackdrop = {
-            fg = colors.faded_green,
-          },
-        },
-      }
-    end,
-  },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   opts = function()
+  --     local colors = require("gruvbox").palette
+  --     -- vim.o.background = "dark"
+  --
+  --     return {
+  --       contrast = "hard",
+  --       overrides = {
+  --         LineNr = {
+  --           fg = colors.bright_orange,
+  --           bg = "none",
+  --         },
+  --         LineNrAbove = {
+  --           fg = colors.light_green_soft,
+  --           bg = "none",
+  --         },
+  --         LineNrBelow = {
+  --           fg = colors.light_green_soft,
+  --           bg = "none",
+  --         },
+  --         FlashLabel = {
+  --           bg = colors.faded_blue,
+  --           fg = colors.light1,
+  --         },
+  --         FlashBackdrop = {
+  --           fg = colors.faded_green,
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
   -- {
   --   "nyoom-engineering/oxocarbon.nvim",
   --   config = function() end,
@@ -293,7 +318,8 @@ return {
         "vscode",
         "cyberdream",
         "fluoromachine",
-        "gruvbox",
+        "onedark",
+        -- "gruvbox",
         -- "oxocarbon",
         -- "bamboo-multiplex",
       },
