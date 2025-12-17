@@ -167,7 +167,8 @@ return {
 
           -- Check if the language is installed
           local installed = vim.treesitter.language.add(lang or "")
-          if not installed then
+          local ignore = vim.tbl_contains(opts.ignore, lang)
+          if not installed and not ignore then
             local languages = treesitter.get_available()
 
             local available = vim.tbl_contains(languages, lang)
@@ -207,6 +208,7 @@ return {
     end,
     opts = {
       ensure_installed = { "bash", "html", "lua", "luadoc", "markdown", "markdown_inline" },
+      ignore = { "txt" },
       auto_install = true,
       folds = {
         enable = true,
@@ -224,6 +226,7 @@ return {
     },
     opts_extend = {
       "ensure_installed",
+      "ignore",
     },
   },
 }
