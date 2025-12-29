@@ -138,19 +138,19 @@ return {
         end
 
         -- Go to defintion
-        map("gd", require("snacks").picker.lsp_definitions, "[G]oto [D]efinition")
+        map("gld", require("snacks").picker.lsp_definitions, "[G]oto [L]sp [D]efinition")
 
         -- Go to implementation
-        map("gI", require("snacks").picker.lsp_implementations, "[G]oto [I]mplementation")
+        map("glI", require("snacks").picker.lsp_implementations, "[G]oto [L]sp [I]mplementation")
 
         -- Go to declaration
-        map("gD", require("snacks").picker.lsp_declarations, "[G]oto [D]eclaration")
+        map("glD", require("snacks").picker.lsp_declarations, "[G]oto [L]sp [D]eclaration")
 
         -- Go to type defintion
-        map("gt", require("snacks").picker.lsp_type_definitions, "[G]oto [T]ype Defintion")
+        map("glt", require("snacks").picker.lsp_type_definitions, "[G]oto [L]sp [T]ype Defintion")
 
         -- Go to references
-        map("gr", require("snacks").picker.lsp_references, "[G]oto [R]eferences")
+        map("glr", require("snacks").picker.lsp_references, "[G]oto [L]sp [R]eferences")
 
         -- Open Code Actions
         map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
