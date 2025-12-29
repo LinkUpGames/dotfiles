@@ -214,22 +214,22 @@ return {
   {
     "navarasu/onedark.nvim",
     config = function()
-      local pallete = require("onedark.palette").deep
+      local pallete = require("onedark.palette").cool
       require("onedark").setup({
-        style = "deep",
+        style = "cool",
         transparent_background = true,
         transparent = true,
         highlights = {
           LineNr = {
-            fg = pallete.blue,
+            fg = pallete.red,
             bg = "none",
           },
           LineNrAbove = {
-            fg = pallete.grey,
+            fg = pallete.blue,
             bg = "none",
           },
           LineNrBelow = {
-            fg = pallete.grey,
+            fg = pallete.blue,
             bg = "none",
           },
         },
