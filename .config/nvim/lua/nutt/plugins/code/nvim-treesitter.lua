@@ -195,6 +195,7 @@ return {
 
             -- Better folding
             if opts.folds.enable then
+              vim.wo.foldmethod = "expr"
               vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
             end
 
