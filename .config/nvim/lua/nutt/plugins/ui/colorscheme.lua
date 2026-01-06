@@ -212,30 +212,58 @@ return {
     end,
   },
   {
-    "navarasu/onedark.nvim",
-    config = function()
-      local pallete = require("onedark.palette").cool
-      require("onedark").setup({
-        style = "cool",
-        transparent_background = true,
-        transparent = true,
-        highlights = {
-          LineNr = {
-            fg = pallete.red,
-            bg = "none",
-          },
-          LineNrAbove = {
-            fg = pallete.blue,
-            bg = "none",
-          },
-          LineNrBelow = {
-            fg = pallete.blue,
-            bg = "none",
-          },
-        },
-      })
-    end,
+    "serhez/teide.nvim",
+    priority = 1000,
+    opts = {
+      style = "dark",
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+      transparent = true,
+      on_highlights = function(highlights, colors)
+        highlights.LineNr = {
+          bg = "none",
+          fg = colors.red,
+        }
+
+        highlights.LineNrAbove = {
+          bg = "none",
+          fg = colors.blue,
+        }
+
+        highlights.LineNrBelow = {
+          bg = "none",
+          fg = colors.blue,
+        }
+      end,
+    },
   },
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   config = function()
+  --     local pallete = require("onedark.palette").cool
+  --     require("onedark").setup({
+  --       style = "cool",
+  --       transparent_background = true,
+  --       transparent = true,
+  --       highlights = {
+  --         LineNr = {
+  --           fg = pallete.red,
+  --           bg = "none",
+  --         },
+  --         LineNrAbove = {
+  --           fg = pallete.blue,
+  --           bg = "none",
+  --         },
+  --         LineNrBelow = {
+  --           fg = pallete.blue,
+  --           bg = "none",
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
   -- {
   --   "ribru17/bamboo.nvim",
   --   opts = function()
@@ -317,7 +345,8 @@ return {
         "vscode",
         "cyberdream",
         "fluoromachine",
-        "onedark",
+        "teide",
+        -- "onedark",
         -- "gruvbox",
         -- "oxocarbon",
         -- "bamboo-multiplex",
