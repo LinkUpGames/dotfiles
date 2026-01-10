@@ -200,6 +200,7 @@ Development
         end,
         desc = "[S]earch Git [D]iff",
       },
+
       {
         "<leader>sb",
         function()
@@ -208,18 +209,26 @@ Development
         desc = "[S]earch [B]uff Diagnostics",
       },
       {
-        "<leader>sl",
+        "<leader>sL",
         function()
           require("snacks").picker.git_log()
         end,
         desc = "[S]earch [L]og Files",
       },
       {
-        "<leader>sL",
+        "<leader>sl",
         function()
           require("snacks").picker.git_log_file()
         end,
-        desc = "[S]earch [L]og Current File",
+        desc = "[S]earch [l]og Current File",
+      },
+      {
+        "<leader>sl",
+        function()
+          require("snacks").picker.git_log_line()
+        end,
+        desc = "[S]earch Log Current [l]ine",
+        mode = { "v" },
       },
 
       -- Buffer
