@@ -129,7 +129,14 @@ local diagnostic_goto = function(next, severity)
     vim.diagnostic.jump({ float = true, count = count, severity = severity })
   end
 end
-map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "<leader>cd", function()
+  local i = 0
+  -- Make sure to go inside of the diagnostic window, that's why we call it twice
+  repeat
+    vim.diagnostic.open_float()
+    i = i + 1
+  until i >= 2
+end, { desc = "Line Diagnostics" })
 map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
 map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
 map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
