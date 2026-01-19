@@ -1,5 +1,11 @@
-theme = "tokyo-night"
+theme = "night-owl"
 
-speed = 20
+speed = 25
 
 background = true
+
+loop = true
+
+ignore_patterns = ["*.lock", "*.json", ".gitignore", "**/*.json", "**/*.lock", "**/*.test.*"]
+
+order = "desc"
