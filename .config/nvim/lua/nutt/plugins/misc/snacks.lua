@@ -137,7 +137,7 @@ Development
               ["<c-j>"] = { "preview_scroll_left", mode = { "i", "n" } },
               ["<c-k>"] = { "preview_scroll_right", mode = { "i", "n" } },
               ["<leader>th"] = { "toggle_hidden", mode = { "n" }, desc = "[T]oggle [H]idden" },
-              ["<leader>ti"] = { "toggle_ignore", mode = { "n" }, desc = "[T]oggle [I]gnore" },
+              ["<leader>ti"] = { "toggle_ignored", mode = { "n" }, desc = "[T]oggle [I]gnore" },
             },
           },
         },
