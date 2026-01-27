@@ -7,9 +7,14 @@ return {
   opts = {},
   keys = {
     {
-      "<leader>gD",
+      "<leader>gd",
       "<cmd>CodeDiff<cr>",
       desc = "Toggle Diff View",
+    },
+    {
+      "<leader>gh",
+      "<cmd>CodeDiff history %<cr>",
+      desc = "Toggle File History",
     },
   },
 }
