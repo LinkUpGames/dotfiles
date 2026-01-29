@@ -21,6 +21,7 @@ return {
       for name, linter in pairs(opts.linters) do
         if type(linter) == "table" and type(lint.linters[name]) == "table" then
           -- Assign the extra parameters we added
+          ---@diagnostic disable-next-line: param-type-mismatch
           lint.linters[name] = vim.tbl_deep_extend("force", lint.linters[name], linter)
 
           if type(linter.prepend_args) == "table" then
@@ -55,7 +56,6 @@ return {
       function M.lint()
         -- Use nvim-lint's logic first:
         local names = lint._resolve_linter_by_ft(vim.bo.filetype)
-        vim.notify(vim.inspect(names) .. "GD")
 
         -- Create a copy of the names table to avoid modifying the original
         names = vim.list_extend({}, names)
@@ -79,6 +79,7 @@ return {
             vim.notify("Linter not found: " .. name, vim.log.levels.WARN)
           end
 
+          ---@diagnostic disable-next-line: undefined-field
           return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
         end, names)
 
@@ -88,10 +89,12 @@ return {
         end
       end
 
-      vim.api.nvim_create_autocmd(opts.events, {
-        group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
-        callback = M.debounce(100, M.lint),
-      })
+      if type(next(opts.linters_by_ft)) ~= "nil" then
+        vim.api.nvim_create_autocmd(opts.events, {
+          group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+          callback = M.debounce(100, M.lint),
+        })
+      end
     end,
   },
 }
