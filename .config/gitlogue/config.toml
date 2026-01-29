@@ -1,11 +1,11 @@
-theme = "night-owl"
+theme = "github-dark"
 
-speed = 25
+speed = 22
 
 background = true
 
 loop = true
 
-ignore_patterns = ["*.lock", "*.json", ".gitignore", "**/*.json", "**/*.lock", "**/*.test.*"]
+ignore_patterns = ["*.lock", "*.json", ".gitignore", "**/*.json", "**/*.lock", "**/*.test.*", "**/*.uid", "**/*.tscn", "**/*.png"]
 
 order = "desc"
