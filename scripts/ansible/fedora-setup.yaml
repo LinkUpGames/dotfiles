@@ -48,6 +48,11 @@
             state: enabled
             name: lihaohong/yazi
 
+        - name: Enable COPR for vicinae
+          community.general.copr:
+            state: enabled
+            name: quadratech188/vicinae
+
         - name: Update Package Cache
           ansible.builtin.dnf5:
             update_cache: yes
@@ -69,6 +74,7 @@
           - unzip
           - ansible
           - python3-passlib
+          - vicinae
         state: latest
 
     - name: Setup ZSH and the default shell
