@@ -18,19 +18,48 @@ function cdd() {
 
   # Only go to output if the result is greater than 0
   if [[ -n "$dir" ]]; then
-    cd "$dir"
+    # check if zoxide it installed
+    if command -v z >/dev/null; then
+      z "$dir"
+    else
+      cd "$dir"
+
+    fi
   fi
 }
 
 # Open a file in a directory
 function cdf() {
   local file=$(tv)
-  # local dir=$(dirname $file)
-
-  # echo $dir
 
   if [[ -n "$file" ]]; then
     nvim $file
   fi
+}
 
+# Use bat if available
+function less() {
+  if command -v bat >/dev/null; then
+    bat --style="header,changes,numbers" --theme="Visual Studio Dark+" "$@"
+  else
+    command less "$@"
+  fi
+}
+
+# Use bat if available
+function cat() {
+  if command -v bat >/dev/null; then
+    bat --paging=never --style="header,changes,numbers" --theme="Visual Studio Dark+" "$@"
+  else
+    command cat "$@"
+  fi
+}
+
+# Use Eza if available
+function ls() {
+  if command -v eza >/dev/null; then
+    eza --color=always --icons=always --no-user "$@"
+  else
+    command ls "$@"
+  fi
 }
