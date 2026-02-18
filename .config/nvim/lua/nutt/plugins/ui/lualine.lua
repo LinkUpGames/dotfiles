@@ -58,6 +58,8 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
+---@module "lazy"
+---@type LazySpec
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
@@ -238,7 +240,7 @@ return {
             separator = { left = "", right = "" },
             right_padding = 2,
             symbols = { alternate_file = "" },
-            max_length = vim.o.columns * (9 / 10),
+            max_length = vim.o.columns,
             use_mode_colors = true,
             filetype_names = {
               snacks_picker_input = "󰍉 Picker",

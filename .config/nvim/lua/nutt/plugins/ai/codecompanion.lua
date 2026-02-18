@@ -38,6 +38,8 @@ local ai_status = function()
   return ""
 end
 
+---@module "lazy"
+---@type LazySpec
 return {
   -- Code Companion
   {

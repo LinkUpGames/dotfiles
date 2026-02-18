@@ -2,6 +2,8 @@ if true then
   return {}
 end
 
+---@module "lazy"
+---@type LazySpec
 return {
   {
     "TheNoeTrevino/haunt.nvim",

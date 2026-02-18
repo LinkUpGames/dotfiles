@@ -24,6 +24,8 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
   end,
 })
 
+---@module "lazy"
+---@type LazySpec
 return {
   "LinkUpGames/symbol-usage.nvim",
   events = "LspAttach",

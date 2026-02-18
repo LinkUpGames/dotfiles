@@ -1,7 +1,9 @@
+---@module "lazy"
+---@type LazySpec
 return {
-	"folke/persistence.nvim",
-	event = "BufReadPre",
-	opts = {},
+  "folke/persistence.nvim",
+  event = "BufReadPre",
+  opts = {},
   -- stylua: ignore
   keys = {
     { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
