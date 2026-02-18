@@ -75,6 +75,7 @@
           - ansible
           - python3-passlib
           - vicinae
+          - zoxide
         state: latest
 
     - name: Setup ZSH and the default shell
