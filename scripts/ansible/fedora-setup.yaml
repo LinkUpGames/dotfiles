@@ -61,6 +61,7 @@
       ansible.builtin.dnf5:
         name:
           - zsh
+          - git
           - tmux
           - neovim
           - fzf
@@ -153,10 +154,16 @@
 
     - name: Link and Post Installation
       block:
+        - name: Check if SSH is available
+          ansible.builtin.command: ssh -V
+          register: ssh_check
+          failed_when: false
+          changed_when: false
+
         - name: Download dotfiles repo if we have not
           become_user: "{{ user_name }}"
           ansible.builtin.git:
-            repo: https://github.com/linkupgames/dotfiles
+            repo: "{{ 'git@github.com:LinkUpGames/dotfiles.git' if ssh_check.rc == 0 else 'https://github.com/LinkUpGames/dotfiles' }}"
             dest: "{{ home_dir }}/dotfiles"
 
         - name: Check if dotfiles directory exists
