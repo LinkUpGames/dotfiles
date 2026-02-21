@@ -332,7 +332,7 @@ return {
   --   config = function() end,
   -- },
   {
-    "LinkUpGames/jumble.nvim",
+    "nutt-y/jumble.nvim",
     lazy = false,
     priority = 1000,
     opts = {

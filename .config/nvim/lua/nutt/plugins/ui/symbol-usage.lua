@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
 ---@module "lazy"
 ---@type LazySpec
 return {
-  "LinkUpGames/symbol-usage.nvim",
+  "nutt-y/symbol-usage.nvim",
   events = "LspAttach",
   opts = function()
     ---Format symbol to display nicely
