@@ -163,7 +163,7 @@
         - name: Download dotfiles repo if we have not
           become_user: "{{ user_name }}"
           ansible.builtin.git:
-            repo: "{{ 'git@github.com:LinkUpGames/dotfiles.git' if ssh_check.rc == 0 else 'https://github.com/LinkUpGames/dotfiles' }}"
+            repo: "{{ 'git@github.com:nutt-y/dotfiles.git' if ssh_check.rc == 0 else 'https://github.com/nutt-y/dotfiles' }}"
             dest: "{{ home_dir }}/dotfiles"
 
         - name: Check if dotfiles directory exists
