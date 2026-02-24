@@ -12,14 +12,14 @@ if git -C "$CURRENT_DIR" rev-parse --git-dir >/dev/null 2>&1; then
     fi
   else
     if command -v cmatrix >/dev/null; then
-      cmatrix
+      cmatrix -s
     else
       exit 1
     fi
   fi
 else
   if command -v cmatrix >/dev/null; then
-    cmatrix
+    cmatrix -s
   else
     exit 1
   fi
