@@ -224,14 +224,14 @@ Development
         function()
           require("snacks").picker.git_log_file()
         end,
-        desc = "[S]earch [l]og Current File",
+        desc = "[S]earch Git [l]og Current File",
       },
       {
         "<leader>sl",
         function()
           require("snacks").picker.git_log_line()
         end,
-        desc = "[S]earch Log Current [l]ine",
+        desc = "[S]earch Git Log Current [l]ine",
         mode = { "v" },
       },
 
@@ -308,6 +308,16 @@ Development
           end
         end,
         desc = "LazyGit (CWD)",
+        mode = "n",
+      },
+
+      -- Keybinds
+      {
+        "<leader>sk",
+        function()
+          require("snacks").picker.keymaps()
+        end,
+        desc = "[S]earch [K]eymaps",
         mode = "n",
       },
 
