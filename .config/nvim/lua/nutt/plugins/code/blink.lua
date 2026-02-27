@@ -26,6 +26,28 @@ return {
           },
         },
         menu = {
+          auto_show = function(ctx)
+            local kind = ctx.trigger.kind
+
+            return kind == "trigger_character"
+          end,
+          auto_show_delay_ms = function()
+            -- Delay amount for most files
+            local default_delay_amount = 0
+
+            -- The files to delay for
+            local files = {
+              markdown = 1000,
+            }
+
+            -- Filetype
+            local filetype = vim.bo.filetype
+
+            -- Final delay
+            local delay = files[filetype] or default_delay_amount
+
+            return delay
+          end,
           border = "rounded",
           draw = {
             treesitter = { "lsp" },
@@ -40,6 +62,7 @@ return {
         },
         ghost_text = {
           enabled = true,
+          show_with_menu = false,
         },
         list = {
           selection = {
@@ -56,6 +79,7 @@ return {
       },
       keymap = {
         preset = "enter",
+        ["<C-k>"] = { "show", "hide" },
       },
       cmdline = {
         enabled = true,
