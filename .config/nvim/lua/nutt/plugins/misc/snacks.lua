@@ -332,6 +332,8 @@ Development
               win = { position = "float" },
               auto_close = true,
             })
+          else
+            vim.notify("Scooter is not installed!")
           end
         end,
         desc = "[S]earch [S]cooter",
