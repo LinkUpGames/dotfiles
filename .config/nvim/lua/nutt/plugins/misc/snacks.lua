@@ -321,6 +321,23 @@ Development
         mode = "n",
       },
 
+      -- Scooter
+      {
+        "<leader>ss",
+        function()
+          local scooter = "scooter"
+
+          if vim.fn.executable(scooter) == 1 then
+            require("snacks").terminal.open(scooter, {
+              win = { position = "float" },
+              auto_close = true,
+            })
+          end
+        end,
+        desc = "[S]earch [S]cooter",
+        mode = "n",
+      },
+
       -- Icons
       {
         "<leader>si",
