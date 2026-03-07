@@ -123,6 +123,8 @@ return {
     },
   },
   -- Add blink code completion
+  ---@module "lazy"
+  ---@type LazySpec
   {
     "Saghen/blink.cmp",
     opts = {
@@ -132,6 +134,62 @@ return {
         },
       },
     },
+  },
+  -- Lualine
+  ---@module "lazy"
+  ---@type LazySpec
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      -- Extension
+      local codecompanion = {
+        sections = {
+          lualine_a = {
+            {
+              function()
+                return "󰚩 Code Companion"
+              end,
+              separator = {
+                left = "",
+                right = "",
+              },
+            },
+          },
+          lualine_y = {
+            {
+              function()
+                local current = vim.api.nvim_get_current_buf()
+
+                ---@type boolean
+                local modifiable = vim.api.nvim_get_option_value("modifiable", { buf = current })
+                local status = (not modifiable and "󰟶 Thinking...") or " Ask me anything"
+
+                return status
+              end,
+            },
+          },
+          lualine_z = {
+            {
+              function()
+                return " " .. os.date("%I:%M %p")
+              end,
+              separator = {
+                left = "",
+                right = "",
+              },
+            },
+          },
+        },
+        filetypes = {
+          "codecompanion",
+        },
+      }
+
+      opts.extensions = opts.extensions or {}
+      table.insert(opts.extensions, codecompanion)
+
+      return opts
+    end,
   },
   -- Which Key
   {
