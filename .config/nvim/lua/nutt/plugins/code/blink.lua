@@ -80,7 +80,7 @@ return {
       keymap = {
         preset = "enter",
         ["<C-k>"] = { "show", "hide" },
-        ["<Tab>"] = { "snippet_forward", "show", "hide", "fallback" },
+        -- ["<Tab>"] = { "snippet_forward", "show", "hide", "fallback" },
       },
       cmdline = {
         enabled = true,
