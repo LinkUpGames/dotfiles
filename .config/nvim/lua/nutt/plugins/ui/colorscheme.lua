@@ -331,6 +331,7 @@ return {
   --   "nyoom-engineering/oxocarbon.nvim",
   --   config = function() end,
   -- },
+
   {
     "nutt-y/jumble.nvim",
     lazy = false,
@@ -353,6 +354,9 @@ return {
         -- "oxocarbon",
         -- "bamboo-multiplex",
       },
+      callback = function()
+        -- vim.cmd("hi link")
+      end,
     },
   },
 }
