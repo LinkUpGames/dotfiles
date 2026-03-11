@@ -355,7 +355,9 @@ return {
         -- "bamboo-multiplex",
       },
       callback = function()
-        -- vim.cmd("hi link")
+        vim.defer_fn(function()
+          vim.cmd([[Lazy reload blink.cmp]])
+        end, 1000)
       end,
     },
   },
