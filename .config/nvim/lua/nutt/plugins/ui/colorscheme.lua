@@ -354,11 +354,11 @@ return {
         -- "oxocarbon",
         -- "bamboo-multiplex",
       },
-      callback = function()
-        vim.defer_fn(function()
-          vim.cmd([[Lazy reload blink.cmp]])
-        end, 1000)
-      end,
+      -- callback = function()
+      --   -- vim.defer_fn(function()
+      --   --   vim.cmd([[Lazy reload blink.cmp]])
+      --   -- end, 1000)
+      -- end,
     },
   },
 }
