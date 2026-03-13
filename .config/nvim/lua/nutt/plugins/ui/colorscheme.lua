@@ -344,7 +344,7 @@ return {
       themes = {
         "eldritch",
         "tokyonight",
-        "catppuccin",
+        "catppuccin-nvim",
         "vscode",
         "cyberdream",
         "fluoromachine",
