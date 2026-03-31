@@ -1,3 +1,6 @@
+if true then
+  return {}
+end
 ---Create the hightlight groups when a colorscheme is loaded
 local create_highlights = function()
   ---Get hightlight group
