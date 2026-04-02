@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 ---@module "lazy"
 ---@type LazySpec
 return {
