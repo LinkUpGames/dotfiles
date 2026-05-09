@@ -104,10 +104,6 @@
     - name: Curl/Script Based Installation
       become: true
       block:
-        - name: Install Ollama
-          ansible.builtin.shell: |
-            curl -fsSL https://ollama.com/install.sh | sh
-
         - name: Install LazyDocker
           ansible.builtin.shell: |
             cd /tmp && curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
