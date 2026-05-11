@@ -113,8 +113,11 @@
               ansible.builtin.shell: |
                 curl -fsSL https://raw.githubusercontent.com/MordechaiHadad/bob/master/scripts/install.sh | bash
             - name: Move Neovim to /usr/local/bin
-              ansible.builtin.command:
-                cmd: mv "{{ ansible_facts['env']['HOME'] }}/.local/bin/bob" /usr/local/bin/bob
+              ansible.builtin.copy:
+                src: "{{ ansible_facts['env']['HOME'] }}/.local/bin/bob"
+                dest: /usr/local/bin/bob
+                mode: "0755"
+                remote_src: true
             - name: Remove Bob from root presumably
               ansible.builtin.file:
                 path: "{{ ansible_facts['env']['HOME'] }}/.local/bin/bob"
