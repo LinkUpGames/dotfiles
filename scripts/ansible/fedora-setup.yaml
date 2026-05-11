@@ -63,7 +63,6 @@
           - zsh
           - git
           - tmux
-          - neovim
           - fzf
           - restic
           - fd-find
@@ -108,6 +107,12 @@
         #   ansible.builtin.shell: |
         #     curl -fsSL https://ollama.com/install.sh | sed s/--add-repo/addrepo/ | sh
 
+        - name: Install Bob (Neovim Manager)
+          ansible.builtin.shell: |
+            curl -fsSL https://raw.githubusercontent.com/MordechaiHadad/bob/master/scripts/install.sh | bash
+          environment:
+            BIN_DIR: /usr/local/bin
+
         - name: Install LazyDocker
           ansible.builtin.shell: |
             cd /tmp && curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
@@ -127,7 +132,9 @@
 
         - name: Install Spicetify Reminder!
           ansible.builtin.debug:
-            msg: "Run: curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh"
+            msg: "Run: curl -fsSL
+              https://raw.githubusercontent.com/spicetify/cli/main/install.sh |
+              sh"
 
         - name: Install TV Fuzzy Find
           ansible.builtin.shell: |
@@ -170,7 +177,8 @@
         - name: Download dotfiles repo if we have not
           become_user: "{{ user_name }}"
           ansible.builtin.git:
-            repo: "{{ 'git@github.com:nutt-y/dotfiles.git' if ssh_check.rc == 0 else 'https://github.com/nutt-y/dotfiles' }}"
+            repo: "{{ 'git@github.com:nutt-y/dotfiles.git' if ssh_check.rc == 0 else
+              'https://github.com/nutt-y/dotfiles' }}"
             dest: "{{ home_dir }}/dotfiles"
 
         - name: Check if dotfiles directory exists
